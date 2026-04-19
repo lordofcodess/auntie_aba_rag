@@ -13,6 +13,7 @@ from contextlib import asynccontextmanager
 from typing import Optional
 
 from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from chunk_all import pick_chunker
@@ -44,6 +45,15 @@ app = FastAPI(
     description="RAG API for University of Ghana handbooks and policies",
     version="1.0.0",
     lifespan=lifespan,
+)
+
+# Enable CORS for frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (set to specific URLs in production)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
