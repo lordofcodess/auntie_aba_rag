@@ -133,17 +133,23 @@ When answering questions:
                     break
 
         # Filter chunks to avoid conflicting course codes
-        # If asking for CS, exclude CSIT (IT courses) and CSED (Education) codes
+        # If asking for CS, prefer CSCD courses over CSIT courses
         if "computer science" in query.lower():
-            filtered_chunks = []
+            cscd_chunks = []
+            csit_chunks = []
+            other_chunks = []
             for chunk in chunks:
                 text = chunk["text"]
-                # Exclude if text heavily mentions CSIT, CSED, or Information Technology courses
-                if "CSIT" in text and "CSCD" not in text:
-                    continue  # Skip IT-only chunks
-                filtered_chunks.append(chunk)
-            if filtered_chunks:  # Only use filtered if we have results
-                chunks = filtered_chunks[:top_k]
+                has_cscd = "CSCD" in text
+                has_csit = "CSIT" in text
+                if has_cscd:
+                    cscd_chunks.append(chunk)
+                elif has_csit:
+                    csit_chunks.append(chunk)
+                else:
+                    other_chunks.append(chunk)
+            # Combine: CSCD first, then others, then CSIT as last resort
+            chunks = (cscd_chunks + other_chunks + csit_chunks)[:top_k]
 
         return chunks[:top_k]
 
