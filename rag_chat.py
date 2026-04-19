@@ -56,7 +56,7 @@ When answering questions:
 5. Be helpful and conversational but accurate"""
 
     def retrieve(self, query: str, top_k: int = 5) -> list[dict]:
-        """Retrieve relevant chunks from Chroma with level-aware and source-file filtering."""
+        """Retrieve relevant chunks from Chroma with level, department, and source-file filtering."""
         # Extract level from query (e.g., "Level 200" → 200)
         level_filter = None
         for word in query.split():
@@ -75,18 +75,19 @@ When answering questions:
         )
 
         chunks = []
-        # Group results by level and source file
-        by_level_source = {}
+        # Group results by level, department, and source file
+        by_level_dept_source = {}
         for doc, metadata, distance in zip(results["documents"][0], results["metadatas"][0], results["distances"][0]):
             meta_level = metadata.get("level")
+            department = metadata.get("department", "Unknown")
             source_file = metadata.get("source_file", "Unknown")
             similarity = 1 - distance  # Convert distance to similarity
-            key = (meta_level, source_file)
-            if key not in by_level_source:
-                by_level_source[key] = []
-            by_level_source[key].append({"text": doc, "metadata": metadata, "similarity": similarity})
+            key = (meta_level, department, source_file)
+            if key not in by_level_dept_source:
+                by_level_dept_source[key] = []
+            by_level_dept_source[key].append({"text": doc, "metadata": metadata, "similarity": similarity})
 
-        # Prioritize: requested level + CBAS/CHS handbooks first, then policies, then others
+        # Prioritize: requested level + specific department + CBAS handbook first
         # Handbook priority order: CBAS > CHS > Humanities > policies
         handbook_priority = {
             "CBAS handbook 2017.md": 0,
@@ -94,33 +95,40 @@ When answering questions:
             "Humanities Handbook 2017.md": 2,
         }
 
+        # If "computer science" is mentioned, deprioritize Information Technology (CSIT courses)
+        deprioritize_depts = set()
+        if "computer science" in query.lower():
+            deprioritize_depts.add("DEPARTMENT OF INFORMATION TECHNOLOGY")
+
         if level_filter:
-            # Sort by (is_handbook, handbook_priority, source_file) to prefer handbooks
+            # Sort by (matching_dept, matching_level, is_handbook, handbook_priority)
             sorted_keys = sorted(
-                by_level_source.keys(),
+                by_level_dept_source.keys(),
                 key=lambda k: (
+                    k[1] in deprioritize_depts,  # Deprioritize IT dept (True > False)
                     k[0] != level_filter,  # Prioritize matching level (False < True)
-                    k[1] not in handbook_priority,  # Prioritize handbooks (False < True)
-                    handbook_priority.get(k[1], 999),  # Handbook priority
-                    k[1],  # Alphabetical tiebreaker
+                    k[2] not in handbook_priority,  # Prioritize handbooks (False < True)
+                    handbook_priority.get(k[2], 999),  # Handbook priority
+                    k[2],  # Alphabetical tiebreaker
                 ),
             )
             for key in sorted_keys:
-                chunks.extend(by_level_source[key])
+                chunks.extend(by_level_dept_source[key])
                 if len(chunks) >= top_k:
                     break
         else:
             # Fallback: return highest-scoring results, prioritizing handbooks
             sorted_keys = sorted(
-                by_level_source.keys(),
+                by_level_dept_source.keys(),
                 key=lambda k: (
-                    k[1] not in handbook_priority,  # Prioritize handbooks (False < True)
-                    handbook_priority.get(k[1], 999),  # Handbook priority
-                    k[1],  # Alphabetical tiebreaker
+                    k[1] in deprioritize_depts,  # Deprioritize IT dept (True > False)
+                    k[2] not in handbook_priority,  # Prioritize handbooks (False < True)
+                    handbook_priority.get(k[2], 999),  # Handbook priority
+                    k[2],  # Alphabetical tiebreaker
                 ),
             )
             for key in sorted_keys:
-                chunks.extend(by_level_source[key])
+                chunks.extend(by_level_dept_source[key])
                 if len(chunks) >= top_k:
                     break
 
