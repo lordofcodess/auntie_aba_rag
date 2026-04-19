@@ -13,6 +13,8 @@ Or single query:
 """
 
 import argparse
+import glob
+import json
 import logging
 import os
 import sys
@@ -20,6 +22,7 @@ import sys
 import chromadb
 from google import genai
 from chromadb.utils import embedding_functions
+from rank_bm25 import BM25Okapi
 
 logger = logging.getLogger(__name__)
 
@@ -55,103 +58,153 @@ When answering questions:
 4. Format course listings clearly with course codes and titles when possible
 5. Be helpful and conversational but accurate"""
 
-    def retrieve(self, query: str, top_k: int = 5) -> list[dict]:
-        """Retrieve relevant chunks from Chroma with level, department, and source-file filtering."""
-        # Extract level from query (e.g., "Level 200" → 200)
-        level_filter = None
-        for word in query.split():
-            if word.isdigit() and 100 <= int(word) <= 400:
-                level_filter = int(word)
-                break
+        # Build BM25 index from JSONL chunks
+        self._build_bm25_index()
 
-        # Retrieve significantly more results to account for semantic drift
-        # Level information doesn't embed well numerically
+    def _build_bm25_index(self, chunks_dir: str = "chunks_out"):
+        """Build BM25 index from JSONL chunk files."""
+        self.bm25_corpus_texts = []
+        self.bm25_corpus_meta = []
+        self.bm25 = None
+
+        try:
+            for path in sorted(glob.glob(f"{chunks_dir}/*.jsonl")):
+                with open(path) as f:
+                    for line in f:
+                        chunk = json.loads(line)
+                        self.bm25_corpus_texts.append(chunk["text"])
+                        self.bm25_corpus_meta.append(chunk.get("metadata", {}))
+
+            if self.bm25_corpus_texts:
+                tokenized = [text.lower().split() for text in self.bm25_corpus_texts]
+                self.bm25 = BM25Okapi(tokenized)
+                logger.info(f"BM25 index built with {len(self.bm25_corpus_texts)} documents")
+        except Exception as e:
+            logger.warning(f"Failed to build BM25 index: {e}")
+            self.bm25 = None
+
+    def retrieve(self, query: str, top_k: int = 10) -> list[dict]:
+        """Hybrid retrieval: BM25 keyword search + semantic search with Reciprocal Rank Fusion."""
+        # ===== BM25 Search =====
+        bm25_results = {}
+        if self.bm25:
+            tokenized_query = query.lower().split()
+            scores = self.bm25.get_scores(tokenized_query)
+            top_bm25_idx = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:top_k * 3]
+            for rank, idx in enumerate(top_bm25_idx):
+                text_key = self.bm25_corpus_texts[idx][:100]
+                bm25_results[text_key] = {
+                    "text": self.bm25_corpus_texts[idx],
+                    "metadata": self.bm25_corpus_meta[idx],
+                    "bm25_rank": rank,
+                    "similarity": None,
+                }
+
+        # ===== Semantic Search (Chroma) =====
         retrieve_k = max(top_k * 5, 50)
-
         results = self.collection.query(
             query_texts=[query],
             n_results=retrieve_k,
             include=["documents", "metadatas", "distances"]
         )
 
-        chunks = []
-        # Group results by level, department, and source file
+        semantic_results = {}
+        for rank, (doc, meta, dist) in enumerate(
+            zip(results["documents"][0], results["metadatas"][0], results["distances"][0])
+        ):
+            text_key = doc[:100]
+            semantic_results[text_key] = {
+                "text": doc,
+                "metadata": meta,
+                "semantic_rank": rank,
+                "similarity": 1 - dist,
+            }
+
+        # ===== Reciprocal Rank Fusion (RRF) =====
+        K = 60  # RRF constant
+        merged = {}
+
+        # Add BM25 results
+        for text_key, item in bm25_results.items():
+            merged[text_key] = {**item, "rrf_score": 1 / (K + item["bm25_rank"])}
+
+        # Merge semantic results
+        for text_key, item in semantic_results.items():
+            sem_rrf = 1 / (K + item["semantic_rank"])
+            if text_key in merged:
+                merged[text_key]["rrf_score"] += sem_rrf
+                merged[text_key]["similarity"] = item["similarity"]
+                merged[text_key]["semantic_rank"] = item["semantic_rank"]
+            else:
+                merged[text_key] = {**item, "rrf_score": sem_rrf}
+
+        # Sort by RRF score
+        ranked = sorted(merged.values(), key=lambda x: x["rrf_score"], reverse=True)
+
+        # ===== Apply filtering (level, dept, handbook priority, CSCD/CSIT) =====
+        chunks = self._apply_filters(query, ranked, top_k)
+        return chunks[:top_k]
+
+    def _apply_filters(self, query: str, chunks: list[dict], top_k: int) -> list[dict]:
+        """Apply level, department, and handbook priority filters."""
+        # Extract level from query
+        level_filter = None
+        for word in query.split():
+            if word.isdigit() and 100 <= int(word) <= 400:
+                level_filter = int(word)
+                break
+
+        # Group by level, department, source
         by_level_dept_source = {}
-        for doc, metadata, distance in zip(results["documents"][0], results["metadatas"][0], results["distances"][0]):
-            meta_level = metadata.get("level")
-            department = metadata.get("department", "Unknown")
-            source_file = metadata.get("source_file", "Unknown")
-            similarity = 1 - distance  # Convert distance to similarity
+        for chunk in chunks:
+            meta = chunk["metadata"]
+            meta_level = meta.get("level")
+            department = meta.get("department", "Unknown")
+            source_file = meta.get("source_file", "Unknown")
             key = (meta_level, department, source_file)
             if key not in by_level_dept_source:
                 by_level_dept_source[key] = []
-            by_level_dept_source[key].append({"text": doc, "metadata": metadata, "similarity": similarity})
+            by_level_dept_source[key].append(chunk)
 
-        # Prioritize: requested level + specific department + CBAS handbook first
-        # Handbook priority order: CBAS > CHS > Humanities > policies
+        # Handbook priority
         handbook_priority = {
             "CBAS handbook 2017.md": 0,
             "CHS handbook 2017.md": 1,
             "Humanities Handbook 2017.md": 2,
         }
 
-        # If "computer science" is mentioned, deprioritize Information Technology (CSIT courses)
+        # Deprioritize IT dept if asking for CS
         deprioritize_depts = set()
         if "computer science" in query.lower():
             deprioritize_depts.add("DEPARTMENT OF INFORMATION TECHNOLOGY")
 
-        if level_filter:
-            # Sort by (matching_dept, matching_level, is_handbook, handbook_priority)
-            sorted_keys = sorted(
-                by_level_dept_source.keys(),
-                key=lambda k: (
-                    k[1] in deprioritize_depts,  # Deprioritize IT dept (True > False)
-                    k[0] != level_filter,  # Prioritize matching level (False < True)
-                    k[2] not in handbook_priority,  # Prioritize handbooks (False < True)
-                    handbook_priority.get(k[2], 999),  # Handbook priority
-                    k[2],  # Alphabetical tiebreaker
-                ),
-            )
-            for key in sorted_keys:
-                chunks.extend(by_level_dept_source[key])
-                if len(chunks) >= top_k:
-                    break
-        else:
-            # Fallback: return highest-scoring results, prioritizing handbooks
-            sorted_keys = sorted(
-                by_level_dept_source.keys(),
-                key=lambda k: (
-                    k[1] in deprioritize_depts,  # Deprioritize IT dept (True > False)
-                    k[2] not in handbook_priority,  # Prioritize handbooks (False < True)
-                    handbook_priority.get(k[2], 999),  # Handbook priority
-                    k[2],  # Alphabetical tiebreaker
-                ),
-            )
-            for key in sorted_keys:
-                chunks.extend(by_level_dept_source[key])
-                if len(chunks) >= top_k:
-                    break
+        # Sort buckets by priority
+        sorted_keys = sorted(
+            by_level_dept_source.keys(),
+            key=lambda k: (
+                k[1] in deprioritize_depts,
+                k[0] != level_filter if level_filter else False,
+                k[2] not in handbook_priority,
+                handbook_priority.get(k[2], 999),
+                k[2],
+            ),
+        )
 
-        # Filter chunks to avoid conflicting course codes
-        # If asking for CS, prefer CSCD courses over CSIT courses
+        # Flatten buckets
+        filtered = []
+        for key in sorted_keys:
+            filtered.extend(by_level_dept_source[key])
+            if len(filtered) >= top_k:
+                break
+
+        # CSCD/CSIT filtering for CS queries
         if "computer science" in query.lower():
-            cscd_chunks = []
-            csit_chunks = []
-            other_chunks = []
-            for chunk in chunks:
-                text = chunk["text"]
-                has_cscd = "CSCD" in text
-                has_csit = "CSIT" in text
-                if has_cscd:
-                    cscd_chunks.append(chunk)
-                elif has_csit:
-                    csit_chunks.append(chunk)
-                else:
-                    other_chunks.append(chunk)
-            # Combine: CSCD first, then others, then CSIT as last resort
-            chunks = (cscd_chunks + other_chunks + csit_chunks)[:top_k]
+            cscd_chunks = [c for c in filtered if "CSCD" in c["text"]]
+            csit_chunks = [c for c in filtered if "CSIT" in c["text"] and "CSCD" not in c["text"]]
+            other_chunks = [c for c in filtered if "CSCD" not in c["text"] and "CSIT" not in c["text"]]
+            filtered = (cscd_chunks + other_chunks + csit_chunks)
 
-        return chunks[:top_k]
+        return filtered
 
     def generate(self, query: str, context_chunks: list[dict]) -> str:
         """Generate answer using Gemini with retrieved context."""
