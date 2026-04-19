@@ -13,12 +13,15 @@ Or single query:
 """
 
 import argparse
+import logging
 import os
 import sys
 
 import chromadb
 from google import genai
 from chromadb.utils import embedding_functions
+
+logger = logging.getLogger(__name__)
 
 
 class HandbookRAG:
@@ -68,25 +71,26 @@ When answering questions:
         results = self.collection.query(
             query_texts=[query],
             n_results=retrieve_k,
-            include=["documents", "metadatas"]
+            include=["documents", "metadatas", "distances"]
         )
 
         chunks = []
         # Group results by level to better balance
         by_level = {}
-        for doc, metadata in zip(results["documents"][0], results["metadatas"][0]):
+        for doc, metadata, distance in zip(results["documents"][0], results["metadatas"][0], results["distances"][0]):
             meta_level = metadata.get("level")
+            similarity = 1 - distance  # Convert distance to similarity
             if meta_level not in by_level:
                 by_level[meta_level] = []
-            by_level[meta_level].append({"text": doc, "metadata": metadata})
+            by_level[meta_level].append({"text": doc, "metadata": metadata, "similarity": similarity})
 
         # Prioritize requested level, then add others
         if level_filter and level_filter in by_level:
             chunks.extend(by_level[level_filter][:top_k])
         else:
             # Fallback: return highest-scoring results for any level
-            for doc, metadata in zip(results["documents"][0], results["metadatas"][0]):
-                chunks.append({"text": doc, "metadata": metadata})
+            for doc, metadata, distance in zip(results["documents"][0], results["metadatas"][0], results["distances"][0]):
+                chunks.append({"text": doc, "metadata": metadata, "similarity": 1 - distance})
                 if len(chunks) >= top_k:
                     break
 
@@ -126,11 +130,11 @@ Please answer based on the handbook context provided above."""
 
     def chat(self, query: str, top_k: int = 5) -> dict:
         """Full RAG pipeline: retrieve + generate."""
-        print(f"\n🔍 Retrieving relevant chunks...")
+        logger.info(f"Retrieving relevant chunks for query: {query}")
         chunks = self.retrieve(query, top_k=top_k)
 
-        print(f"✓ Found {len(chunks)} relevant chunks")
-        print(f"📝 Generating answer...\n")
+        logger.info(f"Found {len(chunks)} relevant chunks")
+        logger.info("Generating answer with Gemini")
 
         answer = self.generate(query, chunks)
 
