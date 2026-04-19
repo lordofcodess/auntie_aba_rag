@@ -64,12 +64,12 @@ app.add_middleware(
 
 class ChatRequest(BaseModel):
     query: str
-    top_k: int = 5
+    top_k: int = 10
 
 
 class SearchRequest(BaseModel):
     query: str
-    top_k: int = 5
+    top_k: int = 10
 
 
 class Source(BaseModel):
