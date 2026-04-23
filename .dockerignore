@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+chunks_out/
+.git/
+.venv/
+.DS_Store
+.env
+*.log

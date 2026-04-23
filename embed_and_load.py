@@ -31,8 +31,13 @@ def embed_and_load(
     db_dir: str = "chroma_db",
     model_name: str = "all-mpnet-base-v2",
     batch_size: int = 100,
+    id_offset: int = None,
 ):
-    """Embed chunks and load into Chroma."""
+    """Embed chunks and load into Chroma.
+
+    If id_offset is None, auto-detect from the existing collection count so new
+    chunks get IDs that don't collide with anything already loaded.
+    """
 
     print(f"Loading embedding model: {model_name}")
 
@@ -49,6 +54,12 @@ def embed_and_load(
         metadata={"hnsw:space": "cosine"}
     )
 
+    if id_offset is None:
+        id_offset = collection.count()
+        print(f"Auto-detected id_offset={id_offset} from existing collection")
+    else:
+        print(f"Using explicit id_offset={id_offset}")
+
     print(f"Loading chunks from {len(jsonl_files)} file(s)")
 
     batch_ids = []
@@ -64,7 +75,7 @@ def embed_and_load(
 
         # Prepare chunk data with unique sequential ID
         text = chunk["text"]
-        chunk_id = f"chunk_{chunk_counter:06d}"
+        chunk_id = f"chunk_{id_offset + chunk_counter:06d}"
 
         batch_ids.append(chunk_id)
         batch_texts.append(text)
@@ -109,6 +120,12 @@ def main(argv=None):
         help="Sentence-transformers model name",
     )
     ap.add_argument("--batch-size", type=int, default=100, help="Embedding batch size")
+    ap.add_argument(
+        "--id-offset",
+        type=int,
+        default=None,
+        help="Start chunk IDs at this offset (default: auto-detect from existing collection count)",
+    )
     args = ap.parse_args(argv)
 
     # Expand glob patterns
@@ -125,6 +142,7 @@ def main(argv=None):
         db_dir=args.db,
         model_name=args.model,
         batch_size=args.batch_size,
+        id_offset=args.id_offset,
     )
 
 

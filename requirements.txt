@@ -1,0 +1,13 @@
+beautifulsoup4>=4.14
+chromadb>=1.5
+fastapi[standard]>=0.128
+google-auth>=2.49
+google-genai>=1.47
+numpy>=1.26
+pillow>=11.0
+pydantic>=2.13
+python-multipart>=0.0.20
+rank-bm25>=0.2.2
+sentence-transformers>=5.1
+torch>=2.5
+uvicorn[standard]>=0.39
