@@ -65,6 +65,36 @@ SEM_PATTERNS = [
 ]
 
 
+SELF_DESCRIPTION = """My name is Nana Aba. Nana Aba AI is an AI assistant for students and staff of the University of Ghana.
+
+Ask me anything about programmes, admissions, courses, policies or campus life.
+
+"""
+
+SELF_QUESTION_PATTERNS = [
+    r"\bwho\s+are\s+you\b",
+    r"\bwhat\s+are\s+you\b",
+    r"\bwhat(?:'s|\s+is)\s+your\s+name\b",
+    r"\bwhat\s+are\s+you\s+called\b",
+    r"\bwho\s+am\s+i\s+(?:speaking|talking|chatting)\s+with\b",
+    r"\bwhat\s+is\s+nana\s+aba\s+ai\b",
+    r"\bwho\s+is\s+nana\s+aba\s+ai\b",
+    r"\bare\s+you\s+nana\s+aba\s+ai\b",
+    r"\btell\s+me\s+about\s+(?:yourself|you|nana\s+aba\s+ai)\b",
+    r"\bintroduce\s+yourself\b",
+    r"\babout\s+(?:you|yourself|nana\s+aba\s+ai)\b",
+    r"\bwhat\s+can\s+you\s+do\b",
+    r"\bwhat\s+do\s+you\s+do\b",
+    r"\bhow\s+can\s+you\s+help\b",
+    r"\bwhat\s+can\s+i\s+ask\s+you\b",
+    r"\bwhat\s+(?:questions|topics)\s+can\s+i\s+ask\b",
+    r"\bwhat\s+topics\s+do\s+you\s+cover\b",
+    r"\bwhat\s+is\s+your\s+purpose\b",
+    r"\bare\s+you\s+(?:an?\s+)?(?:ai|assistant|chatbot)\b",
+    r"\bwhat\s+is\s+this\s+(?:ai|assistant|chatbot)\b",
+]
+
+
 def tokenize(text: str) -> list[str]:
     """Simple tokenizer — lowercase + word boundaries."""
     return re.findall(r"[a-z0-9]+", text.lower())
@@ -102,10 +132,13 @@ class HandbookRAG:
         self.bm25 = BM25Okapi(tokenized)
         print(f"✓ BM25 ready over {len(self.all_ids)} chunks")
 
-        self.system_prompt = """You are an expert advisor for University of Ghana handbooks.
-You have access to handbook information about academic programmes, courses, and regulations.
+        self.system_prompt = f"""You are Nana Aba AI, an AI assistant for students and staff of the University of Ghana.
 
-When answering questions:
+About you (use this verbatim when asked who/what you are, what you can do, or for an introduction — do NOT consult the handbook context for these answers):
+{SELF_DESCRIPTION}
+- For self-introduction questions ("who are you?", "what are you?", "what can you do?", "tell me about yourself", "what features do you have?"), answer directly from the description above. Do not say "I don't have that information." Do not include a Sources section for these answers.
+
+For all other questions, you have access to handbook information about academic programmes, courses, and regulations:
 1. Use ONLY the provided handbook context to answer.
 2. Be specific and mention the programme/level/department when relevant.
 3. If information is not in the handbooks, clearly state that.
@@ -330,6 +363,12 @@ Response length:
             lines.append(f"[{label}]: {content}")
         return "\n".join(lines)
 
+    @staticmethod
+    def is_self_question(query: str) -> bool:
+        """Detect questions about Nana Aba AI itself before retrieval/planning."""
+        normalized = re.sub(r"\s+", " ", query.lower()).strip()
+        return any(re.search(pattern, normalized) for pattern in SELF_QUESTION_PATTERNS)
+
     def rewrite_query(self, query: str, history: list[dict]) -> str:
         """Use Gemini to condense history + latest turn into a standalone search query.
 
@@ -365,50 +404,65 @@ Standalone search query:"""
             if len(rewritten) > 400:
                 return query
             return rewritten
-        except Exception:
+        except Exception as e:
+            print(f"⚠️  rewrite_query failed, falling back to raw query: {type(e).__name__}: {e}", file=sys.stderr)
             return query
 
-    def probe_or_proceed(self, query: str, history: Optional[list[dict]] = None) -> Optional[str]:
-        """Decide whether to ask a clarifying question before retrieval.
+    def probe_or_proceed(self, query: str, history: Optional[list[dict]] = None):
+        """Decide whether to ask a clarifying question, chitchat, or retrieve.
 
         Returns:
-            A single probing question string if the query is too vague, otherwise
             None to signal the pipeline should proceed to retrieval.
+            Otherwise a dict: {"kind": "probe"|"chitchat", "text": str}.
         """
         history_text = self._format_history(history or [])
         history_block = f"\nConversation so far:\n{history_text}\n" if history_text else ""
 
         prompt = f"""You are a probing retrieval planner for a RAG system over University of Ghana handbooks and policies.
 
-Default behavior: PROCEED to retrieval. Only probe when retrieval would materially fail without a missing detail — i.e. when answering the user's question correctly is impossible until they clarify.
+Choose ONE of three actions for the user's latest message:
+1. PROCEED — retrieve from handbooks and answer.
+2. PROBE — ask ONE short clarifying question (it's a handbook question but too ambiguous to retrieve well).
+3. CHITCHAT — short friendly reply, skip retrieval (greetings, thanks, filler, or off-topic).
 
-Probe ONLY when:
-- The query is genuinely ambiguous between multiple valid interpretations that would return different documents (e.g. "fees" → undergrad vs masters; "registration" → late vs course vs general).
+Default: PROCEED.
+
+PROCEED when:
+- The user asks a concrete question answerable from handbook content.
+- A reasonable default interpretation exists (e.g. "cut-off points" → current year; "graduation requirements" → bachelor's unless masters is mentioned).
+- The conversation so far already supplies any missing detail.
+
+PROBE when:
+- The query is genuinely ambiguous between interpretations that would return different documents (e.g. "fees" → undergrad vs masters; "registration" → late vs course vs general).
 - Answering without the missing detail would almost certainly give the wrong document or a useless generic answer.
 
-Do NOT probe when:
-- The query is descriptive/exploratory and a general answer from the handbooks is useful (e.g. "tell me about X", "what does the handbook say about academic integrity").
-- A reasonable default interpretation exists (e.g. "cut-off points" → current year; "graduation requirements" → bachelor's unless masters is mentioned).
-- The missing detail would only slightly refine the answer rather than change which documents are retrieved.
-- The conversation so far already supplies the missing detail.
+CHITCHAT when:
+- Greetings ("hi", "hello", "good morning"), thanks, goodbye, small filler ("ok", "cool", "nice").
+- Not a question at all (test utterances, random words, "testing one two three").
+- Off-topic for UG handbooks (sports, weather, general knowledge, personal opinions).
 
-Probing question rules:
-- Exactly ONE question. Short, specific, useful.
-- Must target the single missing constraint that would most change which documents are retrieved (programme, level, year, semester, document type, etc.).
-- No broad or lazy questions.
+Output protocol (strict — EXACTLY one of these forms, nothing else):
+- PROCEED
+- A single-line probing question (no prefix, no quotes)
+- CHITCHAT: <one short friendly reply, max 25 words>
 
-Output protocol (strict):
-- To probe: output ONLY the clarifying question on a single line, no prefix, no quotes.
-- To proceed: output the single token PROCEED (nothing else).
+Rules for the CHITCHAT reply:
+- Do NOT invent handbook facts.
+- Do NOT say "Based on the handbook..." — there's no handbook content here.
+- Keep it warm, brief, and steer toward a useful question about UG.
 
 Examples:
-- "What are the fees?" → "Undergraduate or graduate fees, and for which programme?"
-- "What does the handbook say about registration?" → "Do you want the rule for late registration, course registration, or general enrolment?"
 - "What are the fees for Level 200 Computer Engineering?" → PROCEED
 - "Cut-off point for BSc Computer Engineering" → PROCEED
 - "Tell me about Professor Nana Aba Appiah Amfo" → PROCEED
 - "Graduation requirements for computer science" → PROCEED
-- "What courses should I take?" → "Which programme and level?"
+- "What are the fees?" → Undergraduate or graduate fees, and for which programme?
+- "What does the handbook say about registration?" → Do you want the rule for late registration, course registration, or general enrolment?
+- "What courses should I take?" → Which programme and level?
+- "hello" → CHITCHAT: Hi! What would you like to know from the University of Ghana handbooks?
+- "thanks" → CHITCHAT: You're welcome — anything else I can look up?
+- "testing one two three" → CHITCHAT: I'm here — ask me anything about UG programmes, policies, or regulations.
+- "who won the world cup" → CHITCHAT: I only cover University of Ghana handbooks and policies. Anything about UG you'd like to ask?
 {history_block}
 Latest user message: {query}
 
@@ -421,18 +475,22 @@ Decision:"""
             out = (resp.text or "").strip()
             if not out:
                 return None
-            # Take first non-empty line only
             first = next((ln.strip() for ln in out.splitlines() if ln.strip()), "")
             if not first:
                 return None
-            # Proceed token (tolerate trailing punctuation / case)
             if first.upper().rstrip(".!").strip() == "PROCEED":
                 return None
+            if first.upper().startswith("CHITCHAT:"):
+                reply = first.split(":", 1)[1].strip()
+                if not reply or len(reply) > 300:
+                    return None
+                return {"kind": "chitchat", "text": reply}
             # Guardrail: if the planner rambles, fall back to proceeding
             if len(first) > 300:
                 return None
-            return first
-        except Exception:
+            return {"kind": "probe", "text": first}
+        except Exception as e:
+            print(f"⚠️  probe_or_proceed failed, defaulting to retrieval: {type(e).__name__}: {e}", file=sys.stderr)
             return None
 
     @staticmethod
@@ -490,15 +548,28 @@ Remember: no inline source tags, no "Chunk" references. End the answer with a "S
         return response.text
 
     def chat(self, query: str, top_k: int = 5, history: Optional[list[dict]] = None) -> dict:
-        """Full RAG pipeline: probe → rewrite (if history) → retrieve → generate."""
-        probe_question = self.probe_or_proceed(query, history=history)
-        if probe_question:
-            print(f"❓ Probing for specificity: {probe_question!r}")
+        """Full RAG pipeline: plan (probe/chitchat/proceed) → rewrite → retrieve → generate."""
+        if self.is_self_question(query):
             return {
                 "query": query,
-                "answer": probe_question,
+                "answer": SELF_DESCRIPTION,
                 "sources": [],
-                "probing": True,
+                "probing": False,
+                "chitchat": False,
+            }
+
+        plan = self.probe_or_proceed(query, history=history)
+        if plan is not None:
+            kind = plan["kind"]
+            text = plan["text"]
+            icon = "❓" if kind == "probe" else "💬"
+            print(f"{icon} {kind.capitalize()}: {text!r}")
+            return {
+                "query": query,
+                "answer": text,
+                "sources": [],
+                "probing": kind == "probe",
+                "chitchat": kind == "chitchat",
             }
 
         search_query = self.rewrite_query(query, history or [])
@@ -525,6 +596,7 @@ Remember: no inline source tags, no "Chunk" references. End the answer with a "S
                 for c in chunks
             ],
             "probing": False,
+            "chitchat": False,
         }
 
 

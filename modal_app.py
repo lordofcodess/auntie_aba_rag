@@ -31,6 +31,7 @@ APP_FILES = [
     "rag_chat.py",
     "transcript.py",
     "speech.py",
+    "directions.py",
     "chunker.py",
     "policy_chunker.py",
     "contextualize.py",

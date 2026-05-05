@@ -21,9 +21,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import Literal
 
-from rag_chat import HandbookRAG
+from rag_chat import HandbookRAG, SELF_DESCRIPTION
 from transcript import advise as analyze_transcript
 from speech import transcribe_audio
+from directions import rewrite_steps
 
 
 ALLOWED_MIME_TYPES = {
@@ -112,6 +113,7 @@ class ChatResponse(BaseModel):
     answer: str
     sources: list[Source]
     probing: bool = False
+    chitchat: bool = False
 
 
 class RetrieveResponse(BaseModel):
@@ -126,6 +128,15 @@ def health():
 
 @app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
+    if HandbookRAG.is_self_question(req.query):
+        return ChatResponse(
+            query=req.query,
+            answer=SELF_DESCRIPTION,
+            sources=[],
+            probing=False,
+            chitchat=False,
+        )
+
     if rag is None:
         raise HTTPException(status_code=503, detail="RAG system not yet initialized")
     try:
@@ -261,5 +272,41 @@ async def transcript_analyze(
         return result
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+class RewriteStepsRequest(BaseModel):
+    raw_steps: list[str] = Field(
+        ..., min_length=1, max_length=40,
+        description="Walking step instructions from Maps JS DirectionsService."
+    )
+    from_name: str = Field(..., min_length=1, max_length=200)
+    to_name: str = Field(..., min_length=1, max_length=200)
+    distance_label: str = Field(..., min_length=1, max_length=40, description='e.g. "1.0 km"')
+    duration_minutes: int = Field(..., ge=0, le=600)
+
+
+class RewriteStepsResponse(BaseModel):
+    steps: list[str]
+
+
+@app.post("/directions/rewrite-steps", response_model=RewriteStepsResponse)
+def directions_rewrite_steps(req: RewriteStepsRequest):
+    """Rewrite raw walking steps as natural conversational sentences.
+
+    Frontend computes the route via Maps JS DirectionsService and posts the
+    raw step instruction strings. Returns the same number of sentences in
+    the same order.
+    """
+    try:
+        steps = rewrite_steps(
+            req.raw_steps,
+            from_name=req.from_name,
+            to_name=req.to_name,
+            distance_label=req.distance_label,
+            duration_minutes=req.duration_minutes,
+        )
+        return RewriteStepsResponse(steps=steps)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
