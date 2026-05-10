@@ -95,7 +95,14 @@ class HistoryTurn(BaseModel):
 
 class ChatRequest(BaseModel):
     query: str = Field(..., min_length=1, description="User question")
-    top_k: int = Field(10, ge=1, le=50, description="Number of chunks to retrieve")
+    top_k: Optional[int] = Field(
+        None, ge=1, le=50,
+        description="Number of chunks to retrieve. If omitted, derived from mode (fast=5, thinking=15).",
+    )
+    mode: Literal["fast", "thinking"] = Field(
+        "fast",
+        description="Answer mode. 'fast' skips Gemini's reasoning step; 'thinking' enables it.",
+    )
     history: list[HistoryTurn] = Field(
         default_factory=list,
         description="Prior conversation turns for context. Retrieval still targets the latest turn only.",
@@ -114,6 +121,7 @@ class ChatResponse(BaseModel):
     sources: list[Source]
     probing: bool = False
     chitchat: bool = False
+    mode: Optional[str] = None
 
 
 class RetrieveResponse(BaseModel):
@@ -135,13 +143,15 @@ def chat(req: ChatRequest):
             sources=[],
             probing=False,
             chitchat=False,
+            mode=req.mode,
         )
 
     if rag is None:
         raise HTTPException(status_code=503, detail="RAG system not yet initialized")
     try:
         history = [t.model_dump() for t in req.history[-MAX_HISTORY_TURNS:]]
-        result = rag.chat(req.query, top_k=req.top_k, history=history)
+        result = rag.chat(req.query, top_k=req.top_k, mode=req.mode, history=history)
+        result["mode"] = req.mode
         return ChatResponse(**result)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
