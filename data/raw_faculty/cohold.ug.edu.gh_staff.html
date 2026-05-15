@@ -1,0 +1,605 @@
+   <!DOCTYPE html>
+<!--
+              ,;r;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;r;,                 
+             .2@@@Superviser:Parick Kuti@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@h,
+			 .@@Project+Managers:@@Michael##Phillips@Deborah###Allah@@@@@@@@@@@@@@@@@@@@@@*,
+             .X@@@Lead+Programmers:Gilbert_Gadzekpo@@@Ian Allotey@@@@@@@@@@@@@@@@@@@@@@@@@&,                
+              Developers@@BXi3@@@Alex#Tenkorang@@@@H2iG@@@@Emmanuel#Adu_Asare@@@A5Sh#@@@@@@@@@@X.                
+              r#@@#####@@B2;;iA@@###############@@H5;;iH@@@##############@MXr;iA@@######@@2.                
+              r#@@#####@@M2r;i&#@@##############@@BXrri&#@@#############@@#Xr;i&#@@#####@@2.                
+              r#@@#####@@@ASrSH@@@##############@@@B5s2M@@@#############@@@ASr2B@@@@####@@2.                
+              r#@@###B3XH@@&29#BX3H#@#######@#H99B@@&5&#H9hB##########M9XH@M929#M9XH####@@2.                
+              r#@@##@#Girri5Siir;5M@@@######@@#&SrrS5iii;r2M@@@######@@hsrsS5Sisr;SB@@##@@2.                
+              r#@@###@@#2;;rsrrih@@@##########@@MS;rrsrri&@@@#########@@M2rrssrriG@@@#M#@@2.                
+              r#@@#HX5G#@BXisi2A@#h23H@@####A55G##H2iss2B@M923B@####HX5G#@B3iri2A@#hXhH#@@2.                
+              r#@@@#2;;s3A9SiS525r;s&#@@##@@#Xr;s3&XSii22S;;s&#@###@#X;:s3&9SiS225r;sA#@@@2.                
+              r#@@@@@B5;;;sSSir;;rX#@@@####@@@M5;;;sSSir;;r3#@@####@@@H5;;;sS5Ss;;rX#@@@@@2.                
+              r#@#AA#@@#G2iiiSSX&#@#HM####MAA#@@#G5iiiiSXA#@#BM####AA#@@Mh2iiiiSXGM@#HH#@@2.                
+              r@@@9sr2M@@#XsiSXB#H5rsh#@@@M3sr5M@@B2siS3M#H2rs&@@@#GsrX#@@MXisS3H#H2rs9#@@2.                
+              r#@@@Hi;;ri5SiSSisr;;SH@@@#@@#&s;;riSSiSSisr;;i&#@@@@@Ai;;ri55Siiisr;;SH@@@@2.                
+              r#@@@@M3sr;rsSSisrs2H@@@####@@@#hs;rriSSSsrs2A@@@###@@@M2rr;rsSSiiss2H@@@@@@2.                
+              r#@@@@@@@#&2iiiii9#@@@@#####@@@@@@#G5iiii5A@@@@@#####@@@@@#A2iiiiS9#@@@@##@@2.                
+              r#@@#@@@@@@#3ssi2H@@@@#######@@@@@@@#XissX#@@@@#######@@@@@@@hsri2H@@@@###@@X.                
+              s@@@@@@@@@@@ASss2B@@@@@@@@@@@@@@@@@@@ASsr2#@@@@@@@@@@@@@@@@@@HiriXB@@@@@@@@@3,                
+              :hB&h99GG&HA2srrs2GAG99hhhh9hhhGGGAA&2sr;s2G&hhhGGGGhh99hh&AA2srrs2h&Gh99hHAr                 
+              :3Hh333939G&AAAGhh9h93333hG&AAAAAAAAA&AA&h99hh&AAAAAAAG9339h&AAA&h9hh93339A&r                 
+              r#@@@@@@@@@@@@@@@@@@@@@@@@@MAGh9hA#@@@@@@@@@@@MAhh9GAM@@@@@@@@@@@@@@@@@@@@@@2.                
+              s@@@@@@@@@@@@@@@@@@@@@@@#A2issiirri3#@@@@@@@H2srsiissiXH@@@@@@@@@@@@@@@@@@@@3,                
+              r#@@#################@#9r;r2A#@@#&i;r2M@@@A5rrSA@@@#ASrrSA@@@#############@@X.                
+              r#@@##################&irX#@@@@@@@@Hs;sA#&sr2@@@@@@@@@Bi;SB@@#############@@2.                
+              r#@@###############@@HXsSB@@@B3SX#@@Birrssi3@@@H25&#@@@Gsi&#@@############@@2.                
+              r#@@###############@@HXs5B@@@#hs;sA@@B2r;sh@@@Xr;iA@@@@Aiih#@@############@@2.                
+              r#@@###############@@@HirSH@@@@hrrX@@@hs;iA@@#2riA@@@@Air5H@@#############@@2.                
+              r#@@################@@@H5r;rS25iS&@@#G25Si5G@@@Gisi5ir;s3M@@##############@@2.                
+              r#@@##########@@@@@@@@@@@MhX2XGM@@@M5r2#@As;X@@@@A3223A@@@@@@@@@@@@@######@@2.                
+              r#@@##########Bh223hAH#@@@@@@@@@#A2siXM@@@&iri3B#@@@@@@@@#BA&9X23A#@@#####@@2.                
+              r#@@########M9s:::::;;rrsS5222ir;::rA@@92A@@X;:;rsS222Sirrr;;::::;SA#@####@@2.                
+              r#@@#########A2srrssisiiS2222225isrs3MB9X&##3rriS22XX225Siiissrrrs2A######@@2.                
+              r#@@########@@@@BB#@@@@@@@@@#@@@@@B2rrh@@@9ss9#@@@@##@@@@@@@@@#BB@@@@#####@@2.                
+              r#@@########@@@@@@@@@@@@Mh5isi5h#@@@&siGHG55M@@@B35isi2A@@@@@@@@@@@#######@@2.                
+              r#@@#########@@@@@@@@@#Xr;s3BMhssX#@@A5rrih#@@Air5A#H2r;sG@@@@@@@@########@@2.                
+              r#@@##################hssh@@@@@hsr3@@#Xr;sA@@#5rSH@@@@#2riA#@@############@@2.                
+              r#@@###############@#A2s2#@@@#3sr2M@@GSsrs2H@@H5riG@@@@Ais9M@@############@@2.                
+              r#@@###############@@#GiiA@@@#HAM@@@Aii33SsSB@@@H&A#@@@GsiA#@@############@@2.                
+              r#@@################@@#5;rh#@@@@@@#Xrr3@@#S;rG@@@@@@@#hsrX#@@#############@@2.                
+              r#@@################@@@#Xr;r2hGhXSrrSH@@@@#9r;r53hhXSrri&#@@##############@@X,                
+              ;#@@#################@@@@M3SsrrrriXA@@@@@@@@#hSsrrrri2&#@@@###############@@2.                
+              :A@@##################@@@@@@#BAH#@@@@@####@@@@@@MHHM@@@@@@################@#s                 
+              .2#@@###################@@@@@@@@@@@@#######@@@@@@@@@@@@@#################@@M;                 
+               :h@@@#####################@@@@@@####TEAM#####@@@@@@####################@@#9:                 
+                ;#@@@########Patrick#Kuti####Michael#Philips####Deborah#Allah#########@@3,                  
+                 :h@@@@@##########Gilbert#Gadzekpo#####Ian#Allotey#################@@@@B;                   
+                   rM@@@@@@@@@#######Alex#Tenkorang#####Emmanuel##Asare#####@@@@@@@@#5.                    
+                     ,s&@@@@@@@@@@@@@################################@@@@@@@@@@@@@Ai:                       
+         ...              ,;i3H@@@@@@@@@@@@@#################@@@@@@@@@@@@M&92s;:.          .:::.            
+      ,;r;:::::,.               .:;rs59A#@@@@@@@@@#######@@@@@@A3ir;;:..               .,::,,::;r;.         
+     :rrrssr;;iXi,                       .,;i2A#@@@@@@@@@#A2r:.                       ,s25r;;;;rs;,         
+     :r;::;:,.:;;.                             .;i&#@@H5;.                     ... .   ,::,,::;;sr:         
+     .r2S;,...    ..,,..                           ,;:                        ......,,.   ...,;SG2:         
+      ;2Ah2isr;rS2s:.,:;;rr;.                                               :rir;:. ,i92issi5X9h9s.         
+      ,SA&99h&&AHhr..;h@@@@@5,                                             ,2@@@@#S..rX&Ahhh93XXS;          
+       rX3X33393G3;.,r5399Gh2s;::,,.                                 ..,,,:r5XX23hs..;5993XXX22Sr,          
+         ,;sS5229X;..;s2&M@#M#@@###H&9X25isssrrrrrrrrrrrrrrsssssiiS2XGAHBMMAh&BMBGr. :s2X2Ssr:,             
+                 .  .rS3M@@@@##@@@@@@@@@@@@#HH#@@@@#####MM#@@@@@@@##@@@@@@@#AB@@@Mi,                        
+                     :riXh&AAGhAM####@@@@@@#BM@@@@@@@@#@@@MM@@@@@@@@@@@@@@#MH&9X2s:.                        
+                            .,;rsii5Xh&&&AA&GGGh&ABBBBBBMBAAHBAAHH&9X5Sis;:,.                               
+                                        .,,:::,,,::::;;:::::::::,.                                          
+ -->
+
+ 
+
+<!--[if IE 7 ]><html class="ie ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><!--<![endif]-->
+
+  <head profile="http://www.w3.org/1999/xhtml/vocab">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="shortcut icon" href="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/favicon_0.png" type="image/png" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Staff | College of Humanities</title>
+    <link type="text/css" rel="stylesheet" href="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/css/css_hYCLW089C9S9sP3ZYkuG6R-Q5ZHbEhblZBFjwZ_bE_I.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/css/css_G4RPXdylVJl2OFzNDebW-Ag32qagpZqV6Cx8-YXKXb8.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/css/css_zsspAorfRanRmNE9mqTYN_kD6Egy0toTd44yyUgUZCs.css" media="all" />
+	
+
+
+      
+
+      <!-- menu font -->
+            <style type="text/css">
+        .custom_menu #menu > ul > li > a,#menu {
+          font-family:Open Sans;
+                  }
+      </style>
+      <!-- // menu font -->
+
+      <!-- menu font size -->
+            <style type="text/css">
+        #menu > ul > li > a{
+          font-size: 15px ;
+        }
+        #menu > ul > li ul > li > a{
+          font-size: 14px ;
+        }
+      </style>
+      <!-- // menu font size -->
+
+
+      <!-- main color -->
+            <style type="text/css">
+        a:hover, a:focus{
+          color: #0AD1E5 ;
+        }
+        .button:hover,
+        a:hover.button,
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,	
+        input[type="button"]:hover,
+        .button_hilite, 
+        a.button_hilite,
+        .button_hilite,
+        a.button_hilite{
+          color: #FFF;
+          background-color: #0AD1E5;
+        }
+        .section_big_title h1 strong,
+        .section_featured_texts h3 a:hover,
+        .breadcrumb a:hover,
+        .post_meta a:hover,
+        #footer a:hover {
+          color: #0AD1E5 ;
+        }
+        .portfolio_filter div.current,
+        .next:hover,.prev:hover,
+        .pagination .links a:hover,
+        .info h2, 
+        .h2.ls-s2,
+        jcarousel-next-horizontal:hover, 
+        .jcarousel-prev-horizontal:hover{
+          background-color: #0AD1E5 ;
+        }
+        .footer_pic img:hover{
+          border: 1px solid #0AD1E5;
+        }
+      </style>
+      <!-- // main color -->
+
+      <!-- heading font -->
+            <style type="text/css">
+        h1, h2, h3, h4, h5, .title, .section_big_title h1, .heading, #footer h3,
+        .page_heading h1{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- heading font -->
+
+      <!-- button font -->
+            <style type="text/css">
+        .button, a.button,	button,	input[type="submit"], input[type="reset"], input[type="button"]{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- // button fonts -->
+
+      <!-- body font -->
+            <style typ="text/css">
+        body{
+          font-family: Open Sans;
+        }
+      </style>
+      <!-- // body font -->
+
+      <!-- body background and color -->
+            <style type="text/css">
+        body{
+          background-image: url(/sites/all/themes/ugcollege/styler/bgrs/main_bgr.png);        }
+      </style>
+      <!-- // body bg -->
+
+  </head>
+  <body class="html not-front not-logged-in no-sidebars page-staff" >
+	<div class="ug_background">
+		<img src="/sites/all/themes/ugcollege/images/great-hall-artwork.png" class="bg-img1">
+		<img src="/sites/all/themes/ugcollege/images/balme-artwork.png" class="bg-img2">
+	</div>
+    <div id="skip-link">
+      <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+    </div>
+         
+<div id="wrapper" class="not-home-page">
+
+  <div class="container">
+
+    <div class="header clearfix row">
+		<div class="top_header">
+			<div class="header_contacts clearfix">
+              <div class="region region-top-menu">
+    <div id="block-nice-menus-1" class="block block-nice-menus">
+
+    
+  <div class="content">
+    <ul class="nice-menu nice-menu-down nice-menu-menu-top-menu" id="nice-menu-1"><li class="menu-492 menuparent  menu-path-front first odd "><a href="/" title="">Staff</a><ul><li class="menu-640 menu-path-front first odd "><a href="/" title="">Staff directory</a></li>
+<li class="menu-641 menu-path-webmailugedugh-  even last"><a href="http://webmail.ug.edu.gh/" title="">Staff email</a></li>
+</ul></li>
+<li class="menu-491 menuparent  menu-path-front  even "><a href="/" title="">Student</a><ul><li class="menu-642 menu-path-pmis-1ugedugh7771-pls-prodi01-w99pkgmi-login first odd "><a href="http://pmis-1.ug.edu.gh:7771/pls/prodi01/w99pkg.mi_login" title="">MIS Web</a></li>
+<li class="menu-494 menu-path-front  even "><a href="/" title="">Email</a></li>
+<li class="menu-643 menu-path-ugsrccom-  odd last"><a href="http://www.ugsrc.com/" title="">SRC</a></li>
+</ul></li>
+<li class="menu-493 menu-path-alumniugedugh  odd "><a href="http://alumni.ug.edu.gh" title="">Alumni</a></li>
+<li class="menu-644 menu-path-ugedugh-index1phplinkid268  even "><a href="http://www.ug.edu.gh/index1.php?linkid=268" title="">Employment</a></li>
+<li class="menu-645 menu-path-contact  odd last"><a href="/contact" title="">contact</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+            </div>
+		</div>
+              <div class="eight columns header_left">
+          <a href="/"><img src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/coh_ug_logo_2.png" alt="Home" /></a>
+        </div>
+      
+      <div class="eight columns">
+        <div class="header_right">
+          
+
+          <div class="header_soc_search clearfix">
+                          <div class="header_search">
+                <form class="search" action="/staff" method="post" id="searchform" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <button class="button_search"></button><div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="s">Search </label>
+ <input title="Enter the terms you wish to search for." class="search-text-box form-text" type="text" id="s" name="search_block_form" value="" size="15" maxlength="128" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-dNadUypNHmbp3rk2vPyjskSoSbg040h7BTu0nZO5EXg" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>              </div>
+                        
+          </div>				
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <div class="row no_bm">
+      <div class="dark_menu sixteen columns">
+        <div id="menu" class="">
+          <ul id="responsive"  class="nav_simple sf-menu main-menu sf-horizontal sf-style-none sf-total-items-7 sf-parent-items-6 sf-single-items-1"><li><a href="https://www.ug.edu.gh" target="_blank" title="Go to university homepage"><span class="home_icon"></span></a></li><li id="menu-919-1" class="first odd sf-item-1 sf-depth-1 sf-total-children-4 sf-parent-children-0 sf-single-children-4 mainMenu parent menuparent has-dropdown"><a href="/about/overview" title="" class="sf-depth-1  mainMenu parent menuparent has-dropdown">About</a><ul class="dropdown"><li id="menu-918-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/about/overview" class="sf-depth-2 ">Overview</a></li><li id="menu-927-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/about/biography" class="sf-depth-2 ">Provost&#039;s Biography</a></li><li id="menu-1389-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="http://coh.ug.edu.gh/about/vision-and-mission" title="" class="sf-depth-2 ">Vision and Mission</a></li><li id="menu-1099-1" class="last even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/objectives-college" class="sf-depth-2 ">Objectives</a></li></ul></li><li id="menu-475-1" class="active-trail middle even sf-item-2 sf-depth-1 sf-total-children-2 sf-parent-children-0 sf-single-children-2 mainMenu parent menuparent has-dropdown"><a href="/" title="" class="sf-depth-1  mainMenu parent menuparent has-dropdown">People</a><ul class="dropdown"><li id="menu-683-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/" title="" class="sf-depth-2 ">Committees and Boards</a></li><li id="menu-682-1" class="active-trail last even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/staff" title="" class="sf-depth-2  active">Staff</a></li></ul></li><li id="menu-407-1" class="middle odd sf-item-3 sf-depth-1 sf-total-children-12 sf-parent-children-0 sf-single-children-12 mainMenu parent menuparent has-dropdown"><a href="/" title="" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Publications</a><ul class="dropdown"><li id="menu-1135-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="http://coh.ug.edu.gh/news/index-research-publications" title="" class="sf-depth-2 ">Index of Publications</a></li><li id="menu-999-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/business-school" class="sf-depth-2 ">Business School</a></li><li id="menu-1023-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/institute-african-studies" class="sf-depth-2 ">Institute of African Studies</a></li><li id="menu-483-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="http://coh.ug.edu.gh/institute-statistical-social-and-economic-research" title="" class="sf-depth-2 ">Institute of Statistical, Social and Economic Research</a></li><li id="menu-1010-1" class="middle odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/legon-centre-international-affairs-and-diplomacy" title="LECIAD" class="sf-depth-2 ">Legon Centre for International Affairs and Diplomacy</a></li><li id="menu-1003-1" class="middle even sf-item-6 sf-depth-2 mainMenu sf-no-children"><a href="/regional-institute-population-studies" class="sf-depth-2 ">Regional Institute for Population Studies</a></li><li id="menu-1000-1" class="middle odd sf-item-7 sf-depth-2 mainMenu sf-no-children"><a href="/school-arts" class="sf-depth-2 ">School of Arts</a></li><li id="menu-1001-1" class="middle even sf-item-8 sf-depth-2 mainMenu sf-no-children"><a href="/school-languages" class="sf-depth-2 ">School of Languages</a></li><li id="menu-1022-1" class="middle odd sf-item-9 sf-depth-2 mainMenu sf-no-children"><a href="/school-law" class="sf-depth-2 ">School of Law</a></li><li id="menu-1015-1" class="middle even sf-item-10 sf-depth-2 mainMenu sf-no-children"><a href="/school-performing-arts" class="sf-depth-2 ">School of Performing Arts</a></li><li id="menu-1002-1" class="middle odd sf-item-11 sf-depth-2 mainMenu sf-no-children"><a href="/school-social-sciences" class="sf-depth-2 ">School of Social Sciences</a></li><li id="menu-1239-1" class="last even sf-item-12 sf-depth-2 mainMenu sf-no-children"><a href="/provost%E2%80%99s-publication-awards-humanities" class="sf-depth-2 ">Provost&#039;s Publications Awards</a></li></ul></li><li id="menu-421-1" class="middle even sf-item-4 sf-depth-1 sf-total-children-1 sf-parent-children-0 sf-single-children-1 mainMenu parent menuparent has-dropdown"><a href="/" title="" class="sf-depth-1  mainMenu parent menuparent has-dropdown">News</a><ul class="dropdown"><li id="menu-940-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/about/provost-e-news" class="sf-depth-2 ">Provost&#039;s E-news</a></li></ul></li><li id="menu-1212-1" class="middle odd sf-item-5 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="//www.orid.ug.edu.gh/" title="" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Research</a><ul class="dropdown"><li id="menu-1213-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="//www.orid.ug.edu.gh/policies-guidelines" title="" class="sf-depth-2 ">Policies &amp; Guidelines</a></li><li id="menu-1240-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/college-humanities-international-research-conference" class="sf-depth-2 ">College of Humanities International Research Conference</a></li><li id="menu-1220-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="http://coh.ug.edu.gh/dialogue-series" title="" class="sf-depth-2 ">Dialogue Series</a></li><li id="menu-1292-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/intercollege-lectures" title="" class="sf-depth-2 ">Intercollege Lectures</a></li><li id="menu-1291-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/provost-publications-awards" class="sf-depth-2 ">Provost Publications Awards</a></li></ul></li><li id="menu-464-1" class="middle even sf-item-6 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="http://balme.ug.edu.gh/" title="" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Library</a><ul class="dropdown"><li id="menu-1449-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="https://coh.ug.edu.gh/ljh" title="" class="sf-depth-2 ">Legon Journal of the Humanities</a></li><li id="menu-467-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="http://ugspace.ug.edu.gh/" title="" class="sf-depth-2 ">Institutional Repository</a></li><li id="menu-487-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="http://library.ug.edu.gh/" title="" class="sf-depth-2 ">Online Catalogue</a></li><li id="menu-488-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="http://libguides.ug.edu.gh/" title="" class="sf-depth-2 ">Research Guides</a></li><li id="menu-489-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="http://ezproxy.ug.edu.gh/" title="" class="sf-depth-2 ">Off-Campus Access</a></li></ul></li><li id="menu-466-1" class="last odd sf-item-7 sf-depth-1 mainMenu sf-no-children"><a href="/frequently-asked-questions-about-academic-related-issues" title="" class="sf-depth-1 ">FAQs</a></li></ul>        </div>
+
+      </div>
+    </div>
+    <!-- Main Navigation::END -->
+                    <div class="row">
+        <div class="sixteen columns">
+
+                     <!-- <div class="breadcrumb">
+                          </div>-->
+          
+          
+        </div>		
+      </div>
+    
+    
+
+
+     <!-- highlighted -->
+    <div class="twelve columns">
+      </div>
+
+  <div class="four columns employment">
+       </div>
+    <!-- //highlighted -->
+
+
+    <div class="row">
+
+      
+                <div style="margin-left:25px;" id="content" class="others fifteen columns ">
+          
+
+                              <div class="page_heading">
+              <h1>Staff</h1>
+            </div>
+                    
+
+
+                      <div id="messages">
+              <div class="notification alert alert-block alert-error warning error warning closable fade in">
+<h2 class="element-invisible">Error message</h2>
+ <ul>
+  <li><em class="placeholder">Deprecated function</em>: version_compare(): Passing null to parameter #1 ($version1) of type string is deprecated in <em class="placeholder">nice_menus_library()</em> (line <em class="placeholder">144</em> of <em class="placeholder">/home/ugedu/public_html/sites/all/modules/nice_menus/nice_menus.module</em>).</li>
+  <li><em class="placeholder">Deprecated function</em>: preg_match(): Passing null to parameter #2 ($subject) of type string is deprecated in <em class="placeholder">rename_admin_paths_url_outbound_alter()</em> (line <em class="placeholder">65</em> of <em class="placeholder">/home/ugedu/public_html/sites/all/modules/rename_admin_paths/rename_admin_paths.module</em>).</li>
+  <li><em class="placeholder">Deprecated function</em>: preg_match(): Passing null to parameter #2 ($subject) of type string is deprecated in <em class="placeholder">rename_admin_paths_url_outbound_alter()</em> (line <em class="placeholder">83</em> of <em class="placeholder">/home/ugedu/public_html/sites/all/modules/rename_admin_paths/rename_admin_paths.module</em>).</li>
+ </ul>
+</div>
+            </div><!-- /#messages -->
+          
+          
+                    
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <div class="view view-staff view-id-staff view-display-id-page view-dom-id-e8ec17e3b0a0cdc7936be07dd3cc2667">
+        
+  
+  
+      <div class="view-content">
+      <table class="views-view-grid cols-4">
+  
+  <tbody>
+          <tr >
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Mavis-Otoo-Arye.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong>Mrs. Mavis Otoo-Ayeh  </strong>  </div>  
+  <div>        <span>College Secretary</span>  </div>  
+  <div>        <div>motoo-ayeh@ug.edu.gh</div>  </div>          </td>
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Mawena.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong>Mrs. Mawuena Akuamoah-Boateng</strong>  </div>  
+  <div>        <span>College Academic Affairs Officer</span>  </div>  
+  <div>        <div>maboateng@ug.edu.gh </div>  </div>          </td>
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Frederick-Yuorkuu.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong>Mr. Frederick Yuorkuu </strong>  </div>  
+  <div>        <span>College Academic Affairs Officer</span>  </div>  
+  <div>        <div>fyuorkuu@ug.edu.gh </div>  </div>          </td>
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Ms--Regina-Eyonam-Adagbedu.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong>Ms. Regina Enyonam Adagbedu </strong>  </div>  
+  <div>        <span>College Human Resources Officer</span>  </div>  
+  <div>        <div>readagbedu@ug.edu.gh</div>  </div>          </td>
+              </tr>
+          <tr >
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Ransford.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong>Mr. Ransford Yeboah-Badu </strong>  </div>  
+  <div>        <span> College Human Resources Officer</span>  </div>  
+  <div>        <div>ryeboah-badu@ug.edu.gh</div>  </div>          </td>
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/default_images/anamynous_0.png" alt="" /></div>  </div>  
+  <div>        <strong>Ms. Patricia Tay</strong>  </div>  
+  <div>        <span>Acting College Financial Accountant</span>  </div>  
+  <div>        <div>ptay@ug.edu.gh</div>  </div>          </td>
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Ben-Bugre-Bade-.jpg" width="160" height="199" alt="" /></div>  </div>  
+  <div>        <strong>Mr. Benard B.  Bugre</strong>  </div>  
+  <div>        <span>College Management Accountant </span>  </div>  
+  <div>        <div>bbbugre@ug.edu.gh </div>  </div>          </td>
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Kofi-Addison-College-Finance-Officer.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong>Kofi Addison</strong>  </div>  
+  <div>        <span>College Finance Office</span>  </div>  
+  <div>        <div></div>  </div>          </td>
+              </tr>
+          <tr >
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Afia-Serwaa-Attrams.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong>Afia Serwaa Attrams</strong>  </div>  
+  <div>        <span>Research Development Officer, School of Social Sciences & School of Arts</span>  </div>  
+  <div>        <div>asattrams@ug.edu.gh</div>  </div>          </td>
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Beatrice-S.-Biney-Nyamekye2.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong>Beatrice S. Biney-Nyamekye</strong>  </div>  
+  <div>        <span>Research Development Officer, Institutes and Centres</span>  </div>  
+  <div>        <div>bsbiney-nyamekye@ug.edu.gh</div>  </div>          </td>
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Dorcas-Opai-Tetteh.jpg" width="160" height="201" alt="" /></div>  </div>  
+  <div>        <strong>Dorcas Opai-Tetteh</strong>  </div>  
+  <div>        <span>Research Development Officer, ISSER & Ethics Committee</span>  </div>  
+  <div>        <div>dopai-tetteh@ug.edu.gh</div>  </div>          </td>
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Kojo-Kissi-Yeboah.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong>Kojo Kissi Yeboah</strong>  </div>  
+  <div>        <span>Research Development Officer, Business School & School of Law</span>  </div>  
+  <div>        <div> kkyeboah@ug.edu.gh</div>  </div>          </td>
+              </tr>
+          <tr >
+                  <td >
+              
+  <div>        <div><img typeof="foaf:Image" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/staffs/Maana-Ampa-Sowah-2.jpg" width="160" height="200" alt="" /></div>  </div>  
+  <div>        <strong> Maana S. Ampa-Sowa</strong>  </div>  
+  <div>        <span>Research Development Officer, School of Languages & School of Performing Arts</span>  </div>  
+  <div>        <div>msampa-sowa@ug.edu.gh</div>  </div>          </td>
+                  <td >
+                      </td>
+                  <td >
+                      </td>
+                  <td >
+                      </td>
+              </tr>
+      </tbody>
+</table>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+</div>
+  </div>
+          
+
+        </div> <!-- // content -->
+
+
+              </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="container">
+              <div class="row footer_inside">
+
+          <div class="four columns f1" style="/*width:230px;*/">
+              <div class="region region-footer-firstcolumn">
+     <div id="block-block-5" class="block block-block">
+    
+    <h3>Get in Touch with Us</h3>
+
+    
+  <div class="content">
+    <div class="icon_phone" title="Phone">+233-(0)302-213820</div>
+<div class="icon_phone" title="Phone">+233-(0)302-213850</div>
+<div class="icon_mail" title="Email"><a href="mailto:pad@ug.edu.gh">pad@ug.edu.gh</a></div>
+<div class="icon_loc" title="Location">P.O. Box LG 25<br />Legon, Accra</div>
+<div class="clear"> </div>
+<div class="h10"> </div>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!--  1/4 Columns -->
+          <div class="three columns f2">
+              <div class="region region-footer-secondcolumn">
+     <div id="block-block-3" class="block block-block">
+    
+    <h3>Colleges</h3>
+
+    
+  <div class="content">
+    <ul class="margined_left">
+<li><a href="http://cbas.ug.edu.gh">Basic &amp; Applied Sciences</a></li>
+<li><a href="http://coe.ug.edu.gh">Education</a></li>
+<li><a href="http://chs.ug.edu.gh">Health Science</a></li>
+<li><a href="http://coh.ug.edu.gh">Humanities</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f3">
+              <div class="region region-footer-thirdcolumn">
+     <div id="block-block-4" class="block block-block">
+    
+    <h3>Admissions</h3>
+
+    
+  <div class="content">
+    <ul class="margined_left">
+<li><a href="http://admission.ug.edu.gh/applying/undergraduate/overview" target="_blank">Undergraduate</a></li>
+<li><a href="http://admission.ug.edu.gh/applying/postgraduate/overview" target="_blank">Postgraduate</a></li>
+<li><a href="http://admission.ug.edu.gh/applying/international/overview" target="_blank">International</a></li>
+<li><a href="http://admission.ug.edu.gh/applying/distance/undergraduate-overview" target="_blank">Distance Education</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f4">
+              <div class="region region-footer-fourthcolumn">
+     <div id="block-block-10" class="block block-block">
+    
+    <h3>QUICK LINKS</h3>
+
+    
+  <div class="content">
+    <ul class="margined_left">
+<li><a href="http://sakai.ug.edu.gh" target="_blank">Sakai LMS</a></li>
+<li><a href="http://campuslife.ug.edu.gh" target="_blank">Campus Life</a></li>
+<li><a href="http://citycampus.ug.edu.gh/" target="_blank">Accra City Campus</a></li>
+<li><a href="http://www.ug.edu.gh/aqau" target="_blank">Academic Quality Assurance Unit</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+          </div>
+
+            <!-- 1/4 Columns -->
+          <div class="two columns f5">
+              <div class="region region-footer-fifthcolumn">
+     <div id="block-block-9" class="block block-block">
+    
+    <h3>Alumni</h3>
+
+    
+  <div class="content">
+    <ul class="margined_left">
+<li><a href="http://alumni.ug.edu.gh" target="_blank">UG Alumni</a></li>
+<li><a href="http://alumni.ug.edu.gh/index.php/give-back" target="_blank">Give to UG</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+          </div>
+
+
+        
+      </div> 
+      <div class="clear"></div>
+
+      <div class="footer_btm">
+                    <div class="footer_btm_inner">
+                      <a href='#' target='_blank' class='icon_tweet' title='Twitter'>Twitter</a>      
+                    <!--<a href="http://www.skype.com" class='icon_skype' title='Skype'>Skype</a> -->
+                      <a href='#' target='_blank' class='icon_google' title='Google+'>Google+</a>
+          
+                      <a href='#' target='_blank' class='icon_facebook' title='Facebook'>Facebook</a>
+          
+                                <div id="powered">
+              <a href="https://www.ug.edu.gh/">University of Ghana</a> 
+              &copy;&nbsp;2026</div>
+                  </div>    
+      </div>
+    </div>
+  
+    <!-- Footer::END -->
+
+  </div>    
+
+    
+      <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/sites/all/themes/ugcollege/stylesheets/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery//jquery.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.12/jquery.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/js/js_Hfha9RCTNm8mqMDLXriIsKGMaghzs4ZaqJPLj2esi7s.js"></script>
+<script type="text/javascript" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/js/js_45JniWrXrY8q8AEVIV6GFupI5scizolw-FrujytMgiY.js"></script>
+<script type="text/javascript" src="https://cohold.ug.edu.gh/sites/coh.ug.edu.gh/files/js/js_ReVASwNA8Noj8jHGQVzkuOk_E9VxulDpFdD6HF31sUA.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"ugcollege","theme_token":"88bWscOoluCoN5HAPKIh7bSsOl0QISHa1yuz82lgG-4","js":{"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/\/jquery.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.bgiframe.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.hoverIntent.js":1,"sites\/all\/modules\/nice_menus\/js\/superfish.js":1,"sites\/all\/modules\/nice_menus\/js\/nice_menus.js":1,"sites\/all\/themes\/ugcollege\/js\/jquery.easing.1.3.js":1,"sites\/all\/themes\/ugcollege\/js\/common.js":1,"sites\/all\/themes\/ugcollege\/js\/isotope.js":1,"sites\/all\/themes\/ugcollege\/js\/jquery.flexslider-min.js":1,"sites\/all\/themes\/ugcollege\/js\/jquery.prettyPhoto.js":1,"sites\/all\/themes\/ugcollege\/js\/jquery.jcarousel.min.js":1,"sites\/all\/themes\/ugcollege\/js\/jquery.tipsy.js":1,"sites\/all\/themes\/ugcollege\/js\/jquery.selectnav.js":1,"sites\/all\/themes\/ugcollege\/js\/aqua.js":1,"sites\/all\/themes\/ugcollege\/js\/bootstrap.min.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus_default.css":1,"sites\/all\/themes\/ugcollege\/stylesheets\/ug-style-min.css":1}},"nice_menus_options":{"delay":800,"speed":"slow"},"urlIsAjaxTrusted":{"\/staff":true}});
+//--><!]]>
+</script>
+      <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    <!--  Fonts  -->
+
+	
+
+  </body>
+</html>

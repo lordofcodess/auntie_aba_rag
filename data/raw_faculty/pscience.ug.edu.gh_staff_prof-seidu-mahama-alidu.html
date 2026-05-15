@@ -1,0 +1,895 @@
+ <!DOCTYPE html>
+<!--
+              ,;r;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;r;,                 
+             .2@@@Superviser:Parick Kuti@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@h,
+             .@@Project+Managers:@@Michael##Phillips@Deborah###Allah@@@@@@@@@@@@@@@@@@@@@@*,
+             .X@@@Lead+Programmers:Gilbert_Gadzekpo@@@Ian Allotey@@@@@@@@@@@@@@@@@@@@@@@@@&,                
+              Developers@@BXi3@@@Alex#Tenkorang@@@@H2iG@@@@Emmanuel#Asare@@@A5Sh#@@@@@@@@@X.                
+              r#@@#####@@B2;;iA@@###############@@H5;;iH@@@##############@MXr;iA@@######@@2.                
+              r#@@#####@@M2r;i&#@@##############@@BXrri&#@@#############@@#Xr;i&#@@#####@@2.                
+              r#@@#####@@@ASrSH@@@##############@@@B5s2M@@@#############@@@ASr2B@@@@####@@2.                
+              r#@@###B3XH@@&29#BX3H#@#######@#H99B@@&5&#H9hB##########M9XH@M929#M9XH####@@2.                
+              r#@@##@#Girri5Siir;5M@@@######@@#&SrrS5iii;r2M@@@######@@hsrsS5Sisr;SB@@##@@2.                
+              r#@@###@@#2;;rsrrih@@@##########@@MS;rrsrri&@@@#########@@M2rrssrriG@@@#M#@@2.                
+              r#@@#HX5G#@BXisi2A@#h23H@@####A55G##H2iss2B@M923B@####HX5G#@B3iri2A@#hXhH#@@2.                
+              r#@@@#2;;s3A9SiS525r;s&#@@##@@#Xr;s3&XSii22S;;s&#@###@#X;:s3&9SiS225r;sA#@@@2.                
+              r#@@@@@B5;;;sSSir;;rX#@@@####@@@M5;;;sSSir;;r3#@@####@@@H5;;;sS5Ss;;rX#@@@@@2.                
+              r#@#AA#@@#G2iiiSSX&#@#HM####MAA#@@#G5iiiiSXA#@#BM####AA#@@Mh2iiiiSXGM@#HH#@@2.                
+              r@@@9sr2M@@#XsiSXB#H5rsh#@@@M3sr5M@@B2siS3M#H2rs&@@@#GsrX#@@MXisS3H#H2rs9#@@2.                
+              r#@@@Hi;;ri5SiSSisr;;SH@@@#@@#&s;;riSSiSSisr;;i&#@@@@@Ai;;ri55Siiisr;;SH@@@@2.                
+              r#@@@@M3sr;rsSSisrs2H@@@####@@@#hs;rriSSSsrs2A@@@###@@@M2rr;rsSSiiss2H@@@@@@2.                
+              r#@@@@@@@#&2iiiii9#@@@@#####@@@@@@#G5iiii5A@@@@@#####@@@@@#A2iiiiS9#@@@@##@@2.                
+              r#@@#@@@@@@#3ssi2H@@@@#######@@@@@@@#XissX#@@@@#######@@@@@@@hsri2H@@@@###@@X.                
+              s@@@@@@@@@@@ASss2B@@@@@@@@@@@@@@@@@@@ASsr2#@@@@@@@@@@@@@@@@@@HiriXB@@@@@@@@@3,                
+              :hB&h99GG&HA2srrs2GAG99hhhh9hhhGGGAA&2sr;s2G&hhhGGGGhh99hh&AA2srrs2h&Gh99hHAr                 
+              :3Hh333939G&AAAGhh9h93333hG&AAAAAAAAA&AA&h99hh&AAAAAAAG9339h&AAA&h9hh93339A&r                 
+              r#@@@@@@@@@@@@@@@@@@@@@@@@@MAGh9hA#@@@@@@@@@@@MAhh9GAM@@@@@@@@@@@@@@@@@@@@@@2.                
+              s@@@@@@@@@@@@@@@@@@@@@@@#A2issiirri3#@@@@@@@H2srsiissiXH@@@@@@@@@@@@@@@@@@@@3,                
+              r#@@#################@#9r;r2A#@@#&i;r2M@@@A5rrSA@@@#ASrrSA@@@#############@@X.                
+              r#@@##################&irX#@@@@@@@@Hs;sA#&sr2@@@@@@@@@Bi;SB@@#############@@2.                
+              r#@@###############@@HXsSB@@@B3SX#@@Birrssi3@@@H25&#@@@Gsi&#@@############@@2.                
+              r#@@###############@@HXs5B@@@#hs;sA@@B2r;sh@@@Xr;iA@@@@Aiih#@@############@@2.                
+              r#@@###############@@@HirSH@@@@hrrX@@@hs;iA@@#2riA@@@@Air5H@@#############@@2.                
+              r#@@################@@@H5r;rS25iS&@@#G25Si5G@@@Gisi5ir;s3M@@##############@@2.                
+              r#@@##########@@@@@@@@@@@MhX2XGM@@@M5r2#@As;X@@@@A3223A@@@@@@@@@@@@@######@@2.                
+              r#@@##########Bh223hAH#@@@@@@@@@#A2siXM@@@&iri3B#@@@@@@@@#BA&9X23A#@@#####@@2.                
+              r#@@########M9s:::::;;rrsS5222ir;::rA@@92A@@X;:;rsS222Sirrr;;::::;SA#@####@@2.                
+              r#@@#########A2srrssisiiS2222225isrs3MB9X&##3rriS22XX225Siiissrrrs2A######@@2.                
+              r#@@########@@@@BB#@@@@@@@@@#@@@@@B2rrh@@@9ss9#@@@@##@@@@@@@@@#BB@@@@#####@@2.                
+              r#@@########@@@@@@@@@@@@Mh5isi5h#@@@&siGHG55M@@@B35isi2A@@@@@@@@@@@#######@@2.                
+              r#@@#########@@@@@@@@@#Xr;s3BMhssX#@@A5rrih#@@Air5A#H2r;sG@@@@@@@@########@@2.                
+              r#@@##################hssh@@@@@hsr3@@#Xr;sA@@#5rSH@@@@#2riA#@@############@@2.                
+              r#@@###############@#A2s2#@@@#3sr2M@@GSsrs2H@@H5riG@@@@Ais9M@@############@@2.                
+              r#@@###############@@#GiiA@@@#HAM@@@Aii33SsSB@@@H&A#@@@GsiA#@@############@@2.                
+              r#@@################@@#5;rh#@@@@@@#Xrr3@@#S;rG@@@@@@@#hsrX#@@#############@@2.                
+              r#@@################@@@#Xr;r2hGhXSrrSH@@@@#9r;r53hhXSrri&#@@##############@@X,                
+              ;#@@#################@@@@M3SsrrrriXA@@@@@@@@#hSsrrrri2&#@@@###############@@2.                
+              :A@@##################@@@@@@#BAH#@@@@@####@@@@@@MHHM@@@@@@################@#s.                 
+              .2#@@###################@@@@@@@@@@@@#######@@@@@@@@@@@@@##################@@M;                 
+               :h@@@#####################@@@@@@####TEAM#####@@@@@@####################@@#9:                 
+                ;#@@@########Patrick#Kuti####Michael#Philips####Deborah#Allah#########@@3,                  
+                 :h@@@@@##########Gilbert#Gadzekpo#####Ian#Allotey#################@@@@B;                   
+                   rM@@@@@@@@@#######Alex#Tenkorang#####Emmanuel##Asare#####@@@@@@@@#5.                    
+                     ,s&@@@@@@@@@@@@@################################@@@@@@@@@@@@@Ai:                       
+         ...              ,;i3H@@@@@@@@@@@@@#################@@@@@@@@@@@@M&92s;:.          .:::.            
+      ,;r;:::::,.               .:;rs59A#@@@@@@@@@#######@@@@@@A3ir;;:..               .,::,,::;r;.         
+     :rrrssr;;iXi,                       .,;i2A#@@@@@@@@@#A2r:.                       ,s25r;;;;rs;,         
+     :r;::;:,.:;;.                             .;i&#@@H5;.                     ... .   ,::,,::;;sr:         
+     .r2S;,...    ..,,..                           ,;:                        ......,,.   ...,;SG2:         
+      ;2Ah2isr;rS2s:.,:;;rr;.                                               :rir;:. ,i92issi5X9h9s.         
+      ,SA&99h&&AHhr..;h@@@@@5,                                             ,2@@@@#S..rX&Ahhh93XXS;          
+       rX3X33393G3;.,r5399Gh2s;::,,.                                 ..,,,:r5XX23hs..;5993XXX22Sr,          
+         ,;sS5229X;..;s2&M@#M#@@###H&9X25isssrrrrrrrrrrrrrrsssssiiS2XGAHBMMAh&BMBGr. :s2X2Ssr:,             
+                 .  .rS3M@@@@##@@@@@@@@@@@@#HH#@@@@#UGCSMM#@@@@@@@##@@@@@@@#AB@@@Mi,                        
+                     :riXh&AAGhAM####@@@@@@#BM@@@@@@@@#@@@MM@@@@@@@@@@@@@@#MH&9X2s:.                        
+                            .,;rsii5Xh&&&AA&GGGh&ABBBBBBMBAAHBAAHH&9X5Sis;:,.                               
+                                        .,,:::,,,::::;;:::::::::,.                                          
+ -->
+
+
+<!--[if IE 7 ]><html class="ie ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><!--<![endif]-->
+
+  <head profile="http://www.w3.org/1999/xhtml/vocab">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/staff/prof-seidu-mahama-alidu" />
+<link rel="shortlink" href="/node/30" />
+<link rel="shortcut icon" href="https://pscience.ug.edu.gh/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prof. Seidu Mahama Alidu | Department of Political Science</title>
+    <link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_TsVRTbLFUpEZAfw-_bWPJu840QT523CPjUVJ5MRWfyk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_HkdpaPJNwY4GBfynmNsoQHIPSVGTir6baStmsdyM_vc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_uS_-bgJ2-t8YuIh44b3fkiJyEGdNvo64Ixe2JuoJiM4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" media="all" />
+	
+
+
+      
+
+      <!-- menu font -->
+            <style type="text/css">
+        .custom_menu #menu > ul > li > a,#menu {
+          font-family:Open Sans;
+                  }
+      </style>
+      <!-- // menu font -->
+
+      <!-- menu font size -->
+            <style type="text/css">
+        #menu > ul > li > a{
+          font-size: 15px ;
+        }
+        #menu > ul > li ul > li > a{
+          font-size: 14px ;
+        }
+      </style>
+      <!-- // menu font size -->
+
+
+      <!-- main color -->
+            <style type="text/css">
+        a:hover, a:focus{
+          color: #0AD1E5 ;
+        }
+        .button:hover,
+        a:hover.button,
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,	
+        input[type="button"]:hover,
+        .button_hilite, 
+        a.button_hilite,
+        .button_hilite,
+        a.button_hilite{
+          color: #FFF;
+          background-color: #0AD1E5;
+        }
+        .section_big_title h1 strong,
+        .section_featured_texts h3 a:hover,
+        .breadcrumb a:hover,
+        .post_meta a:hover,
+        #footer a:hover {
+          color: #0AD1E5 ;
+        }
+        .portfolio_filter div.current,
+        .next:hover,.prev:hover,
+        .pagination .links a:hover,
+        .info h2, 
+        .h2.ls-s2,
+        jcarousel-next-horizontal:hover, 
+        .jcarousel-prev-horizontal:hover{
+          background-color: #0AD1E5 ;
+        }
+        .footer_pic img:hover{
+          border: 1px solid #0AD1E5;
+        }
+      </style>
+      <!-- // main color -->
+
+      <!-- heading font -->
+            <style type="text/css">
+        h1, h2, h3, h4, h5, .title, .section_big_title h1, .heading, #footer h3,
+        .page_heading h1{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- heading font -->
+
+      <!-- button font -->
+            <style type="text/css">
+        .button, a.button,	button,	input[type="submit"], input[type="reset"], input[type="button"]{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- // button fonts -->
+
+      <!-- body font -->
+            <style typ="text/css">
+        body{
+          font-family: Open Sans;
+        }
+      </style>
+      <!-- // body font -->
+
+      <!-- body background and color -->
+            <style type="text/css">
+        body{
+          background-image: none;background-color #fff;        }
+      </style>
+      <!-- // body bg -->
+
+  </head>
+  <body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-30 node-type-staff" >
+    <div id="skip-link">
+      <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+    </div>
+         
+<div id="wrapper" class="not-home-page">
+
+  <div class="container">
+
+    <div class="header clearfix row">
+              <div class="eight columns header_left">
+          <a href="/"><img src="https://pscience.ug.edu.gh/sites/pscience/files/logo_pscience.png" alt="Home" /></a>
+        </div>
+      
+      <div class="eight columns">
+        <div class="header_right">
+          
+
+          <div class="header_soc_search clearfix">
+                          <div class="header_search">
+                <form class="search" action="/staff/prof-seidu-mahama-alidu" method="post" id="searchform" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <button class="button_search"></button><div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="s">Search </label>
+ <input title="Enter the terms you wish to search for." class="search-text-box form-text" type="text" id="s" name="search_block_form" value="" size="15" maxlength="128" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-BFPLruC2rIaGKObAcUHeeCAhwFUELPcOutj6vpT3mGY" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>              </div>
+                      </div>
+          <!-- Block position for font resizer-->
+          <div>
+                          </div>  				
+        </div>
+      </div>
+    </div>
+
+    <!--begin of top menu-->
+    <div class="top_header" style="margin-bottom:10px;">
+    
+            <div class="header_contacts clearfix">
+              <div class="region region-top-menu">
+    <div id="block-nice-menus-1" class="block block-nice-menus">
+
+    
+  <div class="content">
+    <ul class="nice-menu nice-menu-down nice-menu-menu-top-menu" id="nice-menu-1"><li class="menu-437 menu-path-sienablerugedugh-pls-prodi41-w99pkgmi-login first odd "><a href="https://ienabler.ug.edu.gh/pls/prodi41/w99pkg.mi_login" target="_blank">MIS Web</a></li>
+<li class="menu-436 menu-path-sportalofficecom-  even "><a href="https://portal.office.com/" target="_blank">Staff Webmail</a></li>
+<li class="menu-448 menu-path-smailgooglecom-a-stugedugh  odd last"><a href="https://mail.google.com/a/st.ug.edu.gh" target="_blank">Student Webmail</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+            </div>
+
+    </div>
+    <!--end of top menu-->
+
+    <!-- Main Navigation -->
+    <div class="row no_bm">
+      <div class="dark_menu sixteen columns">
+        <div id="menu" class="">
+          <ul id="responsive"  class="nav_simple sf-menu main-menu sf-horizontal sf-style-none sf-total-items-7 sf-parent-items-4 sf-single-items-3"><li><a href="https://www.ug.edu.gh" target="_blank" title="Go to university homepage"><span class="home_icon"></span></a></li><li id="menu-257-1" class="first odd sf-item-1 sf-depth-1 mainMenu sf-no-children"><a href="/" class="sf-depth-1 ">Home</a></li><li id="menu-454-1" class="middle even sf-item-2 sf-depth-1 sf-total-children-7 sf-parent-children-0 sf-single-children-7 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">About Us</a><ul class="dropdown"><li id="menu-455-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/about/welcome" class="sf-depth-2 ">Welcome Message</a></li><li id="menu-456-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/about/brief_history" class="sf-depth-2 ">Brief History</a></li><li id="menu-457-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/about/vision" class="sf-depth-2 ">Objectives and Vision</a></li><li id="menu-503-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/faculty-staff" class="sf-depth-2 ">Faculty</a></li><li id="menu-459-1" class="middle odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/staff" class="sf-depth-2 ">Staff</a></li><li id="menu-970-1" class="middle even sf-item-6 sf-depth-2 mainMenu sf-no-children"><a href="/student-affairs" class="sf-depth-2 ">Student Affairs</a></li><li id="menu-973-1" class="last odd sf-item-7 sf-depth-2 mainMenu sf-no-children"><a href="/academic-programmes" class="sf-depth-2 ">Academic Programmes</a></li></ul></li><li id="menu-460-1" class="middle odd sf-item-3 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Academics</a><ul class="dropdown"><li id="menu-464-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/academics/course_schedule" class="sf-depth-2 ">Course Schedule</a></li><li id="menu-465-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/courses" class="sf-depth-2 ">Undergraduate Courses</a></li><li id="menu-466-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/academics/post-graduate-courses" class="sf-depth-2 ">Postgraduate Courses</a></li><li id="menu-467-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/academics/student_support" class="sf-depth-2 ">Student Support</a></li><li id="menu-468-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/academics/calendar" target="_blank" class="sf-depth-2 ">Academic Calendar</a></li></ul></li><li id="menu-461-1" class="middle even sf-item-4 sf-depth-1 sf-total-children-3 sf-parent-children-0 sf-single-children-3 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Admissions</a><ul class="dropdown"><li id="menu-469-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank" class="sf-depth-2 ">Undergraduate</a></li><li id="menu-470-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="https://sgs.ug.edu.gh/admissions/" target="_blank" class="sf-depth-2 ">Postgraduate</a></li><li id="menu-471-1" class="last odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/international" target="_blank" class="sf-depth-2 ">International</a></li></ul></li><li id="menu-462-1" class="middle odd sf-item-5 sf-depth-1 mainMenu sf-no-children"><a href="/research" class="sf-depth-1 ">Research</a></li><li id="menu-478-1" class="middle even sf-item-6 sf-depth-1 mainMenu sf-no-children"><a href="/news-events" class="sf-depth-1 ">News &amp; Events</a></li><li id="menu-463-1" class="last odd sf-item-7 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Visitors</a><ul class="dropdown"><li id="menu-472-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/visiting_us" class="sf-depth-2 ">Visiting Us</a></li><li id="menu-473-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/campuslife/explore-campus/campus-map" target="_blank" class="sf-depth-2 ">Maps and Directions</a></li><li id="menu-474-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/giving_to_us" class="sf-depth-2 ">Giving to Us</a></li><li id="menu-475-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="http://campuslife.ug.edu.gh/cgi-sys" target="_blank" class="sf-depth-2 ">Students Life</a></li><li id="menu-476-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/contact_us" class="sf-depth-2 ">Contact Us</a></li></ul></li></ul>        </div>
+
+      </div>
+    </div>
+    <!-- Main Navigation::END -->
+                    <div class="row">
+        <div class="sixteen columns">
+
+                       <div class="breadcrumb">
+              <a href="/">Home</a>            </div>
+          
+          
+        </div>		
+      </div>
+    
+    
+
+    <!-- Information Region -->
+
+    <div class="info_reg">
+         </div>
+
+    <!-- highlighted -->
+        <!-- //highlighted -->
+
+
+    <div class="row">
+
+      
+                <div style="margin-left:2px;" id="content" class="others sixteen columns ">
+          
+
+                              <div class="page_heading">
+              <h1>Prof. Seidu Mahama Alidu</h1>
+            </div>
+                    
+
+
+          
+          
+                    
+            <div class="region region-content">
+     <div id="block-system-main" class="block block-system">
+
+      
+
+  <div class="content">
+    <div  about="/staff/prof-seidu-mahama-alidu" typeof="sioc:Item foaf:Document" class="ds-2col-stacked-fluid node node-staff node-staff view-mode-full clearfix">
+
+  
+  <div class="group-header">
+      </div>
+
+      <div class="group-left">
+      <div class="field field-name-field-profile-picture field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img typeof="foaf:Image" src="https://pscience.ug.edu.gh/sites/pscience/files/styles/staff_profile/public/staffs/WhatsApp%20Image%202022-08-11%20at%203.56.15%20PM.jpeg?itok=fG0lCfvb" width="160" height="200" alt="" /></div></div></div>    </div>
+  
+      <div class="group-right">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><strong>Prof. Seidu Mahama Alidu</strong></div></div></div><div class="field field-name-field-position-or-qualification field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Associate Professor </div></div></div><div class="field field-name-field-email-address field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">smalidu@ug.edu.gh</div></div></div><div class="field field-name-field-phone-number field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">233 208278432</div></div></div>    </div>
+  
+  <div class="group-footer">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p><a href="https://scholar.google.com/citations?user=K6hBLiUAAAAJ&amp;hl=en&amp;oi=sra">https://scholar.google.com/citations?user=K6hBLiUAAAAJ&amp;hl=en&amp;oi=sra</a></p>
+<p><strong>PROFILE</strong></p>
+<p>Dr. Seidu Alidu is currently an Associate Professor  at the Department of Political Science and a Research Fellow at the Centre for Asian Studies, at the University of Ghana. He was a Donahue Institute Scholar on United States’ Political Thought at the University of Massachusetts in 2014. He is a visiting lecturer to twelve Master of Research and Public Policy (MRPP) Universities in Africa including the University of Lagos, University of Ibadan, University of Dar-es-Salam, University of Nairobi and the University of Botswana. He was a Maria Sibylla Merian Institute for Advanced Studies in Africa (MIASA) fellow on Parliaments and Democracy in Africa. He has worked closely with and for numerous policy think tanks including the Partnership for African Social and Governance Research (PASGR) based in Nairobi Kenya; Centre for International Development Issues Nijmegen based in Netherlands; the Institute for Development Studies at the University of Sussex,  the Institute for Democratic Governance; the Friedrich-Ebert Stiftung; the United Nations Development Programme, the Varieties of Democracy Project based in the University of Gothenburg in Sweden, the Ghana Armed Forces Command and Staff College, the German-African Governance Partnership Organization and the Social Science Research Council based in New York. He has published widely on his subject area with his papers appearing in <em>Peace Review, Criminal Justice Studies, Transitional Justice Review, Journal of African Political Economy and Development, Contemporary Journal of African Development and Ghana Studies</em>.</p>
+<p><strong>RESEARCH INTERESTS</strong></p>
+<ul>
+<li>Transitional Justice Policies and Modalities</li>
+<li>Traditional Reconciliation Mechanisms and Conflict Resolution</li>
+<li>Civil Society and Democratization, Political Economy of Africa</li>
+<li>Political Economy of Social Protection Policy in Africa</li>
+<li>Conflict Resolution and Transitional Justice</li>
+<li>Electoral Politics and Governance</li>
+</ul>
+<p><strong>EDUCATION</strong></p>
+<ul>
+<li>Doctor of Philosophy   -           Leeds Metropolitan University - UK  (01/2007 – 07/2010)</li>
+<li>MSc in Development Studies - London School of Economics and Political Science, UK (09/2005 – 07/2006)</li>
+<li>BA Hons. in Political Science  -  (University of Ghana, Ghana) (08/2000 – 07/2004)</li>
+</ul>
+<p><strong>COURSES TAUGHT</strong></p>
+<ul>
+<li>POLI 712: Issues and Problems of Development in Africa  </li>
+<li>POLI 658: The Politics of International Economy</li>
+<li>POLI 633: Conflicts in African States</li>
+<li>POLI 631: Conflict Resolution and Peace Studies</li>
+<li>POLI 671: Governance, Democracy and Institutional Reform</li>
+<li>POLI 674: Africa and the International Economy</li>
+<li>INTA 618: Ghanaian Foreign Policy</li>
+<li>INTA 622: Issues in Ghanaian Foreign Policy</li>
+<li>MRPP 651: Governance and Politics of Public Policy</li>
+<li>CSPS 606: Managing Social Conflicts and Consensus Building</li>
+<li>CSPS 613: Human Rights and Human Development</li>
+<li>POLI 441: Political Economy of Africa’s Development Since Independence</li>
+<li>POLI 347: International Conflict, Conflict Resolution and Human Rights</li>
+<li>POLI 358: Conflicts and Society in Africa</li>
+<li>POLI 111: Introduction to Political Science</li>
+</ul>
+<p><strong>PUBLICATIONS/ RESEARCH OUTPUT</strong></p>
+<p><strong><em>Peer Reviewed Journals</em></strong></p>
+<ul>
+<li><strong>Alidu, S</strong>., and Aggrey-Darkoh, E., (2018)<strong> </strong>“Rational Voting in National Elections: the 2012<strong> </strong>and 2016 Elections in Perspective” Ghana Social Science Journal, 15(1), pp.98-121</li>
+<li>Debrah, E., <strong>Alidu, S.,</strong> and Owusu-Mensah, I. (2016) “The Cost of Inter-ethnic conflict Northern Region: the case of the Nawuri-Gonja Conflicts” Journal of African Conflicts and Peace Studies, Vol. 3, Issue, 1, pp. 1-29</li>
+<li><strong>Alidu, S</strong>., and Gyekye-Jandoh, M.<strong> </strong>(2016) “Civil Society and Democratic Governance in<strong> </strong>Ghana: Emerging roles and challenges” <em>Contemporary Journal of African Development</em>, Vol. 4, No. 1, pp. 1-26</li>
+<li><strong>Alidu, S., </strong>Dankyi, E., and Tsiboe-Darko, A. (2016) Ageing policies in Ghana: a review of<strong> </strong>the Livelihood Empowerment against Poverty and the National Health Insurance Scheme, <em>Ghana Studies</em>, Volume 19, pp. 154-172</li>
+<li><strong>Alidu, S., </strong>and Braimah, A. (2014). Ghana‟s Peaceful Election 2012: a Lesson for Africa? <em>International Journal of Sciences: Basic and Applied Research</em>, 18(2): 177-187</li>
+<li><strong>Alidu, S.</strong>,<strong> </strong>(2014). Party Politics and Electoral Malpractices in Ghana‟s Election 2012.<strong> </strong><em>Journal</em><strong> </strong><em>of Scientific Research and Report</em>, 3(11):1449-1464.</li>
+<li><strong>Alidu, S.</strong>, (2014). Economic  and Social Injustices in Ghana’s Military Regimes:   An Investigation of Price Control Policies. <em>IOSR Journal of Humanities and Social Sciences,</em> 19(2): 57 - 65</li>
+<li><strong>Alidu, S., </strong>and Asare, B. (2014). Challenges of Civil Society Networks in Ghana: A<strong> </strong>Comparative Study of Four Networks. <em>British Journal of Economic, Management and Trade</em>, 4(7): 1143-1158</li>
+</ul>
+<p> </p>
+<p><strong><em>Book Chapters</em></strong></p>
+<ul>
+<li><strong>Seidu Alidu (2019) “</strong>Election Campaign in Ghana’s 2016 National Elections” in <strong>Ghanaian Politics and Political Communication (Africa: Past, Present &amp; Prospects)</strong>, S.G. Obeng and E.  Debrah (eds.) Gateway: New York,</li>
+<li><strong>Seidu Alidu </strong>(2018) “A Political Science Analysis of the 2016 Elections” in FES (2018) <strong><u>Election 2016</u></strong>, FES: Accra:</li>
+<li>De Graft-Aikins A. <strong>Seidu Alidu,</strong> Ellen Bortei-Doku, A. George Domfe (2017) The Scope and Limits of Ghana‟s Livelihood Empowerment against poverty programme” in Awortwi, E. And E. Remi Aiyede, (2017) <strong><u>Politics, Public Policy and Social Protection in Africa,</u></strong> London: Routledge</li>
+<li><strong>Seidu Alidu </strong>(2017) “A Political Science Analysis of the 2012 Elections” in FES (2017) <strong><u>Election 2012</u></strong>, FES: Accra:</li>
+<li><strong>Alidu, S</strong>. and Asare B. (2017),<strong> </strong>“Challenges of Civil Society Networks in Ghana” in Asare, B.<strong> </strong>And Frempong, K. (2017) <strong><u>Selected Issues in Ghana’s Democracy</u></strong>, Volume 1, Accra: Digibooks</li>
+<li>Fairbairn, G., <strong>Alidu, S.,</strong> Medina-Bustos, A., Webb, D. (2014). “What part do apology, truth and forgiveness play in reconciliation” in Aydin, S., and Webber, M.A., (eds.) <strong><u>From</u></strong> <strong><u>Communication Landscape to Bullying Battlegrounds.</u> </strong>Oxford: Inter-displinary Press</li>
+<li>Webb, D., Fairbairn, G., <strong>Alidu, S</strong>. and Medina Bustos, A. (2011). “What do we mean by Reconciliation?” In Elford, R. J. (ed.) <strong><u>Just Reconciliation: The Practice and Morality of</u></strong> <strong><u>Making Peace.</u> </strong>(pp. 21<strong> </strong>–<strong> </strong>42). Oxford: Peter Lang</li>
+</ul>
+<p> </p>
+<p><strong><em>Technical Reports </em></strong></p>
+<ul>
+<li>S. Dodsworth, <strong>S. Alidu,</strong> G. Bauer and B. Gbensuglo (forthcoming) Parliamentary primaries in Ghana’s National Democratic Congress: Explaining reforms to candidate selection and their impact<a name="_Hlk34294824" id="_Hlk34294824">, MIASA Working Papers Series, University of Ghana</a></li>
+<li>Osei, <strong>S. Alidu</strong>, H. Akinocho and M. Sabbi (forthcoming) “Institutional variations in Africa’s legislatures,” MIASA Working Papers Series, University of Ghana</li>
+<li>S. Alidu (2019) Public Private Partnership: Interrogating the Efficacy of a Politically Convenient Practice” FES Working Paper Series</li>
+<li>Oduro, et al (2018) “Building a more equal Ghana: a 5-point action plan to close the gap between the rich and the rest” Oxfam, Ghana Anti-Corruption Coalition and SEND Foundation Working Paper, Accra</li>
+<li>De-Graft Aikins, A. et al (2016) “A political economy of social protection policy uptake in Ghana” PASGR Working Paper No. 008, January, Nairobi-Kenya</li>
+<li>Huff, A. et al (2016) “Violence and violence reduction efforts in Kenya, Uganda, Ghana and Ivory Coast: insights and lessons towards achieving SDG 16” IDS Evidence Report 210, Sussex-UK</li>
+</ul>
+<p><strong><em>Other Publications &amp; Reports</em></strong></p>
+<ul>
+<li>G. Domfe, <strong>S.</strong> <strong>Alidu, I</strong>, Owusu-Mensah and A.K.D Frempong (2020) “Who takes the Hohoe Seat in 2020?” Survey Report, January 2020</li>
+<li>G. Domfe and <strong>S. Alidu</strong> (2019) “Strategizing for victory in 2020: a survey in eight regions of Ghana” July, 2019</li>
+<li><strong>S. Alidu</strong> and G. Domfe (2018) “Assessing the chances of John Dramani Mahama in the NDC’s flagbearship elections” August, 2018</li>
+<li><strong>S. Alidu</strong>, P. Hoetu and M. Abbey (2017) “Accounting for the defeat of the NDC and the way forward: perspectives of the youth” Centre for Social Democracy-Ghana,</li>
+<li>S. Alidu (2017) “Ghana: Another Peaceful Alternation of Power” <em>Kujenga Amani</em>, Social Science Research Council, New York</li>
+<li>S. Alidu (2012) “Ghana after John Mills” <em>The Diplomatist</em>, 4(9): 67-68</li>
+<li>S. Alidu (2013) “Ghana: A Beacon of Democracy in Africa” <em>The Diplomatist</em>, 1(7):21-22</li>
+<li>S. Alidu (2012) “Mali: A Ticking Time Bomb” The Diplomatist, 4(11): 39-40</li>
+</ul>
+<p> </p>
+<p><strong><em>Selected Research Projects and Consultancies </em></strong></p>
+<ul>
+<li><a name="_Hlk34314251" id="_Hlk34314251">Makere University, Pedagogical Leadership in Africa Training, Entebbe, Uganda, 24/2/2019 – 4/3/2019</a></li>
+<li>University Ibadan, Pedagogical Leadership in Africa Training, Ibadan, Nigeria, 9th -28th May, 2019</li>
+<li>University of Ghana, Pedagogical Leadership in Africa Training, Accra, Ghana, 31st/7/2019 – 8/8/2019</li>
+<li>University of Egerton, Pedagogical Leadership in Africa Training, Nakaru, Kenya, 11-19th September, 2019</li>
+<li>University of Dar-es-Salam, Pedagogical Leadership in Africa Training, Dar-es-Salam, Tanzania, 18-27th January, 2020</li>
+<li><em>Partnership for African Governance and Research, </em>Pedagogical Leadership in Africa (2018)</li>
+<li><em>University of Sussex, </em>African Cabinet Data Project (2018)</li>
+<li><em>United Nations Development Programme, </em>Developed both audio and audio-visuals; banners, stickers and peace messages for Election 2016</li>
+<li><em>United Nations Development Programme (UNDP) and United States Aid (USAID) </em>of Journalists in all ten regions on peaceful reportage of electoral activities and how to use the media as an organ of peace and reconciliation</li>
+<li><em>Institute for Development Studies, University of Sussex (UK), </em>Addressing and Mitigating Violence in Africa for the Achievement of Sustainable Development Goal 16 (Lead Researcher for Anglophone West Africa)</li>
+</ul>
+<p><strong>OTHERS</strong></p>
+<p><strong><em>Visiting scholar</em></strong></p>
+<ul>
+<li>    Erasmus Mundus Staff Exchange, Department of Political Science, University of Ankara, Turkey</li>
+<li>    School of Public Policy and Administration, Mzumbe University, Morogoro-Tanzania</li>
+<li>    School of Public Policy and Governance, Maseno University, Kisumu-Kenya</li>
+<li>    Department of Political Science, University of Ibadan, Ibadan-Nigeria</li>
+</ul>
+<p><strong><em>Member</em></strong></p>
+<ul>
+<li>    Best Article Award Committee, African Politics Conference Group</li>
+<li>    Conference Planning Committee, School of Social Sciences, UG (2018-date)</li>
+<li>    Supplementary Re-sit Examination Committee, College of Humanities, UG (2016-date)</li>
+<li>    Editorial Board, Ghana Journal of Social Science, UG (8/2015-date)</li>
+<li>    Residency Board, UG (2016-date)</li>
+<li>    Awards Committee, School of Social Science, UG (2014-2015)</li>
+<li>    Joint Examiners Board, UG (2012-2014)</li>
+<li>    Examination Board Member, UG (08/2012 – 11/2014)</li>
+<li>    Research and Graduate Committee, Department of Political Science, UG</li>
+<li>    Welfare Committee, Department of Political Science, UG</li>
+</ul>
+<p><a href="https://scholar.google.com/citations?user=K6hBLiUAAAAJ&amp;hl=en&amp;oi=sra">https://scholar.google.com/citations?user=K6hBLiUAAAAJ&amp;hl=en&amp;oi=sra</a></p>
+<p><strong>PROFILE</strong></p>
+<p>Dr. Seidu Alidu is currently a Senior Lecturer  at the Department of Political Science and a Research Fellow at the Centre for Asian Studies, at the University of Ghana. He was a Donahue Institute Scholar on United States’ Political Thought at the University of Massachusetts in 2014. He is a visiting lecturer to twelve Master of Research and Public Policy (MRPP) Universities in Africa including the University of Lagos, University of Ibadan, University of Dar-es-Salam, University of Nairobi and the University of Botswana. He was a Maria Sibylla Merian Institute for Advanced Studies in Africa (MIASA) fellow on Parliaments and Democracy in Africa. He has worked closely with and for numerous policy think tanks including the Partnership for African Social and Governance Research (PASGR) based in Nairobi Kenya; Centre for International Development Issues Nijmegen based in Netherlands; the Institute for Development Studies at the University of Sussex,  the Institute for Democratic Governance; the Friedrich-Ebert Stiftung; the United Nations Development Programme, the Varieties of Democracy Project based in the University of Gothenburg in Sweden, the Ghana Armed Forces Command and Staff College, the German-African Governance Partnership Organization and the Social Science Research Council based in New York. He has published widely on his subject area with his papers appearing in <em>Peace Review, Criminal Justice Studies, Transitional Justice Review, Journal of African Political Economy and Development, Contemporary Journal of African Development and Ghana Studies</em>.</p>
+<p><strong>RESEARCH INTERESTS</strong></p>
+<ul style="list-style-type:disc">
+<li>Transitional Justice Policies and Modalities</li>
+<li>Traditional Reconciliation Mechanisms and Conflict Resolution</li>
+<li>Civil Society and Democratization, Political Economy of Africa</li>
+<li>Political Economy of Social Protection Policy in Africa</li>
+<li>Conflict Resolution and Transitional Justice</li>
+<li>Electoral Politics and Governance</li>
+</ul>
+<p><strong>EDUCATION</strong></p>
+<ul style="list-style-type:disc">
+<li>Doctor of Philosophy   -           Leeds Metropolitan University - UK  (01/2007 – 07/2010)</li>
+<li>MSc in Development Studies - London School of Economics and Political Science, UK (09/2005 – 07/2006)</li>
+<li>BA Hons. in Political Science  -  (University of Ghana, Ghana) (08/2000 – 07/2004)</li>
+</ul>
+<p><strong>COURSES TAUGHT</strong></p>
+<ul style="list-style-type:disc">
+<li>POLI 712: Issues and Problems of Development in Africa  </li>
+<li>POLI 658: The Politics of International Economy</li>
+<li>POLI 633: Conflicts in African States</li>
+<li>POLI 631: Conflict Resolution and Peace Studies</li>
+<li>POLI 671: Governance, Democracy and Institutional Reform</li>
+<li>POLI 674: Africa and the International Economy</li>
+<li>INTA 618: Ghanaian Foreign Policy</li>
+<li>INTA 622: Issues in Ghanaian Foreign Policy</li>
+<li>MRPP 651: Governance and Politics of Public Policy</li>
+<li>CSPS 606: Managing Social Conflicts and Consensus Building</li>
+<li>CSPS 613: Human Rights and Human Development</li>
+<li>POLI 441: Political Economy of Africa’s Development Since Independence</li>
+<li>POLI 347: International Conflict, Conflict Resolution and Human Rights</li>
+<li>POLI 358: Conflicts and Society in Africa</li>
+<li>POLI 111: Introduction to Political Science</li>
+</ul>
+<p><strong>PUBLICATIONS/ RESEARCH OUTPUT</strong></p>
+<p><strong><em>Peer Reviewed Journals</em></strong></p>
+<ul style="list-style-type:disc">
+<li><strong>Alidu, S</strong>., and Aggrey-Darkoh, E., (2018)<strong> </strong>“Rational Voting in National Elections: the 2012<strong> </strong>and 2016 Elections in Perspective” Ghana Social Science Journal, 15(1), pp.98-121</li>
+<li>Debrah, E., <strong>Alidu, S.,</strong> and Owusu-Mensah, I. (2016) “The Cost of Inter-ethnic conflict Northern Region: the case of the Nawuri-Gonja Conflicts” Journal of African Conflicts and Peace Studies, Vol. 3, Issue, 1, pp. 1-29</li>
+<li><strong>Alidu, S</strong>., and Gyekye-Jandoh, M.<strong> </strong>(2016) “Civil Society and Democratic Governance in<strong> </strong>Ghana: Emerging roles and challenges” <em>Contemporary Journal of African Development</em>, Vol. 4, No. 1, pp. 1-26</li>
+<li><strong>Alidu, S., </strong>Dankyi, E., and Tsiboe-Darko, A. (2016) Ageing policies in Ghana: a review of<strong> </strong>the Livelihood Empowerment against Poverty and the National Health Insurance Scheme, <em>Ghana Studies</em>, Volume 19, pp. 154-172</li>
+<li><strong>Alidu, S., </strong>and Braimah, A. (2014). Ghana‟s Peaceful Election 2012: a Lesson for Africa? <em>International Journal of Sciences: Basic and Applied Research</em>, 18(2): 177-187</li>
+<li><strong>Alidu, S.</strong>,<strong> </strong>(2014). Party Politics and Electoral Malpractices in Ghana‟s Election 2012.<strong> </strong><em>Journal</em><strong> </strong><em>of Scientific Research and Report</em>, 3(11):1449-1464.</li>
+<li><strong>Alidu, S.</strong>, (2014). Economic  and Social Injustices in Ghana’s Military Regimes:   An Investigation of Price Control Policies. <em>IOSR Journal of Humanities and Social Sciences,</em> 19(2): 57 - 65</li>
+<li><strong>Alidu, S., </strong>and Asare, B. (2014). Challenges of Civil Society Networks in Ghana: A<strong> </strong>Comparative Study of Four Networks. <em>British Journal of Economic, Management and Trade</em>, 4(7): 1143-1158</li>
+</ul>
+<p> </p>
+<p><strong><em>Book Chapters</em></strong></p>
+<ul style="list-style-type:disc">
+<li><strong>Seidu Alidu (2019) “</strong>Election Campaign in Ghana’s 2016 National Elections” in <strong>Ghanaian Politics and Political Communication (Africa: Past, Present &amp; Prospects)</strong>, S.G. Obeng and E.  Debrah (eds.) Gateway: New York,</li>
+<li><strong>Seidu Alidu </strong>(2018) “A Political Science Analysis of the 2016 Elections” in FES (2018) <strong><u>Election 2016</u></strong>, FES: Accra:</li>
+<li>De Graft-Aikins A. <strong>Seidu Alidu,</strong> Ellen Bortei-Doku, A. George Domfe (2017) The Scope and Limits of Ghana‟s Livelihood Empowerment against poverty programme” in Awortwi, E. And E. Remi Aiyede, (2017) <strong><u>Politics, Public Policy and Social Protection in Africa,</u></strong> London: Routledge</li>
+<li><strong>Seidu Alidu </strong>(2017) “A Political Science Analysis of the 2012 Elections” in FES (2017) <strong><u>Election 2012</u></strong>, FES: Accra:</li>
+<li><strong>Alidu, S</strong>. and Asare B. (2017),<strong> </strong>“Challenges of Civil Society Networks in Ghana” in Asare, B.<strong> </strong>And Frempong, K. (2017) <strong><u>Selected Issues in Ghana’s Democracy</u></strong>, Volume 1, Accra: Digibooks</li>
+<li>Fairbairn, G., <strong>Alidu, S.,</strong> Medina-Bustos, A., Webb, D. (2014). “What part do apology, truth and forgiveness play in reconciliation” in Aydin, S., and Webber, M.A., (eds.) <strong><u>From</u></strong> <strong><u>Communication Landscape to Bullying Battlegrounds.</u> </strong>Oxford: Inter-displinary Press</li>
+<li>Webb, D., Fairbairn, G., <strong>Alidu, S</strong>. and Medina Bustos, A. (2011). “What do we mean by Reconciliation?” In Elford, R. J. (ed.) <strong><u>Just Reconciliation: The Practice and Morality of</u></strong> <strong><u>Making Peace.</u> </strong>(pp. 21<strong> </strong>–<strong> </strong>42). Oxford: Peter Lang</li>
+</ul>
+<p> </p>
+<p><strong><em>Technical Reports </em></strong></p>
+<ul style="list-style-type:disc">
+<li>S. Dodsworth, <strong>S. Alidu,</strong> G. Bauer and B. Gbensuglo (forthcoming) Parliamentary primaries in Ghana’s National Democratic Congress: Explaining reforms to candidate selection and their impact<a name="_Hlk34294824" id="_Hlk34294824">, MIASA Working Papers Series, University of Ghana</a></li>
+<li>Osei, <strong>S. Alidu</strong>, H. Akinocho and M. Sabbi (forthcoming) “Institutional variations in Africa’s legislatures,” MIASA Working Papers Series, University of Ghana</li>
+<li>S. Alidu (2019) Public Private Partnership: Interrogating the Efficacy of a Politically Convenient Practice” FES Working Paper Series</li>
+<li>Oduro, et al (2018) “Building a more equal Ghana: a 5-point action plan to close the gap between the rich and the rest” Oxfam, Ghana Anti-Corruption Coalition and SEND Foundation Working Paper, Accra</li>
+<li>De-Graft Aikins, A. et al (2016) “A political economy of social protection policy uptake in Ghana” PASGR Working Paper No. 008, January, Nairobi-Kenya</li>
+<li>Huff, A. et al (2016) “Violence and violence reduction efforts in Kenya, Uganda, Ghana and Ivory Coast: insights and lessons towards achieving SDG 16” IDS Evidence Report 210, Sussex-UK</li>
+</ul>
+<p><strong><em>Other Publications &amp; Reports</em></strong></p>
+<ul style="list-style-type:disc">
+<li>G. Domfe, <strong>S.</strong> <strong>Alidu, I</strong>, Owusu-Mensah and A.K.D Frempong (2020) “Who takes the Hohoe Seat in 2020?” Survey Report, January 2020</li>
+<li>G. Domfe and <strong>S. Alidu</strong> (2019) “Strategizing for victory in 2020: a survey in eight regions of Ghana” July, 2019</li>
+<li><strong>S. Alidu</strong> and G. Domfe (2018) “Assessing the chances of John Dramani Mahama in the NDC’s flagbearship elections” August, 2018</li>
+<li><strong>S. Alidu</strong>, P. Hoetu and M. Abbey (2017) “Accounting for the defeat of the NDC and the way forward: perspectives of the youth” Centre for Social Democracy-Ghana,</li>
+<li>S. Alidu (2017) “Ghana: Another Peaceful Alternation of Power” <em>Kujenga Amani</em>, Social Science Research Council, New York</li>
+<li>S. Alidu (2012) “Ghana after John Mills” <em>The Diplomatist</em>, 4(9): 67-68</li>
+<li>S. Alidu (2013) “Ghana: A Beacon of Democracy in Africa” <em>The Diplomatist</em>, 1(7):21-22</li>
+<li>S. Alidu (2012) “Mali: A Ticking Time Bomb” The Diplomatist, 4(11): 39-40</li>
+</ul>
+<p> </p>
+<p><strong><em>Selected Research Projects and Consultancies </em></strong></p>
+<ul style="list-style-type:disc">
+<li><a name="_Hlk34314251" id="_Hlk34314251">Makere University, Pedagogical Leadership in Africa Training, Entebbe, Uganda, 24/2/2019 – 4/3/2019</a></li>
+<li>University Ibadan, Pedagogical Leadership in Africa Training, Ibadan, Nigeria, 9th -28th May, 2019<br />
+<!--[if mso & !supportInlineShapes & supportFields]><p><span<br />
+     style='mso-element:field-begin;mso-field-lock:yes'></span> SHAPE <span<br />
+     style='mso-spacerun:yes'> </span>\* MERGEFORMAT <span style='mso-element:<br />
+     field-separator'></span><![endif]-->
+<!--[if gte vml 1]><p><v:rect id="Rectangle_x0020_2"<br />
+      o:spid="_x0000_s1027" alt="Anchor" style='width:24pt;height:24pt;<br />
+      visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;<br />
+      mso-top-percent:-10001;mso-position-horizontal:absolute;<br />
+      mso-position-horizontal-relative:char;mso-position-vertical:absolute;<br />
+      mso-position-vertical-relative:line;mso-left-percent:-10001;<br />
+      mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="UEsDBBQABgAIAAAAIQC75UiUBQEAAB4CAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbKSRvU7DMBSF<br />
+dyTewfKKEqcMCKEmHfgZgaE8wMW+SSwc27JvS/v23KTJgkoXFsu+P+c7Ol5vDoMTe0zZBl/LVVlJ<br />
+gV4HY31Xy4/tS3EvRSbwBlzwWMsjZrlprq/W22PELHjb51r2RPFBqax7HCCXIaLnThvSAMTP1KkI<br />
++gs6VLdVdad08ISeCho1ZLN+whZ2jsTzgcsnJwldluLxNDiyagkxOquB2Knae/OLUsyEkjenmdzb<br />
+mG/YhlRnCWPnb8C898bRJGtQvEOiVxjYhtLOxs8AySiT4JuDystlVV4WPeM6tK3VaILeDZxIOSsu<br />
+ti/jidNGNZ3/J08yC1dNv9v8AAAA//8DAFBLAwQUAAYACAAAACEArTA/8cEAAAAyAQAACwAAAF9y<br />
+ZWxzLy5yZWxzhI/NCsIwEITvgu8Q9m7TehCRpr2I4FX0AdZk2wbbJGTj39ubi6AgeJtl2G9m6vYx<br />
+jeJGka13CqqiBEFOe2Ndr+B03C3WIDihMzh6RwqexNA281l9oBFTfuLBBhaZ4ljBkFLYSMl6oAm5<br />
+8IFcdjofJ0z5jL0MqC/Yk1yW5UrGTwY0X0yxNwri3lQgjs+Qk/+zfddZTVuvrxO59CNCmoj3vCwj<br />
+MfaUFOjRhrPHaN4Wv0VV5OYgm1p+LW1eAAAA//8DAFBLAwQUAAYACAAAACEAq1xf2OcCAACHBgAA<br />
+HwAAAGNsaXBib2FyZC9kcmF3aW5ncy9kcmF3aW5nMS54bWykVdtu2zAMfR+wfxD07tpOnYuNukWu<br />
+xYBuK5rtAxRZiYXJkicptw3791Gy07jpsIfWDy1FkUeHR6Ryc3eoBNoxbbiSOY6vIoyYpKrgcpPj<br />
+798WwQgjY4ksiFCS5fjIDL67/fjhhmQbTeqSUwQI0mQkx6W1dRaGhpasIuZK1UzC3lrpilhY6k1Y<br />
+aLIH5EqEvSgahBXhEt+eoWbEErTV/A1QQtEfrJgSuSMGIAXNup6Wo6DvRyaZ3N3relk/asecftk9<br />
+asSLHINyklQgEQ7bjTYMluFF1uYMcFjrysWr9RodPMrR/fUY7GARBed1lIwiwKew1drNGeXXf2TR<br />
+cv7fPCDTHApGh4ipHQ25e11Z71TZE6PQChvBELgKZqjO8VjSUunnmk/Zpn6AGzFIqmkJKWxsakiG<br />
+DgOsk0trtS8ZKYxzNyqBnA2CV+wMBhqv9p9VAfKSrVW+ad6u3LMCJKu1sfdMVcgZOdZA0oOT3YOx<br />
+DadTiJdHLbgQXnwhXzgAs/HApUGq23PX57v5dxql89F8lARJbzAPkmg2C8aLaRIMFvGwP7ueTaez<br />
++I87N06ykhcFk+6Y02TFyau2rTjVyqi1vaKqCqF3OGWn6YLZiqPzbBkleOHgHCWjN6up0GhHRI4X<br />
+/muV74SFL2n49oVaLkqKe0k06aXBYjAaBski6QfpMBoFUZxO0kGUpMls8bKkBy7Z+0tC+xyn/V7f<br />
+31KH9EVtkf9e10ayilumkeBVjmGo4Gt61zXiXBb+ai3horE7Ujj6Zynguk8XDaZpXwN7WPopsoeJ<br />
+Ko5OsBX8h+bVCpoLJhheWjBgYH5htIf3M8fm55ZohpH4JGEO0jhJIMz6RdIf9mChuzur7g7xs5dj<br />
+i1FjTi1MJKRsa803JZwUe5mkGsPQrHnb0A0nx04Yu7RHwXzVnjmTxSPR5Ak4C5jbHDMZ3E9aHSEC<br />
+ij0XtzVsWbtHoRmUpnovBwRePME+tf3JcO98d337FwAA//8DAFBLAwQUAAYACAAAACEAtjsEIlQG<br />
+AAALGgAAGgAAAGNsaXBib2FyZC90aGVtZS90aGVtZTEueG1s7FlLbxs3EL4X6H9Y7L2x3oqNyIGt<br />
+R9zGToJISZEjpaV2GXOXC5Kyo1uRHAsUKJoWPTRAbz0UbQMkQC/pr3Gbok2B/IUOuQ+RElU7RgoY<br />
+QSzA2J39Zjicmf2G5F65+iCm3hHmgrCk41cvVXwPJxMWkCTs+HdGg48u+56QKAkQZQnu+HMs/Kvb<br />
+H35wBW1NKEnHDPFgFOEYe2AoEVuo40dSplsbG2ICYiQusRQn8GzKeIwk3PJwI+DoGAaI6UatUmlt<br />
+xIgk/jZYlMpQn8K/RAolmFA+VGawl6AYRr85nZIJ1tjgsKoQYi66lHtHiHZ8sBmw4xF+IH2PIiHh<br />
+Qcev6D9/Y/vKBtrKlahco2voDfRfrpcrBIc1PSYPx+WgjUaz0dop7WsAlau4frvf6rdKexqAJhOY<br />
+aeaLabO5u7nba+ZYA5RdOmz32r161cIb9usrPu801c/Ca1Bmv7GCHwy6EEULr0EZvrmCbzTatW7D<br />
+wmtQhm+t4NuVnV6jbeE1KKIkOVxBV5qtereYbQmZMrrnhG82G4N2LTe+QEE1lNWlhpiyRK6rtRjd<br />
+Z3wAAAWkSJLEk/MUT9EEarKLKBlz4u2TMILCS1HCBIgrtcqgUof/6tfQVzoiaAsjQ1v5BZ6IFZHy<br />
+xxMTTlLZ8T8Bq74Bef3ip9cvnnknD5+fPPz15NGjk4e/ZIYsrT2UhKbWqx++/OfJZ97fz75/9fhr<br />
+N16Y+D9+/vz3375yA2GmixC8/Obpn8+fvvz2i79+fOyA73A0NuEjEmPh3cDH3m0Ww8R0CGzP8Zi/<br />
+mcYoQsTU2ElCgRKkRnHY78vIQt+YI4ocuF1sR/AuB4pxAa/N7lsODyM+k8Rh8XoUW8ADxugu484o<br />
+XFdjGWEezZLQPTifmbjbCB25xu6ixMpvf5YCtxKXyW6ELTdvUZRIFOIES089Y4cYO2Z3jxArrgdk<br />
+wplgU+ndI94uIs6QjMjYqqaF0h6JIS9zl4OQbys2B3e9XUZds+7hIxsJbwWiDudHmFphvIZmEsUu<br />
+kyMUUzPg+0hGLieHcz4xcX0hIdMhpszrB1gIl85NDvM1kn4d6MWd9gM6j20kl+TQZXMfMWYie+yw<br />
+G6E4dWGHJIlM7MfiEEoUebeYdMEPmP2GqHvIA0rWpvsuwVa6T2eDO8CspkuLAlFPZtyRy2uYWfU7<br />
+nNMpwppqgPgtPo9Jciq5L9F68/+ldSDSl989cczqohL6DifON2pvicbX4ZbJu8t4QC4+d/fQLLmF<br />
+4XVZbWDvqfs9dfvvPHWve5/fPmEvOBroWy0Vs6W6XrjHa9ftU0LpUM4p3hd66S6gMwUDECo9vT/F<br />
+5T4ujeBSvckwgIULOdI6HmfyUyKjYYRSWN9XfWUkFLnpUHgpE7Ds12KnbYWns/iABdl2tVpVW9OM<br />
+PASSC3mlWcphqyEzdKu92IKV5rW3od4qFw4o3TdxwhjMdqLucKJdCFWQ9MYcguZwQs/srXix6fDi<br />
+sjJfpGrFC3CtzAosnTxYcHX8ZgNUQAl2VIjiQOUpS3WRXZ3Mt5npdcG0KgDWEUUFLDK9qXxdOz01<br />
+u6zUzpBpywmj3GwndGR0DxMRCnBenUp6FjfeNNebi5Ra7qlQ6PGgtBZutC//lxfnzTXoLXMDTUym<br />
+oIl33PFb9SaUzASlHX8K2364jFOoHaGWvIiGcGA2kTx74c/DLCkXsodElAVck07GBjGRmHuUxB1f<br />
+Tb9MA000h2jfqjUghAvr3CbQykVzDpJuJxlPp3gizbQbEhXp7BYYPuMK51Otfn6w0mQzSPcwCo69<br />
+MZ3x2whKrNmuqgAGRMDpTzWLZkDgOLMkskX9LTWmnHbN80RdQ5kc0TRCeUcxyTyDayov3dF3ZQyM<br />
+u3zOEFAjJHkjHIeqwZpBtbpp2TUyH9Z23dOVVOQM0lz0TItVVNd0s5g1QtEGlmJ5viZveFWEGDjN<br />
+7PAZdS9T7mbBdUvrhLJLQMDL+Dm67hkaguHaYjDLNeXxKg0rzs6ldu8oJniKa2dpEgbrtwqzS3Er<br />
+e4RzOBCeq/OD3nLVgmharCt1pF2fJg5Q6o3DaseHzwNwPvEAruADgw+ympLVlAyu4KsBtIvsqL/j<br />
+5xeFBJ5nkhJTLyT1AtMoJI1C0iwkzULSKiQt39Nn4vAdRh2H+15x5A09LD8iz9cW9veb7X8BAAD/<br />
+/wMAUEsDBBQABgAIAAAAIQCcZkZBuwAAACQBAAAqAAAAY2xpcGJvYXJkL2RyYXdpbmdzL19yZWxz<br />
+L2RyYXdpbmcxLnhtbC5yZWxzhI/NCsIwEITvgu8Q9m7SehCRJr2I0KvUBwjJNi02PyRR7Nsb6EVB<br />
+8LIws+w3s037sjN5YkyTdxxqWgFBp7yenOFw6y+7I5CUpdNy9g45LJigFdtNc8VZ5nKUxikkUigu<br />
+cRhzDifGkhrRykR9QFc2g49W5iKjYUGquzTI9lV1YPGTAeKLSTrNIXa6BtIvoST/Z/thmBSevXpY<br />
+dPlHBMulFxagjAYzB0pXZ501LV2BiYZ9/SbeAAAA//8DAFBLAQItABQABgAIAAAAIQC75UiUBQEA<br />
+AB4CAAATAAAAAAAAAAAAAAAAAAAAAABbQ29udGVudF9UeXBlc10ueG1sUEsBAi0AFAAGAAgAAAAh<br />
+AK0wP/HBAAAAMgEAAAsAAAAAAAAAAAAAAAAANgEAAF9yZWxzLy5yZWxzUEsBAi0AFAAGAAgAAAAh<br />
+AKtcX9jnAgAAhwYAAB8AAAAAAAAAAAAAAAAAIAIAAGNsaXBib2FyZC9kcmF3aW5ncy9kcmF3aW5n<br />
+MS54bWxQSwECLQAUAAYACAAAACEAtjsEIlQGAAALGgAAGgAAAAAAAAAAAAAAAABEBQAAY2xpcGJv<br />
+YXJkL3RoZW1lL3RoZW1lMS54bWxQSwECLQAUAAYACAAAACEAnGZGQbsAAAAkAQAAKgAAAAAAAAAA<br />
+AAAAAADQCwAAY2xpcGJvYXJkL2RyYXdpbmdzL19yZWxzL2RyYXdpbmcxLnhtbC5yZWxzUEsFBgAA<br />
+AAAFAAUAZwEAANMMAAAAAA==<br />
+" filled="f" stroked="f"><br />
+      <o:lock v:ext="edit" aspectratio="t"/><br />
+      <w:wrap type="none"/><br />
+      <w:anchorlock /><br />
+     </v:rect><![endif]-->
+<!--[if gte vml 1]><p><v:shapetype id="_x0000_t75"<br />
+      coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"<br />
+      filled="f" stroked="f"><br />
+      <v:stroke joinstyle="miter"/><br />
+      <v:formulas><br />
+       <v:f eqn="if lineDrawn pixelLineWidth 0"/><br />
+       <v:f eqn="sum @0 1 0"/><br />
+       <v:f eqn="sum 0 0 @1"/><br />
+       <v:f eqn="prod @2 1 2"/><br />
+       <v:f eqn="prod @3 21600 pixelWidth"/><br />
+       <v:f eqn="prod @3 21600 pixelHeight"/><br />
+       <v:f eqn="sum @0 0 1"/><br />
+       <v:f eqn="prod @6 1 2"/><br />
+       <v:f eqn="prod @7 21600 pixelWidth"/><br />
+       <v:f eqn="sum @8 21600 0"/><br />
+       <v:f eqn="prod @7 21600 pixelHeight"/><br />
+       <v:f eqn="sum @10 21600 0"/><br />
+      </v:formulas><br />
+      <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/><br />
+      <o:lock v:ext="edit" aspectratio="t"/><br />
+     </v:shapetype><![endif]-->
+<!--[if mso & !supportInlineShapes & supportFields]><p><v:shape<br />
+      id="_x0000_i1026" type="#_x0000_t75" style='width:24pt;height:24pt'><br />
+      <v:imagedata croptop="-65520f" cropbottom="65520f"/><br />
+     </v:shape><span style='mso-element:field-end'></span><![endif]--></li>
+<li>University of Ghana, Pedagogical Leadership in Africa Training, Accra, Ghana, 31st/7/2019 – 8/8/2019</li>
+<li>University of Egerton, Pedagogical Leadership in Africa Training, Nakaru, Kenya, 11-19th September, 2019</li>
+<li>University of Dar-es-Salam, Pedagogical Leadership in Africa Training, Dar-es-Salam, Tanzania, 18-27th January, 2020<br />
+<!--[if mso & !supportInlineShapes & supportFields]><p><span<br />
+     style='mso-element:field-begin;mso-field-lock:yes'></span> SHAPE <span<br />
+     style='mso-spacerun:yes'> </span>\* MERGEFORMAT <span style='mso-element:<br />
+     field-separator'></span><![endif]-->
+<!--[if gte vml 1]><p><v:rect id="Rectangle_x0020_1"<br />
+      o:spid="_x0000_s1026" alt="Anchor" style='width:24pt;height:24pt;<br />
+      visibility:visible;mso-wrap-style:square;mso-left-percent:-10001;<br />
+      mso-top-percent:-10001;mso-position-horizontal:absolute;<br />
+      mso-position-horizontal-relative:char;mso-position-vertical:absolute;<br />
+      mso-position-vertical-relative:line;mso-left-percent:-10001;<br />
+      mso-top-percent:-10001;v-text-anchor:top' o:gfxdata="UEsDBBQABgAIAAAAIQC75UiUBQEAAB4CAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbKSRvU7DMBSF<br />
+dyTewfKKEqcMCKEmHfgZgaE8wMW+SSwc27JvS/v23KTJgkoXFsu+P+c7Ol5vDoMTe0zZBl/LVVlJ<br />
+gV4HY31Xy4/tS3EvRSbwBlzwWMsjZrlprq/W22PELHjb51r2RPFBqax7HCCXIaLnThvSAMTP1KkI<br />
++gs6VLdVdad08ISeCho1ZLN+whZ2jsTzgcsnJwldluLxNDiyagkxOquB2Knae/OLUsyEkjenmdzb<br />
+mG/YhlRnCWPnb8C898bRJGtQvEOiVxjYhtLOxs8AySiT4JuDystlVV4WPeM6tK3VaILeDZxIOSsu<br />
+ti/jidNGNZ3/J08yC1dNv9v8AAAA//8DAFBLAwQUAAYACAAAACEArTA/8cEAAAAyAQAACwAAAF9y<br />
+ZWxzLy5yZWxzhI/NCsIwEITvgu8Q9m7TehCRpr2I4FX0AdZk2wbbJGTj39ubi6AgeJtl2G9m6vYx<br />
+jeJGka13CqqiBEFOe2Ndr+B03C3WIDihMzh6RwqexNA281l9oBFTfuLBBhaZ4ljBkFLYSMl6oAm5<br />
+8IFcdjofJ0z5jL0MqC/Yk1yW5UrGTwY0X0yxNwri3lQgjs+Qk/+zfddZTVuvrxO59CNCmoj3vCwj<br />
+MfaUFOjRhrPHaN4Wv0VV5OYgm1p+LW1eAAAA//8DAFBLAwQUAAYACAAAACEAOVjh2+cCAACHBgAA<br />
+HwAAAGNsaXBib2FyZC9kcmF3aW5ncy9kcmF3aW5nMS54bWykVdtu2zAMfR+wfxD07tpOnYuNukWu<br />
+xYBuK5rtAxRZiYXJkicptw3791Gy07jpsIfWDy1FkUeHR6Ryc3eoBNoxbbiSOY6vIoyYpKrgcpPj<br />
+798WwQgjY4ksiFCS5fjIDL67/fjhhmQbTeqSUwQI0mQkx6W1dRaGhpasIuZK1UzC3lrpilhY6k1Y<br />
+aLIH5EqEvSgahBXhEt+eoWbEErTV/A1QQtEfrJgSuSMGIAXNup6Wo6DvRyaZ3N3relk/asecftk9<br />
+asSLHINyklQgEQ7bjTYMluFF1uYMcFjrysWr9RodPMrR/fUY7GARBed1lIwiwKew1drNGeXXf2TR<br />
+cv7fPCDTHApGh4ipHQ25e11ZfKrsiVFohY1gCFwFM1TneCxpqfRzzadsUz/AjRgk1bSEFDY2NSRD<br />
+hwHWyaW12peMFMa5G5VAzgbBK3YGA41X+8+qAHnJ1irfNG9X7lkBktXa2HumKuSMHGsg6cHJ7sHY<br />
+htMpxMujFlwIL76QLxyA2Xjg0iDV7bnr8938O43S+Wg+SoKkN5gHSTSbBePFNAkGi3jYn13PptNZ<br />
+/MedGydZyYuCSXfMabLi5FXbVpxqZdTaXlFVhdA7nLLTdMFsxdF5towSvHBwjpLRm9VUaLQjIscL<br />
+/7XKd8LClzR8+0ItFyXFvSSa9NJgMRgNg2SR9IN0GI2CKE4n6SBK0mS2eFnSA5fs/SWhfY7Tfq/v<br />
+b6lD+qK2yH+vayNZxS3TSPAqxzBU8DW96xpxLgt/tZZw0dgdKRz9sxRw3aeLBtO0r4E9LP0U2cNE<br />
+FUcn2Ar+Q/NqBc0FEwwvLRgwML8w2sP7mWPzc0s0w0h8kjAHaZwkEGb9IukPe7DQ3Z1Vd4f42cux<br />
+xagxpxYmElK2teabEk6KvUxSjWFo1rxt6IaTYyeMXdqjYL5qz5zJ4pFo8gScBcxtjpkM7ietjhAB<br />
+xZ6L2xq2rN2j0AxKU72XAwIvnmCf2v5kuHe+u779CwAA//8DAFBLAwQUAAYACAAAACEAtjsEIlQG<br />
+AAALGgAAGgAAAGNsaXBib2FyZC90aGVtZS90aGVtZTEueG1s7FlLbxs3EL4X6H9Y7L2x3oqNyIGt<br />
+R9zGToJISZEjpaV2GXOXC5Kyo1uRHAsUKJoWPTRAbz0UbQMkQC/pr3Gbok2B/IUOuQ+RElU7RgoY<br />
+QSzA2J39Zjicmf2G5F65+iCm3hHmgrCk41cvVXwPJxMWkCTs+HdGg48u+56QKAkQZQnu+HMs/Kvb<br />
+H35wBW1NKEnHDPFgFOEYe2AoEVuo40dSplsbG2ICYiQusRQn8GzKeIwk3PJwI+DoGAaI6UatUmlt<br />
+xIgk/jZYlMpQn8K/RAolmFA+VGawl6AYRr85nZIJ1tjgsKoQYi66lHtHiHZ8sBmw4xF+IH2PIiHh<br />
+Qcev6D9/Y/vKBtrKlahco2voDfRfrpcrBIc1PSYPx+WgjUaz0dop7WsAlau4frvf6rdKexqAJhOY<br />
+aeaLabO5u7nba+ZYA5RdOmz32r161cIb9usrPu801c/Ca1Bmv7GCHwy6EEULr0EZvrmCbzTatW7D<br />
+wmtQhm+t4NuVnV6jbeE1KKIkOVxBV5qtereYbQmZMrrnhG82G4N2LTe+QEE1lNWlhpiyRK6rtRjd<br />
+Z3wAAAWkSJLEk/MUT9EEarKLKBlz4u2TMILCS1HCBIgrtcqgUof/6tfQVzoiaAsjQ1v5BZ6IFZHy<br />
+xxMTTlLZ8T8Bq74Bef3ip9cvnnknD5+fPPz15NGjk4e/ZIYsrT2UhKbWqx++/OfJZ97fz75/9fhr<br />
+N16Y+D9+/vz3375yA2GmixC8/Obpn8+fvvz2i79+fOyA73A0NuEjEmPh3cDH3m0Ww8R0CGzP8Zi/<br />
+mcYoQsTU2ElCgRKkRnHY78vIQt+YI4ocuF1sR/AuB4pxAa/N7lsODyM+k8Rh8XoUW8ADxugu484o<br />
+XFdjGWEezZLQPTifmbjbCB25xu6ixMpvf5YCtxKXyW6ELTdvUZRIFOIES089Y4cYO2Z3jxArrgdk<br />
+wplgU+ndI94uIs6QjMjYqqaF0h6JIS9zl4OQbys2B3e9XUZds+7hIxsJbwWiDudHmFphvIZmEsUu<br />
+kyMUUzPg+0hGLieHcz4xcX0hIdMhpszrB1gIl85NDvM1kn4d6MWd9gM6j20kl+TQZXMfMWYie+yw<br />
+G6E4dWGHJIlM7MfiEEoUebeYdMEPmP2GqHvIA0rWpvsuwVa6T2eDO8CspkuLAlFPZtyRy2uYWfU7<br />
+nNMpwppqgPgtPo9Jciq5L9F68/+ldSDSl989cczqohL6DifON2pvicbX4ZbJu8t4QC4+d/fQLLmF<br />
+4XVZbWDvqfs9dfvvPHWve5/fPmEvOBroWy0Vs6W6XrjHa9ftU0LpUM4p3hd66S6gMwUDECo9vT/F<br />
+5T4ujeBSvckwgIULOdI6HmfyUyKjYYRSWN9XfWUkFLnpUHgpE7Ds12KnbYWns/iABdl2tVpVW9OM<br />
+PASSC3mlWcphqyEzdKu92IKV5rW3od4qFw4o3TdxwhjMdqLucKJdCFWQ9MYcguZwQs/srXix6fDi<br />
+sjJfpGrFC3CtzAosnTxYcHX8ZgNUQAl2VIjiQOUpS3WRXZ3Mt5npdcG0KgDWEUUFLDK9qXxdOz01<br />
+u6zUzpBpywmj3GwndGR0DxMRCnBenUp6FjfeNNebi5Ra7qlQ6PGgtBZutC//lxfnzTXoLXMDTUym<br />
+oIl33PFb9SaUzASlHX8K2364jFOoHaGWvIiGcGA2kTx74c/DLCkXsodElAVck07GBjGRmHuUxB1f<br />
+Tb9MA000h2jfqjUghAvr3CbQykVzDpJuJxlPp3gizbQbEhXp7BYYPuMK51Otfn6w0mQzSPcwCo69<br />
+MZ3x2whKrNmuqgAGRMDpTzWLZkDgOLMkskX9LTWmnHbN80RdQ5kc0TRCeUcxyTyDayov3dF3ZQyM<br />
+u3zOEFAjJHkjHIeqwZpBtbpp2TUyH9Z23dOVVOQM0lz0TItVVNd0s5g1QtEGlmJ5viZveFWEGDjN<br />
+7PAZdS9T7mbBdUvrhLJLQMDL+Dm67hkaguHaYjDLNeXxKg0rzs6ldu8oJniKa2dpEgbrtwqzS3Er<br />
+e4RzOBCeq/OD3nLVgmharCt1pF2fJg5Q6o3DaseHzwNwPvEAruADgw+ympLVlAyu4KsBtIvsqL/j<br />
+5xeFBJ5nkhJTLyT1AtMoJI1C0iwkzULSKiQt39Nn4vAdRh2H+15x5A09LD8iz9cW9veb7X8BAAD/<br />
+/wMAUEsDBBQABgAIAAAAIQCcZkZBuwAAACQBAAAqAAAAY2xpcGJvYXJkL2RyYXdpbmdzL19yZWxz<br />
+L2RyYXdpbmcxLnhtbC5yZWxzhI/NCsIwEITvgu8Q9m7SehCRJr2I0KvUBwjJNi02PyRR7Nsb6EVB<br />
+8LIws+w3s037sjN5YkyTdxxqWgFBp7yenOFw6y+7I5CUpdNy9g45LJigFdtNc8VZ5nKUxikkUigu<br />
+cRhzDifGkhrRykR9QFc2g49W5iKjYUGquzTI9lV1YPGTAeKLSTrNIXa6BtIvoST/Z/thmBSevXpY<br />
+dPlHBMulFxagjAYzB0pXZ501LV2BiYZ9/SbeAAAA//8DAFBLAQItABQABgAIAAAAIQC75UiUBQEA<br />
+AB4CAAATAAAAAAAAAAAAAAAAAAAAAABbQ29udGVudF9UeXBlc10ueG1sUEsBAi0AFAAGAAgAAAAh<br />
+AK0wP/HBAAAAMgEAAAsAAAAAAAAAAAAAAAAANgEAAF9yZWxzLy5yZWxzUEsBAi0AFAAGAAgAAAAh<br />
+ADlY4dvnAgAAhwYAAB8AAAAAAAAAAAAAAAAAIAIAAGNsaXBib2FyZC9kcmF3aW5ncy9kcmF3aW5n<br />
+MS54bWxQSwECLQAUAAYACAAAACEAtjsEIlQGAAALGgAAGgAAAAAAAAAAAAAAAABEBQAAY2xpcGJv<br />
+YXJkL3RoZW1lL3RoZW1lMS54bWxQSwECLQAUAAYACAAAACEAnGZGQbsAAAAkAQAAKgAAAAAAAAAA<br />
+AAAAAADQCwAAY2xpcGJvYXJkL2RyYXdpbmdzL19yZWxzL2RyYXdpbmcxLnhtbC5yZWxzUEsFBgAA<br />
+AAAFAAUAZwEAANMMAAAAAA==<br />
+" filled="f" stroked="f"><br />
+      <o:lock v:ext="edit" aspectratio="t"/><br />
+      <w:wrap type="none"/><br />
+      <w:anchorlock /><br />
+     </v:rect><![endif]-->
+<!--[if mso & !supportInlineShapes & supportFields]><p><v:shape<br />
+      id="_x0000_i1025" type="#_x0000_t75" style='width:24pt;height:24pt'><br />
+      <v:imagedata croptop="-65520f" cropbottom="65520f"/><br />
+     </v:shape><span style='mso-element:field-end'></span><![endif]--></li>
+<li><em>Partnership for African Governance and Research, </em>Pedagogical Leadership in Africa (2018)</li>
+<li><em>University of Sussex, </em>African Cabinet Data Project (2018)</li>
+<li><em>United Nations Development Programme, </em>Developed both audio and audio-visuals; banners, stickers and peace messages for Election 2016</li>
+<li><em>United Nations Development Programme (UNDP) and United States Aid (USAID) </em>of Journalists in all ten regions on peaceful reportage of electoral activities and how to use the media as an organ of peace and reconciliation</li>
+<li><em>Institute for Development Studies, University of Sussex (UK), </em>Addressing and Mitigating Violence in Africa for the Achievement of Sustainable Development Goal 16 (Lead Researcher for Anglophone West Africa)</li>
+</ul>
+<p><strong>OTHERS</strong></p>
+<p><strong><em>Visiting scholar</em></strong></p>
+<ul style="list-style-type:disc">
+<li>    Erasmus Mundus Staff Exchange, Department of Political Science, University of Ankara, Turkey</li>
+<li>    School of Public Policy and Administration, Mzumbe University, Morogoro-Tanzania</li>
+<li>    School of Public Policy and Governance, Maseno University, Kisumu-Kenya</li>
+<li>    Department of Political Science, University of Ibadan, Ibadan-Nigeria</li>
+</ul>
+<p><strong><em>Member</em></strong></p>
+<ul style="list-style-type:disc">
+<li>    Best Article Award Committee, African Politics Conference Group</li>
+<li>    Conference Planning Committee, School of Social Sciences, UG (2018-date)</li>
+<li>    Supplementary Re-sit Examination Committee, College of Humanities, UG (2016-date)</li>
+<li>    Editorial Board, Ghana Journal of Social Science, UG (8/2015-date)</li>
+<li>    Residency Board, UG (2016-date)</li>
+<li>    Awards Committee, School of Social Science, UG (2014-2015)</li>
+<li>    Joint Examiners Board, UG (2012-2014)</li>
+<li>    Examination Board Member, UG (08/2012 – 11/2014)</li>
+<li>    Research and Graduate Committee, Department of Political Science, UG</li>
+<li>    Welfare Committee, Department of Political Science, UG</li>
+</ul>
+<p> </p>
+</div></div></div><div class="field field-name-field-file field-type-file field-label-above"><div class="field-label">View full CV:&nbsp;</div><div class="field-items"><div class="field-item even"><span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="https://pscience.ug.edu.gh/sites/pscience/files/cv/SMALIDU_CV_Rev_0.pdf" type="application/pdf; length=395836">SMALIDU_CV_Rev.pdf</a></span></div></div></div>  </div>
+
+</div>
+
+  </div>
+</div>  </div>
+          
+
+        </div> <!-- // content -->
+
+
+              </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="container">
+              <div class="row footer_inside">
+
+          <div class="four columns f1" style="width:211px;">
+              <div class="region region-footer-firstcolumn">
+     <div id="block-block-2" class="block block-block">
+    
+    <h3>About the Department</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/about/welcome">Welcome Message</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/brief_history">Brief History</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/vision">Objectives and Vision</a></p>
+<p><a href="https://pscience.ug.edu.gh/faculty-staff">Faculty</a></p>
+<p><a href="https://pscience.ug.edu.gh/staff">Staff</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!--  1/4 Columns -->
+          <div class="three columns f2">
+              <div class="region region-footer-secondcolumn">
+     <div id="block-block-1" class="block block-block">
+    
+    <h3>Admissions</h3>
+
+    
+  <div class="content">
+    <p><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank">Undergraduate</a></p>
+<p><a href="https://sgs.ug.edu.gh/admissions/" target="_blank">Graduate</a></p>
+<p><a href="https://admissions.ug.edu.gh/international" target="_blank">International</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f3">
+              <div class="region region-footer-thirdcolumn">
+     <div id="block-block-3" class="block block-block">
+    
+    <h3>Academics</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/academics/academic-programmes" style="font-size: 13.008px;">Academic Programmes</a></p>
+<p><a href="https://pscience.ug.edu.gh/courses">Undergraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/post-graduate-courses">Postgraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/student_support">Student Support</a></p>
+<p><a href="https://www.ug.edu.gh/academics/calendar" target="_blank">Academic Calendar</a></p>
+  </div>
+</div>
+  </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f4">
+              <div class="region region-footer-fourthcolumn">
+     <div id="block-block-4" class="block block-block">
+    
+    <h3>QUICK LINKS</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/news-events">News &amp; Events</a></p>
+<p><a href="https://pscience.ug.edu.gh/news-events?tid=12">Announcements</a></p>
+<p><a href="https://pscience.ug.edu.gh/research">Research</a></p>
+<p><a href="#" target="_blank">Alumni</a></p>
+<p><a href="https://socialsciences.ug.edu.gh/" target="_blank">School of Social Sciences</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+            <!-- 1/4 Columns -->
+          <div class="three columns f5">
+                      </div>
+
+
+              
+      </div> 
+      <div class="clear"></div>
+
+      <div class="footer_btm">
+        <div class="footer_btm_inner">
+
+                                <div id="powered">
+              <a href="https://www.ug.edu.gh/" target="_blank">University of Ghana </a>&copy;&nbsp;2026                
+              </div>
+                  </div>    
+      </div>
+    </div>
+  
+    <!-- Footer::END -->
+
+  </div>    
+
+    
+      <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/sites/all/themes/ugdepartments/stylesheets/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.7/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_Hfha9RCTNm8mqMDLXriIsKGMaghzs4ZaqJPLj2esi7s.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_JcYGsF6wKv2qOZLXPZKU9pUzvB92frJyEKj5BQmUMh0.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_yj9SBIxGToUO1zIgUUUueFAIoXNPmXJQe8PicowubVY.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"ugdepartments","theme_token":"9CoLn8hagLx0cVhUCYifY3J_oumR-7MUX5W-yhufTpA","js":{"\/\/code.jquery.com\/jquery-1.7.2.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.bgiframe.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.hoverIntent.js":1,"sites\/all\/libraries\/superfish\/superfish.js":1,"sites\/all\/modules\/nice_menus\/js\/nice_menus.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.easing.1.3.js":1,"sites\/all\/themes\/ugdepartments\/js\/common.js":1,"sites\/all\/themes\/ugdepartments\/js\/isotope.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.flexslider-min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.prettyPhoto.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.jcarousel.min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.tipsy.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.selectnav.js":1,"sites\/all\/themes\/ugdepartments\/js\/aqua.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus_default.css":1,"sites\/all\/modules\/ds\/layouts\/ds_2col_stacked_fluid\/ds_2col_stacked_fluid.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/ug-style-min.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/fpe.css":1,"https:\/\/use.fontawesome.com\/releases\/v5.11.2\/css\/all.css":1}},"nice_menus_options":{"delay":800,"speed":"slow"},"urlIsAjaxTrusted":{"\/staff\/prof-seidu-mahama-alidu":true}});
+//--><!]]>
+</script>
+      <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    <!--  Fonts  -->
+
+	
+
+  </body>
+</html>

@@ -1,0 +1,719 @@
+ <!DOCTYPE html>
+<!--
+              ,;r;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;r;,                 
+             .2@@@Superviser:Parick Kuti@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@h,
+             .@@Project+Managers:@@Michael##Phillips@Deborah###Allah@@@@@@@@@@@@@@@@@@@@@@*,
+             .X@@@Lead+Programmers:Gilbert_Gadzekpo@@@Ian Allotey@@@@@@@@@@@@@@@@@@@@@@@@@&,                
+              Developers@@BXi3@@@Alex#Tenkorang@@@@H2iG@@@@Emmanuel#Asare@@@A5Sh#@@@@@@@@@X.                
+              r#@@#####@@B2;;iA@@###############@@H5;;iH@@@##############@MXr;iA@@######@@2.                
+              r#@@#####@@M2r;i&#@@##############@@BXrri&#@@#############@@#Xr;i&#@@#####@@2.                
+              r#@@#####@@@ASrSH@@@##############@@@B5s2M@@@#############@@@ASr2B@@@@####@@2.                
+              r#@@###B3XH@@&29#BX3H#@#######@#H99B@@&5&#H9hB##########M9XH@M929#M9XH####@@2.                
+              r#@@##@#Girri5Siir;5M@@@######@@#&SrrS5iii;r2M@@@######@@hsrsS5Sisr;SB@@##@@2.                
+              r#@@###@@#2;;rsrrih@@@##########@@MS;rrsrri&@@@#########@@M2rrssrriG@@@#M#@@2.                
+              r#@@#HX5G#@BXisi2A@#h23H@@####A55G##H2iss2B@M923B@####HX5G#@B3iri2A@#hXhH#@@2.                
+              r#@@@#2;;s3A9SiS525r;s&#@@##@@#Xr;s3&XSii22S;;s&#@###@#X;:s3&9SiS225r;sA#@@@2.                
+              r#@@@@@B5;;;sSSir;;rX#@@@####@@@M5;;;sSSir;;r3#@@####@@@H5;;;sS5Ss;;rX#@@@@@2.                
+              r#@#AA#@@#G2iiiSSX&#@#HM####MAA#@@#G5iiiiSXA#@#BM####AA#@@Mh2iiiiSXGM@#HH#@@2.                
+              r@@@9sr2M@@#XsiSXB#H5rsh#@@@M3sr5M@@B2siS3M#H2rs&@@@#GsrX#@@MXisS3H#H2rs9#@@2.                
+              r#@@@Hi;;ri5SiSSisr;;SH@@@#@@#&s;;riSSiSSisr;;i&#@@@@@Ai;;ri55Siiisr;;SH@@@@2.                
+              r#@@@@M3sr;rsSSisrs2H@@@####@@@#hs;rriSSSsrs2A@@@###@@@M2rr;rsSSiiss2H@@@@@@2.                
+              r#@@@@@@@#&2iiiii9#@@@@#####@@@@@@#G5iiii5A@@@@@#####@@@@@#A2iiiiS9#@@@@##@@2.                
+              r#@@#@@@@@@#3ssi2H@@@@#######@@@@@@@#XissX#@@@@#######@@@@@@@hsri2H@@@@###@@X.                
+              s@@@@@@@@@@@ASss2B@@@@@@@@@@@@@@@@@@@ASsr2#@@@@@@@@@@@@@@@@@@HiriXB@@@@@@@@@3,                
+              :hB&h99GG&HA2srrs2GAG99hhhh9hhhGGGAA&2sr;s2G&hhhGGGGhh99hh&AA2srrs2h&Gh99hHAr                 
+              :3Hh333939G&AAAGhh9h93333hG&AAAAAAAAA&AA&h99hh&AAAAAAAG9339h&AAA&h9hh93339A&r                 
+              r#@@@@@@@@@@@@@@@@@@@@@@@@@MAGh9hA#@@@@@@@@@@@MAhh9GAM@@@@@@@@@@@@@@@@@@@@@@2.                
+              s@@@@@@@@@@@@@@@@@@@@@@@#A2issiirri3#@@@@@@@H2srsiissiXH@@@@@@@@@@@@@@@@@@@@3,                
+              r#@@#################@#9r;r2A#@@#&i;r2M@@@A5rrSA@@@#ASrrSA@@@#############@@X.                
+              r#@@##################&irX#@@@@@@@@Hs;sA#&sr2@@@@@@@@@Bi;SB@@#############@@2.                
+              r#@@###############@@HXsSB@@@B3SX#@@Birrssi3@@@H25&#@@@Gsi&#@@############@@2.                
+              r#@@###############@@HXs5B@@@#hs;sA@@B2r;sh@@@Xr;iA@@@@Aiih#@@############@@2.                
+              r#@@###############@@@HirSH@@@@hrrX@@@hs;iA@@#2riA@@@@Air5H@@#############@@2.                
+              r#@@################@@@H5r;rS25iS&@@#G25Si5G@@@Gisi5ir;s3M@@##############@@2.                
+              r#@@##########@@@@@@@@@@@MhX2XGM@@@M5r2#@As;X@@@@A3223A@@@@@@@@@@@@@######@@2.                
+              r#@@##########Bh223hAH#@@@@@@@@@#A2siXM@@@&iri3B#@@@@@@@@#BA&9X23A#@@#####@@2.                
+              r#@@########M9s:::::;;rrsS5222ir;::rA@@92A@@X;:;rsS222Sirrr;;::::;SA#@####@@2.                
+              r#@@#########A2srrssisiiS2222225isrs3MB9X&##3rriS22XX225Siiissrrrs2A######@@2.                
+              r#@@########@@@@BB#@@@@@@@@@#@@@@@B2rrh@@@9ss9#@@@@##@@@@@@@@@#BB@@@@#####@@2.                
+              r#@@########@@@@@@@@@@@@Mh5isi5h#@@@&siGHG55M@@@B35isi2A@@@@@@@@@@@#######@@2.                
+              r#@@#########@@@@@@@@@#Xr;s3BMhssX#@@A5rrih#@@Air5A#H2r;sG@@@@@@@@########@@2.                
+              r#@@##################hssh@@@@@hsr3@@#Xr;sA@@#5rSH@@@@#2riA#@@############@@2.                
+              r#@@###############@#A2s2#@@@#3sr2M@@GSsrs2H@@H5riG@@@@Ais9M@@############@@2.                
+              r#@@###############@@#GiiA@@@#HAM@@@Aii33SsSB@@@H&A#@@@GsiA#@@############@@2.                
+              r#@@################@@#5;rh#@@@@@@#Xrr3@@#S;rG@@@@@@@#hsrX#@@#############@@2.                
+              r#@@################@@@#Xr;r2hGhXSrrSH@@@@#9r;r53hhXSrri&#@@##############@@X,                
+              ;#@@#################@@@@M3SsrrrriXA@@@@@@@@#hSsrrrri2&#@@@###############@@2.                
+              :A@@##################@@@@@@#BAH#@@@@@####@@@@@@MHHM@@@@@@################@#s.                 
+              .2#@@###################@@@@@@@@@@@@#######@@@@@@@@@@@@@##################@@M;                 
+               :h@@@#####################@@@@@@####TEAM#####@@@@@@####################@@#9:                 
+                ;#@@@########Patrick#Kuti####Michael#Philips####Deborah#Allah#########@@3,                  
+                 :h@@@@@##########Gilbert#Gadzekpo#####Ian#Allotey#################@@@@B;                   
+                   rM@@@@@@@@@#######Alex#Tenkorang#####Emmanuel##Asare#####@@@@@@@@#5.                    
+                     ,s&@@@@@@@@@@@@@################################@@@@@@@@@@@@@Ai:                       
+         ...              ,;i3H@@@@@@@@@@@@@#################@@@@@@@@@@@@M&92s;:.          .:::.            
+      ,;r;:::::,.               .:;rs59A#@@@@@@@@@#######@@@@@@A3ir;;:..               .,::,,::;r;.         
+     :rrrssr;;iXi,                       .,;i2A#@@@@@@@@@#A2r:.                       ,s25r;;;;rs;,         
+     :r;::;:,.:;;.                             .;i&#@@H5;.                     ... .   ,::,,::;;sr:         
+     .r2S;,...    ..,,..                           ,;:                        ......,,.   ...,;SG2:         
+      ;2Ah2isr;rS2s:.,:;;rr;.                                               :rir;:. ,i92issi5X9h9s.         
+      ,SA&99h&&AHhr..;h@@@@@5,                                             ,2@@@@#S..rX&Ahhh93XXS;          
+       rX3X33393G3;.,r5399Gh2s;::,,.                                 ..,,,:r5XX23hs..;5993XXX22Sr,          
+         ,;sS5229X;..;s2&M@#M#@@###H&9X25isssrrrrrrrrrrrrrrsssssiiS2XGAHBMMAh&BMBGr. :s2X2Ssr:,             
+                 .  .rS3M@@@@##@@@@@@@@@@@@#HH#@@@@#UGCSMM#@@@@@@@##@@@@@@@#AB@@@Mi,                        
+                     :riXh&AAGhAM####@@@@@@#BM@@@@@@@@#@@@MM@@@@@@@@@@@@@@#MH&9X2s:.                        
+                            .,;rsii5Xh&&&AA&GGGh&ABBBBBBMBAAHBAAHH&9X5Sis;:,.                               
+                                        .,,:::,,,::::;;:::::::::,.                                          
+ -->
+
+
+<!--[if IE 7 ]><html class="ie ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><!--<![endif]-->
+
+  <head profile="http://www.w3.org/1999/xhtml/vocab">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/staff/prof-isaac-owusu-mensah" />
+<link rel="shortlink" href="/node/27" />
+<link rel="shortcut icon" href="https://pscience.ug.edu.gh/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prof. Isaac Owusu-Mensah  | Department of Political Science</title>
+    <link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_TsVRTbLFUpEZAfw-_bWPJu840QT523CPjUVJ5MRWfyk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_HkdpaPJNwY4GBfynmNsoQHIPSVGTir6baStmsdyM_vc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_uS_-bgJ2-t8YuIh44b3fkiJyEGdNvo64Ixe2JuoJiM4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" media="all" />
+	
+
+
+      
+
+      <!-- menu font -->
+            <style type="text/css">
+        .custom_menu #menu > ul > li > a,#menu {
+          font-family:Open Sans;
+                  }
+      </style>
+      <!-- // menu font -->
+
+      <!-- menu font size -->
+            <style type="text/css">
+        #menu > ul > li > a{
+          font-size: 15px ;
+        }
+        #menu > ul > li ul > li > a{
+          font-size: 14px ;
+        }
+      </style>
+      <!-- // menu font size -->
+
+
+      <!-- main color -->
+            <style type="text/css">
+        a:hover, a:focus{
+          color: #0AD1E5 ;
+        }
+        .button:hover,
+        a:hover.button,
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,	
+        input[type="button"]:hover,
+        .button_hilite, 
+        a.button_hilite,
+        .button_hilite,
+        a.button_hilite{
+          color: #FFF;
+          background-color: #0AD1E5;
+        }
+        .section_big_title h1 strong,
+        .section_featured_texts h3 a:hover,
+        .breadcrumb a:hover,
+        .post_meta a:hover,
+        #footer a:hover {
+          color: #0AD1E5 ;
+        }
+        .portfolio_filter div.current,
+        .next:hover,.prev:hover,
+        .pagination .links a:hover,
+        .info h2, 
+        .h2.ls-s2,
+        jcarousel-next-horizontal:hover, 
+        .jcarousel-prev-horizontal:hover{
+          background-color: #0AD1E5 ;
+        }
+        .footer_pic img:hover{
+          border: 1px solid #0AD1E5;
+        }
+      </style>
+      <!-- // main color -->
+
+      <!-- heading font -->
+            <style type="text/css">
+        h1, h2, h3, h4, h5, .title, .section_big_title h1, .heading, #footer h3,
+        .page_heading h1{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- heading font -->
+
+      <!-- button font -->
+            <style type="text/css">
+        .button, a.button,	button,	input[type="submit"], input[type="reset"], input[type="button"]{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- // button fonts -->
+
+      <!-- body font -->
+            <style typ="text/css">
+        body{
+          font-family: Open Sans;
+        }
+      </style>
+      <!-- // body font -->
+
+      <!-- body background and color -->
+            <style type="text/css">
+        body{
+          background-image: none;background-color #fff;        }
+      </style>
+      <!-- // body bg -->
+
+  </head>
+  <body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-27 node-type-staff" >
+    <div id="skip-link">
+      <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+    </div>
+         
+<div id="wrapper" class="not-home-page">
+
+  <div class="container">
+
+    <div class="header clearfix row">
+              <div class="eight columns header_left">
+          <a href="/"><img src="https://pscience.ug.edu.gh/sites/pscience/files/logo_pscience.png" alt="Home" /></a>
+        </div>
+      
+      <div class="eight columns">
+        <div class="header_right">
+          
+
+          <div class="header_soc_search clearfix">
+                          <div class="header_search">
+                <form class="search" action="/staff/prof-isaac-owusu-mensah" method="post" id="searchform" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <button class="button_search"></button><div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="s">Search </label>
+ <input title="Enter the terms you wish to search for." class="search-text-box form-text" type="text" id="s" name="search_block_form" value="" size="15" maxlength="128" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-dg7KiCqcBfqD1xVdL079WQ9JKVvsJub8WhrR5GkS82A" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>              </div>
+                      </div>
+          <!-- Block position for font resizer-->
+          <div>
+                          </div>  				
+        </div>
+      </div>
+    </div>
+
+    <!--begin of top menu-->
+    <div class="top_header" style="margin-bottom:10px;">
+    
+            <div class="header_contacts clearfix">
+              <div class="region region-top-menu">
+    <div id="block-nice-menus-1" class="block block-nice-menus">
+
+    
+  <div class="content">
+    <ul class="nice-menu nice-menu-down nice-menu-menu-top-menu" id="nice-menu-1"><li class="menu-437 menu-path-sienablerugedugh-pls-prodi41-w99pkgmi-login first odd "><a href="https://ienabler.ug.edu.gh/pls/prodi41/w99pkg.mi_login" target="_blank">MIS Web</a></li>
+<li class="menu-436 menu-path-sportalofficecom-  even "><a href="https://portal.office.com/" target="_blank">Staff Webmail</a></li>
+<li class="menu-448 menu-path-smailgooglecom-a-stugedugh  odd last"><a href="https://mail.google.com/a/st.ug.edu.gh" target="_blank">Student Webmail</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+            </div>
+
+    </div>
+    <!--end of top menu-->
+
+    <!-- Main Navigation -->
+    <div class="row no_bm">
+      <div class="dark_menu sixteen columns">
+        <div id="menu" class="">
+          <ul id="responsive"  class="nav_simple sf-menu main-menu sf-horizontal sf-style-none sf-total-items-7 sf-parent-items-4 sf-single-items-3"><li><a href="https://www.ug.edu.gh" target="_blank" title="Go to university homepage"><span class="home_icon"></span></a></li><li id="menu-257-1" class="first odd sf-item-1 sf-depth-1 mainMenu sf-no-children"><a href="/" class="sf-depth-1 ">Home</a></li><li id="menu-454-1" class="middle even sf-item-2 sf-depth-1 sf-total-children-7 sf-parent-children-0 sf-single-children-7 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">About Us</a><ul class="dropdown"><li id="menu-455-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/about/welcome" class="sf-depth-2 ">Welcome Message</a></li><li id="menu-456-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/about/brief_history" class="sf-depth-2 ">Brief History</a></li><li id="menu-457-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/about/vision" class="sf-depth-2 ">Objectives and Vision</a></li><li id="menu-503-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/faculty-staff" class="sf-depth-2 ">Faculty</a></li><li id="menu-459-1" class="middle odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/staff" class="sf-depth-2 ">Staff</a></li><li id="menu-970-1" class="middle even sf-item-6 sf-depth-2 mainMenu sf-no-children"><a href="/student-affairs" class="sf-depth-2 ">Student Affairs</a></li><li id="menu-973-1" class="last odd sf-item-7 sf-depth-2 mainMenu sf-no-children"><a href="/academic-programmes" class="sf-depth-2 ">Academic Programmes</a></li></ul></li><li id="menu-460-1" class="middle odd sf-item-3 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Academics</a><ul class="dropdown"><li id="menu-464-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/academics/course_schedule" class="sf-depth-2 ">Course Schedule</a></li><li id="menu-465-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/courses" class="sf-depth-2 ">Undergraduate Courses</a></li><li id="menu-466-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/academics/post-graduate-courses" class="sf-depth-2 ">Postgraduate Courses</a></li><li id="menu-467-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/academics/student_support" class="sf-depth-2 ">Student Support</a></li><li id="menu-468-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/academics/calendar" target="_blank" class="sf-depth-2 ">Academic Calendar</a></li></ul></li><li id="menu-461-1" class="middle even sf-item-4 sf-depth-1 sf-total-children-3 sf-parent-children-0 sf-single-children-3 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Admissions</a><ul class="dropdown"><li id="menu-469-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank" class="sf-depth-2 ">Undergraduate</a></li><li id="menu-470-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="https://sgs.ug.edu.gh/admissions/" target="_blank" class="sf-depth-2 ">Postgraduate</a></li><li id="menu-471-1" class="last odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/international" target="_blank" class="sf-depth-2 ">International</a></li></ul></li><li id="menu-462-1" class="middle odd sf-item-5 sf-depth-1 mainMenu sf-no-children"><a href="/research" class="sf-depth-1 ">Research</a></li><li id="menu-478-1" class="middle even sf-item-6 sf-depth-1 mainMenu sf-no-children"><a href="/news-events" class="sf-depth-1 ">News &amp; Events</a></li><li id="menu-463-1" class="last odd sf-item-7 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Visitors</a><ul class="dropdown"><li id="menu-472-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/visiting_us" class="sf-depth-2 ">Visiting Us</a></li><li id="menu-473-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/campuslife/explore-campus/campus-map" target="_blank" class="sf-depth-2 ">Maps and Directions</a></li><li id="menu-474-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/giving_to_us" class="sf-depth-2 ">Giving to Us</a></li><li id="menu-475-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="http://campuslife.ug.edu.gh/cgi-sys" target="_blank" class="sf-depth-2 ">Students Life</a></li><li id="menu-476-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/contact_us" class="sf-depth-2 ">Contact Us</a></li></ul></li></ul>        </div>
+
+      </div>
+    </div>
+    <!-- Main Navigation::END -->
+                    <div class="row">
+        <div class="sixteen columns">
+
+                       <div class="breadcrumb">
+              <a href="/">Home</a>            </div>
+          
+          
+        </div>		
+      </div>
+    
+    
+
+    <!-- Information Region -->
+
+    <div class="info_reg">
+         </div>
+
+    <!-- highlighted -->
+        <!-- //highlighted -->
+
+
+    <div class="row">
+
+      
+                <div style="margin-left:2px;" id="content" class="others sixteen columns ">
+          
+
+                              <div class="page_heading">
+              <h1>Prof. Isaac Owusu-Mensah </h1>
+            </div>
+                    
+
+
+          
+          
+                    
+            <div class="region region-content">
+     <div id="block-system-main" class="block block-system">
+
+      
+
+  <div class="content">
+    <div  about="/staff/prof-isaac-owusu-mensah" typeof="sioc:Item foaf:Document" class="ds-2col-stacked-fluid node node-staff node-staff view-mode-full clearfix">
+
+  
+  <div class="group-header">
+      </div>
+
+      <div class="group-left">
+      <div class="field field-name-field-profile-picture field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img typeof="foaf:Image" src="https://pscience.ug.edu.gh/sites/pscience/files/styles/staff_profile/public/staffs/owusumensahimage.jpeg?itok=NZddAmqG" width="160" height="200" alt="" /></div></div></div>    </div>
+  
+      <div class="group-right">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><strong>Prof. Isaac Owusu-Mensah </strong></div></div></div><div class="field field-name-field-position-or-qualification field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Associate Professor and Head of Department</div></div></div><div class="field field-name-field-email-address field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">iomensah@ug.edu.gh</div></div></div>    </div>
+  
+  <div class="group-footer">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p> </p>
+<ol>
+<li><strong>PROFILE</strong></li>
+</ol>
+<p style="margin-left:24px">Isaac Owusu-Mensah graduated from the University of Ghana in 2009 with a PhD in Political Science after completing a Master of Philosophy in 2003 and a Bachelor of Arts with Philosophy in 1997. He was appointed as Lecturer in 2011, later as Senior Lecturer in 2016 and Associate Professor of Political Science (Specialization in Democracy and Elections) in 2025. He utilizes his extensive educational and training background to foster critical thinking in the Department of Political Science and trains a new generation of Ghanaians to engage with, and expand on, the current knowledge of democratization and civil society development in Ghana. He previously worked with the Konrad Adenauer Stiftung as a Senior Programme Manager for fifteen years. He also worked with the African Peer Review Mechanism and Commonwealth Human Rights Initiative.  The President of Republic of Ghana appointed Dr. Owusu-Mensah as the Director of Research at the Office of the President, Jubilee House in January 2021 to January 2025.   He has served on the University of Ghana Academic Board, Admissions Board, Examiners Board, College of Humanities Academic Board, School of Social Science Board and Committees within the Department of Political Science. He was once the Examination Officer for the Department of Political Science. He also served as a Scrutineer for Academic Board responsible for conduct of elections. He has been a Patron for the Political Science Students Association, Brong-Ahafo Students Association and Adventists Students.  As an assessor, he has assessed 58 post graduate thesis from the Ghana Institute of Management and Public Administration (GIMPA). He also served as an external supervisor to the Ghana Armed Forces Command and Staff College Academic Division. He has also assessed staff promotion at the University of Education, Winneba. He is a member of several international associations such as the International Political Science Association (IPSA), American Political Science Association (APSA), International Society for Development and Sustainability (ISDS) as well as the National Expert for Varieties of Democracy (V-Dem) a Sweden Based think tank.  He has 34<strong> </strong>publications to his credit since his last promotion. These include 3 book chapters, 14 peer-reviewed articles and 5 technical reports. He has participated in several local and international conferences where he presented papers, chaired sessions, facilitated and moderated on a range of topical governance issues such as the state of political parties in Ghana, traditional institutions and local governance. He is a distinguished resource mobiliser for projects at the University of Ghana. These include funding for national surveys at the Department of Political Science through the School of Social Sciences Colloquiums to the Legon Hall Annex D Project.</p>
+<p style="margin-left:24px"> </p>
+<ol start="2">
+<li><strong>RESEARCH INTEREST </strong></li>
+</ol>
+<ol style="list-style-type:lower-alpha">
+<li>Democratization</li>
+<li>Electoral Politics </li>
+<li>Governance and Development</li>
+<li>Politics of Identity</li>
+</ol>
+<p style="margin-left:72px"> </p>
+<ol start="3">
+<li><strong>EDUCATION </strong></li>
+</ol>
+<ol style="list-style-type:lower-alpha">
+<li>Doctor of Philosophy – University of Ghana</li>
+<li>Master of Philosophy- University of Ghana</li>
+<li>Bachelor of Arts (Political Science and Philosophy)-  University of Ghana</li>
+</ol>
+<p style="margin-left:96px"> </p>
+<ol start="4">
+<li><strong>COURSES TAUGHT </strong></li>
+</ol>
+<ol style="list-style-type:lower-alpha">
+<li>Poli 111 - Introduction to the Study of Political Science</li>
+<li>Poli 112- Introduction to Political Institutions</li>
+<li>Poli. 214 - Introduction to Comparative Politics</li>
+<li>Poli 211- Introduction to Development Studies</li>
+<li>Poli- 343- Introduction to Political Research</li>
+<li>Poli 344-Methods of Political Research</li>
+<li>Poli 365- Development Administration</li>
+<li>Poli 465- Policy Monitoring and Evaluation</li>
+<li value="1">Poli 458  -  Politics of Identity in Ghana</li>
+<li value="10">Poli 435  - Gender and Politics</li>
+<li>Poli 604 - Survey Methods</li>
+<li value="50">INTA 610- Research Methodology</li>
+<li value="1000">EPMP 603- Policy Analysis, Design and Evaluation</li>
+</ol>
+<p style="margin-left:48px"> </p>
+<ol start="5">
+<li><strong>Publications </strong></li>
+</ol>
+<ol style="list-style-type:lower-alpha">
+<li><strong>RECENT PUBLICATIONS ( 2016-2024) </strong></li>
+</ol>
+<ol>
+<li><strong>Book Chapters </strong></li>
+</ol>
+<ol style="list-style-type:lower-alpha">
+<li>“The State of Political Party Development in Ghana” In Political Parties and Crisis of Democracy.  Edited by Thomas Poguntke and Wilhelm Hofmeister, Oxford University of Press. <strong>Isaac Owusu-Mensah</strong>, Emmanuel Debrah, and Enock Mathapoly-Cudjoe (2024)</li>
+<li>“Electoral Violence in Ghana’s Fourth Republic: The Case of Party Vigilantism” In Palgrave Handbook of Violence in Africa Edited by Obert Bernard Mlambo and Ezra Chitando. Emmanuel Debrah, <strong>Isaac Owusu-Mensah,</strong> Sampson Danso and Gilbert Arhinful Aidoo. Published by Springer Nature Switzerland (2024)</li>
+<li>“Political Parties and Democratic Consolidation in Ghana: The Struggles of Smaller Parties in an Institutionalised Two-Party System” In Political Institutions, Parties Politics and Communication in Ghana. Three Decades of the Fourth Republic Edited by Joseph R.A.Ayee, Lloyd G.A. Amoah, and Seidu M. Alidu. <strong>Isaac Owusu-Mensah</strong> and Abdul-Jalilu Ateku. Published by Palgrave Macmillan</li>
+</ol>
+<ol start="2">
+<li><strong>Articles in Peer Review Journals </strong></li>
+</ol>
+<ol>
+<li>Party Financing in Ghana: A Case for Regulated Elite Funding. Kwadwo Kyei-Poakwah, <strong>Isaac Owusu-Mensah</strong> and Edmund Poku Adu, Journal of Asian and African Studies Vol. 59, Issue 9, pp. 1-15 Publishing House: SAGE. (Dec. 2024)</li>
+<li>Who spends what, and why? The constituency project fund and electoral politics in Ghana. Social Sciences and Humanities Open, Vol. 10, …….  Kenneth Felitse and Isaac<strong> Owusu-Mensah,</strong> 2024 Published by: Elsevier Ltd</li>
+<li>Good for Elections but not for Government: Zongos and Politics of Exclusion in Ghana. African Studies, Vol. 82 Issue 1 pp. 67-84, <strong>Isaac Owusu-Mensah</strong> &amp; Frank Bitafir Ijon, Publishing House: Routledge Taylor and Francis Group (July 2023)</li>
+<li>How Electoral Integrity Matters in an Era of Coronavirus (COVID-19) Pandemic: Experience from Ghana’s Eighth General Election. Politikon South African Journal of Political Studies. Emmanuel Debrah &amp; <strong>Isaac Owusu-Mensah</strong>, Vol. 50, No. 6, pp. 1-22 Publishing House: Routledge Taylor and Francis Group (May 2023)</li>
+<li>Judicialization of Corruption’ in Ghana: an analysis of how Ghanaians view the Office of the Special Prosecutor. Politikon South African Journal of Political Studies. <strong>Isaac Owusu-Mensah</strong> &amp; Enock Mathapoly-Codjoe, vol. 50 No. 2, pp. 1-18.  Publishing House: Routledge Taylor and Francis Group (April 2023)</li>
+<li>Decentralization and Development in Ghana’s Fourth Republic. Politics &amp; Policy. Emmanuel Debrah &amp; <strong>Isaac Owusu-Mensah</strong>. Vol. 50, Issue 6, pp. 1259-1284.  Policy Press of University of Bristol (November 2022)</li>
+<li>Resolving the Dagbon Chieftaincy crisis and succession to the Ya-Na skin: The role of kingmakers and electoral college system. African Journal on Conflict Resolution. <strong>Isaac Owusu-Mensah</strong>, vol. 22, Number 1.  Published by ACCORD (September 2022).</li>
+<li>Big Men, Small Boys; A Power Dimension Perspective of Farmers-Herdsmen Conflict in Ghana. Journal of Peacebuilding &amp; Development. Kwadwo Kyei-Poakwah, <strong>Isaac Owusu-Mensah</strong>,<strong> </strong>Edmund Poku Adu &amp; Mathias Awonnatey Ateng. Vol. 18, Issue 1, pp. 1-7. Publishing House: SAGE (September 2022)</li>
+<li>Regency in Dagbon: An albatross of a traditional transitional institutional arrangement in Ghana. Ghana Social Science Journal. <strong>Isaac Owusu-Mensah,</strong> Vol. 19 No. 2, pp. 67-84. School of Social Sciences, University of Ghana (December 2022)</li>
+<li>The Autonomy of Ghana’s Electoral Commission and Citizens’ Perceptions of Election Quality: A Field Experiment. Journal of African Economy and Development. <strong>Isaac Owusu-Mensah</strong> &amp; George Ayuune Akeliwira, Vol. 7. Jimma University in Ethiopia (December 2022)</li>
+<li>Does the use of biometric system guarantee an acceptable election’s outcome? Evidence from Ghana’s 2012 elections. Emmanuel Debrah, John Effah and <strong>Isaac Owusu-Mensah</strong>, African Studies Vol. 78 (3) 2019. Publishing House: Routledge Taylor and Francis Group </li>
+<li>Judiciary and Democracy in Ghana’s Fourth Republic. <strong>Isaac Owusu-Mensah</strong> and Joanna Rice, Journal of African Elections, Vol. 17 (2) 2018 Published by Electoral Institute of Sustainable Democracy in Africa (EISA).</li>
+<li>The Poor Paying for the Rich: The Politics of Inequality in the Water-Pricing Structure in Ghana, 2003-2013. <strong>Isaac Owusu-Mensah,</strong> Africa Today, Vol. 64 No. 2, 2017, pp. 48-66.  Published by: Indiana University Press</li>
+<li>The Cost of Inter-ethnic conflict in Ghana’s Northern Region: The case of Nawuri-Gonja conflict.  Emmanuel Debrah, Seidu Alidu, and <strong>Isaac Owusu-Mensah</strong> Journal of African Conflicts and Peace Studies Vol. 3 Issue (1), pp. 1-27, 2016. Published by Digital Commons @ University of South Florida.</li>
+</ol>
+<ol start="3">
+<li><strong>TECHNICAL REPORTS </strong></li>
+</ol>
+<table cellspacing="0" class="Table" style="border-collapse:collapse; border:none; width:680px">
+<tbody>
+<tr>
+<td style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black; vertical-align:top; width:95px">
+<p> </p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top; width:95px">
+<p>PUBLICATION TYPE (Book, Book Chapter, Journal article etc)</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top; width:66px">
+<p>Year of Publication</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top; width:132px">
+<p>Title of Publication</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top; width:180px">
+<p>Name of Journal/Publication Outlet)</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:1px solid black; vertical-align:top; width:113px">
+<p>Authorship (list authors in the order presented in the publication)</p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>18</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>Technical Report</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:66px">
+<p>2020</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:132px">
+<p>Ghana’s Healthcare, Logistics &amp;Transport and Textiles and Apparel Sectors: A Skills Gap Analysis and Audit Report</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:180px">
+<p> University of Ghana Press.</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:113px">
+<p><strong> Owusu-Mensah,I</strong>  Turkson, S and E Mathapoly-Cudjoe, E.</p>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>19</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>Technical Report</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:66px">
+<p>2020</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:132px">
+<p>Profile of occupations and Skills Directory: The Healthcare, The Logistics and Transport Sector and the Textile &amp; Apparel Industry</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:180px">
+<p>University of Ghana Press.</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:113px">
+<p><strong> Owusu-Mensah,I. </strong>Turkson, S. and Mathapoly-Cudjoe,E.  </p>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>20</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>Technical Report</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:66px">
+<p>2020</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:132px">
+<p>Feasibility Study of 30 TVET Institutions in Ghana.</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:180px">
+<p>A study conducted for Golden Mainland Ghana Limited by University of Ghana</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:113px">
+<p><strong>Owusu-Mensah</strong>,I  Frimpong, A. D.K. Mathapoly-Cudjoe, E and Amankwa, S.O.</p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>21</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>Technical Report</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:66px">
+<p>2019</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:132px">
+<p>Development of Skills for Industry Project (DSIP) Project Completion Report.</p>
+<p> </p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:180px">
+<p>University of Ghana Press.</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:113px">
+<p><strong>Isaac Owusu-Mensah, </strong> Turkson, S. Adu-Boahene, P.  Matapoly-Cudjoe, E.   and Debrah E.</p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>22</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:95px">
+<p>Technical Report</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:66px">
+<p>2019</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:132px">
+<p>Needs Assesment of Political Parties</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:180px">
+<p>A study Commission by Danish Institute for Parties and Democracy</p>
+</td>
+<td style="border-bottom:1px solid black; border-left:none; border-right:1px solid black; border-top:none; vertical-align:top; width:113px">
+<p> Debrah, E. <strong>Owusu-Mensah, I.</strong>  Frimpong, A.K.D. Gyekye-Jandoh, M. and Amankwa, S.O.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-left:96px"> </p>
+<p style="margin-left:96px"> </p>
+<p> </p>
+<ol start="2" style="list-style-type:lower-alpha">
+<li><strong>OTHER </strong><strong>PUBLICATIONS 2012-2015</strong></li>
+</ol>
+<ol>
+<li>Ghana’s Presidential Transition Act and the 2013 Transition. Ransford Edward Van Gyampo, Michael Ofori-Mensah and <strong>Isaac Owusu-Mensah</strong>, Journal of Law, Policy and Globalization, Vol. 20, Number 1, pp. 1-9. (June2013)</li>
+<li>Politics, Chieftaincy and Customary law in Ghana Journal of Pan African Studies, Vol. 6, No. 7, pp. 261-278. (February 2014)</li>
+<li>Parliamentary Caucuses in Ghana’s Fourth Republic: Challenges and Recommendations. Journal of Scientific Research and Reports, Vol. 5, Issue 3. (May 2015)</li>
+<li>Promoting Quality University Education in Ghana: The Challenges of Mentoring Private Universities. British Journal of Education, Society &amp; Behavioral Science, Vol. 8, Issue 02 (April 2015)</li>
+<li>Mediating the Dagbon Chieftaincy Conflict: The Eminent Chief Approach, Peace Studies Journal, Vol., Issue 2, Emmanuel Debrah, <strong>Isaac Owusu-Mensah,</strong> Ransford Gyampo. (July 2014)</li>
+<li>Twenty Years of Implementation of District Assemblies’ Common Fund in Ghana (1994-2013) -Assessment of Disbursement. British Journal of Economics, Management &amp; Trade, Vol. 10. Number. 4, 1-19</li>
+<li>Queen Mothers: The Unseen Hands in Chieftaincy Conflicts among the Akan in Ghana: Myth or Reality? <strong>I. Owusu-Mensah</strong>, W. Asante and W.K. Osew. Journal of Pan African Studies, Vol. 8, Number 6.  (September 2015)</li>
+<li>American Democratic Support to Ghana’s Fourth Republic: Assistance or Encumbrance? Journal of African Elections, Vol. 14, Number 2, pp. 1-33. (October 2015)</li>
+<li>Promoting Local Governance in Ghana: The Role of Akan Queen Mothers. Journal of Pan-African Studies, Vol. 8, Number 9, pp. 98-114. (December 2015)</li>
+<li> The Judiciary and Ghana’s 2012 Elections: Analysis of 2012 Presidential Elections Petition and its Ramifications for Democratic Development in Ghana.  <strong>Isaac Owusu-Mensah</strong> and A.K.D. Frempong, Developing Country Studies, Vol. 5, Number 20 pp. 20-33. (2015)</li>
+</ol>
+<p> </p>
+<p style="margin-left:96px"> </p>
+<ol start="6">
+<li><strong>FELLOWSHIP AWARDED AND VISITING SCHOLARSHIP </strong></li>
+</ol>
+<p>a. DAAD Fellowhip – Humboldt University, Berlin – 1st June-July 31st -  2018</p>
+<p>b. Visiting Scholar. – Humboldt University, Berlin.   – 1st June -July 31st – 2017</p>
+<p>c. UNU Fellowship- United Nations Univesity, Japan- 17th May to June 30th -2007</p>
+<p> </p>
+<ol start="7">
+<li><strong>Membership of international Organization</strong></li>
+</ol>
+<ol style="list-style-type:lower-alpha">
+<li>Member- International Political Science Association (IPSA)</li>
+<li>Member- International Society for Development and Sustainability (ISDS)</li>
+<li>National Expert-Varieties of Democracy (V-Dem) (Sweden-Based think tank)</li>
+</ol>
+<p style="margin-left:48px"> </p>
+<p style="margin-left:72px"> </p>
+</div></div></div><div class="field field-name-field-file field-type-file field-label-above"><div class="field-label">View full CV:&nbsp;</div><div class="field-items"><div class="field-item even"><span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="https://pscience.ug.edu.gh/sites/pscience/files/cv/CV%20-Isaac%20Owusu-Mensah%20A.pdf" type="application/pdf; length=623341">CV -Isaac Owusu-Mensah A.pdf</a></span></div></div></div>  </div>
+
+</div>
+
+  </div>
+</div>  </div>
+          
+
+        </div> <!-- // content -->
+
+
+              </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="container">
+              <div class="row footer_inside">
+
+          <div class="four columns f1" style="width:211px;">
+              <div class="region region-footer-firstcolumn">
+     <div id="block-block-2" class="block block-block">
+    
+    <h3>About the Department</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/about/welcome">Welcome Message</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/brief_history">Brief History</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/vision">Objectives and Vision</a></p>
+<p><a href="https://pscience.ug.edu.gh/faculty-staff">Faculty</a></p>
+<p><a href="https://pscience.ug.edu.gh/staff">Staff</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!--  1/4 Columns -->
+          <div class="three columns f2">
+              <div class="region region-footer-secondcolumn">
+     <div id="block-block-1" class="block block-block">
+    
+    <h3>Admissions</h3>
+
+    
+  <div class="content">
+    <p><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank">Undergraduate</a></p>
+<p><a href="https://sgs.ug.edu.gh/admissions/" target="_blank">Graduate</a></p>
+<p><a href="https://admissions.ug.edu.gh/international" target="_blank">International</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f3">
+              <div class="region region-footer-thirdcolumn">
+     <div id="block-block-3" class="block block-block">
+    
+    <h3>Academics</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/academics/academic-programmes" style="font-size: 13.008px;">Academic Programmes</a></p>
+<p><a href="https://pscience.ug.edu.gh/courses">Undergraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/post-graduate-courses">Postgraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/student_support">Student Support</a></p>
+<p><a href="https://www.ug.edu.gh/academics/calendar" target="_blank">Academic Calendar</a></p>
+  </div>
+</div>
+  </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f4">
+              <div class="region region-footer-fourthcolumn">
+     <div id="block-block-4" class="block block-block">
+    
+    <h3>QUICK LINKS</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/news-events">News &amp; Events</a></p>
+<p><a href="https://pscience.ug.edu.gh/news-events?tid=12">Announcements</a></p>
+<p><a href="https://pscience.ug.edu.gh/research">Research</a></p>
+<p><a href="#" target="_blank">Alumni</a></p>
+<p><a href="https://socialsciences.ug.edu.gh/" target="_blank">School of Social Sciences</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+            <!-- 1/4 Columns -->
+          <div class="three columns f5">
+                      </div>
+
+
+              
+      </div> 
+      <div class="clear"></div>
+
+      <div class="footer_btm">
+        <div class="footer_btm_inner">
+
+                                <div id="powered">
+              <a href="https://www.ug.edu.gh/" target="_blank">University of Ghana </a>&copy;&nbsp;2026                
+              </div>
+                  </div>    
+      </div>
+    </div>
+  
+    <!-- Footer::END -->
+
+  </div>    
+
+    
+      <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/sites/all/themes/ugdepartments/stylesheets/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.7/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_Hfha9RCTNm8mqMDLXriIsKGMaghzs4ZaqJPLj2esi7s.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_JcYGsF6wKv2qOZLXPZKU9pUzvB92frJyEKj5BQmUMh0.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_yj9SBIxGToUO1zIgUUUueFAIoXNPmXJQe8PicowubVY.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"ugdepartments","theme_token":"8jeUvneRQXwCPwFnIKqSM8xbdFyOs4KESQI-vS3KWnU","js":{"\/\/code.jquery.com\/jquery-1.7.2.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.bgiframe.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.hoverIntent.js":1,"sites\/all\/libraries\/superfish\/superfish.js":1,"sites\/all\/modules\/nice_menus\/js\/nice_menus.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.easing.1.3.js":1,"sites\/all\/themes\/ugdepartments\/js\/common.js":1,"sites\/all\/themes\/ugdepartments\/js\/isotope.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.flexslider-min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.prettyPhoto.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.jcarousel.min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.tipsy.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.selectnav.js":1,"sites\/all\/themes\/ugdepartments\/js\/aqua.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus_default.css":1,"sites\/all\/modules\/ds\/layouts\/ds_2col_stacked_fluid\/ds_2col_stacked_fluid.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/ug-style-min.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/fpe.css":1,"https:\/\/use.fontawesome.com\/releases\/v5.11.2\/css\/all.css":1}},"nice_menus_options":{"delay":800,"speed":"slow"},"urlIsAjaxTrusted":{"\/staff\/prof-isaac-owusu-mensah":true}});
+//--><!]]>
+</script>
+      <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    <!--  Fonts  -->
+
+	
+
+  </body>
+</html>

@@ -1,0 +1,535 @@
+ <!DOCTYPE html>
+<!--
+              ,;r;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;r;,                 
+             .2@@@Superviser:Parick Kuti@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@h,
+             .@@Project+Managers:@@Michael##Phillips@Deborah###Allah@@@@@@@@@@@@@@@@@@@@@@*,
+             .X@@@Lead+Programmers:Gilbert_Gadzekpo@@@Ian Allotey@@@@@@@@@@@@@@@@@@@@@@@@@&,                
+              Developers@@BXi3@@@Alex#Tenkorang@@@@H2iG@@@@Emmanuel#Asare@@@A5Sh#@@@@@@@@@X.                
+              r#@@#####@@B2;;iA@@###############@@H5;;iH@@@##############@MXr;iA@@######@@2.                
+              r#@@#####@@M2r;i&#@@##############@@BXrri&#@@#############@@#Xr;i&#@@#####@@2.                
+              r#@@#####@@@ASrSH@@@##############@@@B5s2M@@@#############@@@ASr2B@@@@####@@2.                
+              r#@@###B3XH@@&29#BX3H#@#######@#H99B@@&5&#H9hB##########M9XH@M929#M9XH####@@2.                
+              r#@@##@#Girri5Siir;5M@@@######@@#&SrrS5iii;r2M@@@######@@hsrsS5Sisr;SB@@##@@2.                
+              r#@@###@@#2;;rsrrih@@@##########@@MS;rrsrri&@@@#########@@M2rrssrriG@@@#M#@@2.                
+              r#@@#HX5G#@BXisi2A@#h23H@@####A55G##H2iss2B@M923B@####HX5G#@B3iri2A@#hXhH#@@2.                
+              r#@@@#2;;s3A9SiS525r;s&#@@##@@#Xr;s3&XSii22S;;s&#@###@#X;:s3&9SiS225r;sA#@@@2.                
+              r#@@@@@B5;;;sSSir;;rX#@@@####@@@M5;;;sSSir;;r3#@@####@@@H5;;;sS5Ss;;rX#@@@@@2.                
+              r#@#AA#@@#G2iiiSSX&#@#HM####MAA#@@#G5iiiiSXA#@#BM####AA#@@Mh2iiiiSXGM@#HH#@@2.                
+              r@@@9sr2M@@#XsiSXB#H5rsh#@@@M3sr5M@@B2siS3M#H2rs&@@@#GsrX#@@MXisS3H#H2rs9#@@2.                
+              r#@@@Hi;;ri5SiSSisr;;SH@@@#@@#&s;;riSSiSSisr;;i&#@@@@@Ai;;ri55Siiisr;;SH@@@@2.                
+              r#@@@@M3sr;rsSSisrs2H@@@####@@@#hs;rriSSSsrs2A@@@###@@@M2rr;rsSSiiss2H@@@@@@2.                
+              r#@@@@@@@#&2iiiii9#@@@@#####@@@@@@#G5iiii5A@@@@@#####@@@@@#A2iiiiS9#@@@@##@@2.                
+              r#@@#@@@@@@#3ssi2H@@@@#######@@@@@@@#XissX#@@@@#######@@@@@@@hsri2H@@@@###@@X.                
+              s@@@@@@@@@@@ASss2B@@@@@@@@@@@@@@@@@@@ASsr2#@@@@@@@@@@@@@@@@@@HiriXB@@@@@@@@@3,                
+              :hB&h99GG&HA2srrs2GAG99hhhh9hhhGGGAA&2sr;s2G&hhhGGGGhh99hh&AA2srrs2h&Gh99hHAr                 
+              :3Hh333939G&AAAGhh9h93333hG&AAAAAAAAA&AA&h99hh&AAAAAAAG9339h&AAA&h9hh93339A&r                 
+              r#@@@@@@@@@@@@@@@@@@@@@@@@@MAGh9hA#@@@@@@@@@@@MAhh9GAM@@@@@@@@@@@@@@@@@@@@@@2.                
+              s@@@@@@@@@@@@@@@@@@@@@@@#A2issiirri3#@@@@@@@H2srsiissiXH@@@@@@@@@@@@@@@@@@@@3,                
+              r#@@#################@#9r;r2A#@@#&i;r2M@@@A5rrSA@@@#ASrrSA@@@#############@@X.                
+              r#@@##################&irX#@@@@@@@@Hs;sA#&sr2@@@@@@@@@Bi;SB@@#############@@2.                
+              r#@@###############@@HXsSB@@@B3SX#@@Birrssi3@@@H25&#@@@Gsi&#@@############@@2.                
+              r#@@###############@@HXs5B@@@#hs;sA@@B2r;sh@@@Xr;iA@@@@Aiih#@@############@@2.                
+              r#@@###############@@@HirSH@@@@hrrX@@@hs;iA@@#2riA@@@@Air5H@@#############@@2.                
+              r#@@################@@@H5r;rS25iS&@@#G25Si5G@@@Gisi5ir;s3M@@##############@@2.                
+              r#@@##########@@@@@@@@@@@MhX2XGM@@@M5r2#@As;X@@@@A3223A@@@@@@@@@@@@@######@@2.                
+              r#@@##########Bh223hAH#@@@@@@@@@#A2siXM@@@&iri3B#@@@@@@@@#BA&9X23A#@@#####@@2.                
+              r#@@########M9s:::::;;rrsS5222ir;::rA@@92A@@X;:;rsS222Sirrr;;::::;SA#@####@@2.                
+              r#@@#########A2srrssisiiS2222225isrs3MB9X&##3rriS22XX225Siiissrrrs2A######@@2.                
+              r#@@########@@@@BB#@@@@@@@@@#@@@@@B2rrh@@@9ss9#@@@@##@@@@@@@@@#BB@@@@#####@@2.                
+              r#@@########@@@@@@@@@@@@Mh5isi5h#@@@&siGHG55M@@@B35isi2A@@@@@@@@@@@#######@@2.                
+              r#@@#########@@@@@@@@@#Xr;s3BMhssX#@@A5rrih#@@Air5A#H2r;sG@@@@@@@@########@@2.                
+              r#@@##################hssh@@@@@hsr3@@#Xr;sA@@#5rSH@@@@#2riA#@@############@@2.                
+              r#@@###############@#A2s2#@@@#3sr2M@@GSsrs2H@@H5riG@@@@Ais9M@@############@@2.                
+              r#@@###############@@#GiiA@@@#HAM@@@Aii33SsSB@@@H&A#@@@GsiA#@@############@@2.                
+              r#@@################@@#5;rh#@@@@@@#Xrr3@@#S;rG@@@@@@@#hsrX#@@#############@@2.                
+              r#@@################@@@#Xr;r2hGhXSrrSH@@@@#9r;r53hhXSrri&#@@##############@@X,                
+              ;#@@#################@@@@M3SsrrrriXA@@@@@@@@#hSsrrrri2&#@@@###############@@2.                
+              :A@@##################@@@@@@#BAH#@@@@@####@@@@@@MHHM@@@@@@################@#s.                 
+              .2#@@###################@@@@@@@@@@@@#######@@@@@@@@@@@@@##################@@M;                 
+               :h@@@#####################@@@@@@####TEAM#####@@@@@@####################@@#9:                 
+                ;#@@@########Patrick#Kuti####Michael#Philips####Deborah#Allah#########@@3,                  
+                 :h@@@@@##########Gilbert#Gadzekpo#####Ian#Allotey#################@@@@B;                   
+                   rM@@@@@@@@@#######Alex#Tenkorang#####Emmanuel##Asare#####@@@@@@@@#5.                    
+                     ,s&@@@@@@@@@@@@@################################@@@@@@@@@@@@@Ai:                       
+         ...              ,;i3H@@@@@@@@@@@@@#################@@@@@@@@@@@@M&92s;:.          .:::.            
+      ,;r;:::::,.               .:;rs59A#@@@@@@@@@#######@@@@@@A3ir;;:..               .,::,,::;r;.         
+     :rrrssr;;iXi,                       .,;i2A#@@@@@@@@@#A2r:.                       ,s25r;;;;rs;,         
+     :r;::;:,.:;;.                             .;i&#@@H5;.                     ... .   ,::,,::;;sr:         
+     .r2S;,...    ..,,..                           ,;:                        ......,,.   ...,;SG2:         
+      ;2Ah2isr;rS2s:.,:;;rr;.                                               :rir;:. ,i92issi5X9h9s.         
+      ,SA&99h&&AHhr..;h@@@@@5,                                             ,2@@@@#S..rX&Ahhh93XXS;          
+       rX3X33393G3;.,r5399Gh2s;::,,.                                 ..,,,:r5XX23hs..;5993XXX22Sr,          
+         ,;sS5229X;..;s2&M@#M#@@###H&9X25isssrrrrrrrrrrrrrrsssssiiS2XGAHBMMAh&BMBGr. :s2X2Ssr:,             
+                 .  .rS3M@@@@##@@@@@@@@@@@@#HH#@@@@#UGCSMM#@@@@@@@##@@@@@@@#AB@@@Mi,                        
+                     :riXh&AAGhAM####@@@@@@#BM@@@@@@@@#@@@MM@@@@@@@@@@@@@@#MH&9X2s:.                        
+                            .,;rsii5Xh&&&AA&GGGh&ABBBBBBMBAAHBAAHH&9X5Sis;:,.                               
+                                        .,,:::,,,::::;;:::::::::,.                                          
+ -->
+
+
+<!--[if IE 7 ]><html class="ie ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><!--<![endif]-->
+
+  <head profile="http://www.w3.org/1999/xhtml/vocab">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/staff/dr-abdul-jalilu-ateku" />
+<link rel="shortlink" href="/node/110" />
+<link rel="shortcut icon" href="https://pscience.ug.edu.gh/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dr. Abdul-Jalilu Ateku | Department of Political Science</title>
+    <link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_TsVRTbLFUpEZAfw-_bWPJu840QT523CPjUVJ5MRWfyk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_HkdpaPJNwY4GBfynmNsoQHIPSVGTir6baStmsdyM_vc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_uS_-bgJ2-t8YuIh44b3fkiJyEGdNvo64Ixe2JuoJiM4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" media="all" />
+	
+
+
+      
+
+      <!-- menu font -->
+            <style type="text/css">
+        .custom_menu #menu > ul > li > a,#menu {
+          font-family:Open Sans;
+                  }
+      </style>
+      <!-- // menu font -->
+
+      <!-- menu font size -->
+            <style type="text/css">
+        #menu > ul > li > a{
+          font-size: 15px ;
+        }
+        #menu > ul > li ul > li > a{
+          font-size: 14px ;
+        }
+      </style>
+      <!-- // menu font size -->
+
+
+      <!-- main color -->
+            <style type="text/css">
+        a:hover, a:focus{
+          color: #0AD1E5 ;
+        }
+        .button:hover,
+        a:hover.button,
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,	
+        input[type="button"]:hover,
+        .button_hilite, 
+        a.button_hilite,
+        .button_hilite,
+        a.button_hilite{
+          color: #FFF;
+          background-color: #0AD1E5;
+        }
+        .section_big_title h1 strong,
+        .section_featured_texts h3 a:hover,
+        .breadcrumb a:hover,
+        .post_meta a:hover,
+        #footer a:hover {
+          color: #0AD1E5 ;
+        }
+        .portfolio_filter div.current,
+        .next:hover,.prev:hover,
+        .pagination .links a:hover,
+        .info h2, 
+        .h2.ls-s2,
+        jcarousel-next-horizontal:hover, 
+        .jcarousel-prev-horizontal:hover{
+          background-color: #0AD1E5 ;
+        }
+        .footer_pic img:hover{
+          border: 1px solid #0AD1E5;
+        }
+      </style>
+      <!-- // main color -->
+
+      <!-- heading font -->
+            <style type="text/css">
+        h1, h2, h3, h4, h5, .title, .section_big_title h1, .heading, #footer h3,
+        .page_heading h1{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- heading font -->
+
+      <!-- button font -->
+            <style type="text/css">
+        .button, a.button,	button,	input[type="submit"], input[type="reset"], input[type="button"]{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- // button fonts -->
+
+      <!-- body font -->
+            <style typ="text/css">
+        body{
+          font-family: Open Sans;
+        }
+      </style>
+      <!-- // body font -->
+
+      <!-- body background and color -->
+            <style type="text/css">
+        body{
+          background-image: none;background-color #fff;        }
+      </style>
+      <!-- // body bg -->
+
+  </head>
+  <body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-110 node-type-staff" >
+    <div id="skip-link">
+      <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+    </div>
+         
+<div id="wrapper" class="not-home-page">
+
+  <div class="container">
+
+    <div class="header clearfix row">
+              <div class="eight columns header_left">
+          <a href="/"><img src="https://pscience.ug.edu.gh/sites/pscience/files/logo_pscience.png" alt="Home" /></a>
+        </div>
+      
+      <div class="eight columns">
+        <div class="header_right">
+          
+
+          <div class="header_soc_search clearfix">
+                          <div class="header_search">
+                <form class="search" action="/staff/dr-abdul-jalilu-ateku" method="post" id="searchform" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <button class="button_search"></button><div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="s">Search </label>
+ <input title="Enter the terms you wish to search for." class="search-text-box form-text" type="text" id="s" name="search_block_form" value="" size="15" maxlength="128" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-IAHiqc1WJUwzYPZsaDmZ7S7g-Hk32yJ0aqbLz8PgA-E" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>              </div>
+                      </div>
+          <!-- Block position for font resizer-->
+          <div>
+                          </div>  				
+        </div>
+      </div>
+    </div>
+
+    <!--begin of top menu-->
+    <div class="top_header" style="margin-bottom:10px;">
+    
+            <div class="header_contacts clearfix">
+              <div class="region region-top-menu">
+    <div id="block-nice-menus-1" class="block block-nice-menus">
+
+    
+  <div class="content">
+    <ul class="nice-menu nice-menu-down nice-menu-menu-top-menu" id="nice-menu-1"><li class="menu-437 menu-path-sienablerugedugh-pls-prodi41-w99pkgmi-login first odd "><a href="https://ienabler.ug.edu.gh/pls/prodi41/w99pkg.mi_login" target="_blank">MIS Web</a></li>
+<li class="menu-436 menu-path-sportalofficecom-  even "><a href="https://portal.office.com/" target="_blank">Staff Webmail</a></li>
+<li class="menu-448 menu-path-smailgooglecom-a-stugedugh  odd last"><a href="https://mail.google.com/a/st.ug.edu.gh" target="_blank">Student Webmail</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+            </div>
+
+    </div>
+    <!--end of top menu-->
+
+    <!-- Main Navigation -->
+    <div class="row no_bm">
+      <div class="dark_menu sixteen columns">
+        <div id="menu" class="">
+          <ul id="responsive"  class="nav_simple sf-menu main-menu sf-horizontal sf-style-none sf-total-items-7 sf-parent-items-4 sf-single-items-3"><li><a href="https://www.ug.edu.gh" target="_blank" title="Go to university homepage"><span class="home_icon"></span></a></li><li id="menu-257-1" class="first odd sf-item-1 sf-depth-1 mainMenu sf-no-children"><a href="/" class="sf-depth-1 ">Home</a></li><li id="menu-454-1" class="middle even sf-item-2 sf-depth-1 sf-total-children-7 sf-parent-children-0 sf-single-children-7 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">About Us</a><ul class="dropdown"><li id="menu-455-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/about/welcome" class="sf-depth-2 ">Welcome Message</a></li><li id="menu-456-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/about/brief_history" class="sf-depth-2 ">Brief History</a></li><li id="menu-457-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/about/vision" class="sf-depth-2 ">Objectives and Vision</a></li><li id="menu-503-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/faculty-staff" class="sf-depth-2 ">Faculty</a></li><li id="menu-459-1" class="middle odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/staff" class="sf-depth-2 ">Staff</a></li><li id="menu-970-1" class="middle even sf-item-6 sf-depth-2 mainMenu sf-no-children"><a href="/student-affairs" class="sf-depth-2 ">Student Affairs</a></li><li id="menu-973-1" class="last odd sf-item-7 sf-depth-2 mainMenu sf-no-children"><a href="/academic-programmes" class="sf-depth-2 ">Academic Programmes</a></li></ul></li><li id="menu-460-1" class="middle odd sf-item-3 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Academics</a><ul class="dropdown"><li id="menu-464-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/academics/course_schedule" class="sf-depth-2 ">Course Schedule</a></li><li id="menu-465-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/courses" class="sf-depth-2 ">Undergraduate Courses</a></li><li id="menu-466-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/academics/post-graduate-courses" class="sf-depth-2 ">Postgraduate Courses</a></li><li id="menu-467-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/academics/student_support" class="sf-depth-2 ">Student Support</a></li><li id="menu-468-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/academics/calendar" target="_blank" class="sf-depth-2 ">Academic Calendar</a></li></ul></li><li id="menu-461-1" class="middle even sf-item-4 sf-depth-1 sf-total-children-3 sf-parent-children-0 sf-single-children-3 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Admissions</a><ul class="dropdown"><li id="menu-469-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank" class="sf-depth-2 ">Undergraduate</a></li><li id="menu-470-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="https://sgs.ug.edu.gh/admissions/" target="_blank" class="sf-depth-2 ">Postgraduate</a></li><li id="menu-471-1" class="last odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/international" target="_blank" class="sf-depth-2 ">International</a></li></ul></li><li id="menu-462-1" class="middle odd sf-item-5 sf-depth-1 mainMenu sf-no-children"><a href="/research" class="sf-depth-1 ">Research</a></li><li id="menu-478-1" class="middle even sf-item-6 sf-depth-1 mainMenu sf-no-children"><a href="/news-events" class="sf-depth-1 ">News &amp; Events</a></li><li id="menu-463-1" class="last odd sf-item-7 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Visitors</a><ul class="dropdown"><li id="menu-472-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/visiting_us" class="sf-depth-2 ">Visiting Us</a></li><li id="menu-473-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/campuslife/explore-campus/campus-map" target="_blank" class="sf-depth-2 ">Maps and Directions</a></li><li id="menu-474-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/giving_to_us" class="sf-depth-2 ">Giving to Us</a></li><li id="menu-475-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="http://campuslife.ug.edu.gh/cgi-sys" target="_blank" class="sf-depth-2 ">Students Life</a></li><li id="menu-476-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/contact_us" class="sf-depth-2 ">Contact Us</a></li></ul></li></ul>        </div>
+
+      </div>
+    </div>
+    <!-- Main Navigation::END -->
+                    <div class="row">
+        <div class="sixteen columns">
+
+                       <div class="breadcrumb">
+              <a href="/">Home</a>            </div>
+          
+          
+        </div>		
+      </div>
+    
+    
+
+    <!-- Information Region -->
+
+    <div class="info_reg">
+         </div>
+
+    <!-- highlighted -->
+        <!-- //highlighted -->
+
+
+    <div class="row">
+
+      
+                <div style="margin-left:2px;" id="content" class="others sixteen columns ">
+          
+
+                              <div class="page_heading">
+              <h1>Dr. Abdul-Jalilu Ateku</h1>
+            </div>
+                    
+
+
+          
+          
+                    
+            <div class="region region-content">
+     <div id="block-system-main" class="block block-system">
+
+      
+
+  <div class="content">
+    <div  about="/staff/dr-abdul-jalilu-ateku" typeof="sioc:Item foaf:Document" class="ds-2col-stacked-fluid node node-staff node-staff view-mode-full clearfix">
+
+  
+  <div class="group-header">
+      </div>
+
+      <div class="group-left">
+      <div class="field field-name-field-profile-picture field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img typeof="foaf:Image" src="https://pscience.ug.edu.gh/sites/pscience/files/styles/staff_profile/public/staffs/Dr.%20Jalil.PNG?itok=KLgiqNJG" width="160" height="200" alt="" /></div></div></div>    </div>
+  
+      <div class="group-right">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><strong>Dr. Abdul-Jalilu Ateku</strong></div></div></div><div class="field field-name-field-position-or-qualification field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Lecturer &amp; Sakai Administrator</div></div></div><div class="field field-name-field-email-address field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">aateku@ug.edu.gh</div></div></div>    </div>
+  
+  <div class="group-footer">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p style="margin-left:0px">Office Location: F20 Kweku Folson Building</p>
+<p style="margin-left:0px"><a href="https://orcid.org/0000-0002-7796-169X">https://orcid.org/0000-0002-7796-169X</a></p>
+<p style="margin-left:0px"><a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=abdul-jalilu+ateku&amp;btnG=">https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=abdul-jalilu+ate...</a></p>
+<p><strong>PROFILE </strong></p>
+<p style="margin-right:61px">Abdul-Jalilu Ateku's major research interests are in international relations theories, international security interventions in war-affected/post-war states – peacebuilding, peacekeeping, human security, human rights, elections, election security and democracy, and African politics. More recently, his attention has focused on international security interventions in war/post-war-affected states, particularly the impact of peacebuilding on human security in war-affected states in Africa. </p>
+<p style="margin-right:61px"> </p>
+<p style="margin-right:61px"><strong>EDUCATION</strong></p>
+<p style="margin-right:61px">PhD -                           University of Nottingham</p>
+<p style="margin-right:61px">M. Phil-                       University of Ghana</p>
+<p style="margin-right:61px">B. A. Political Science  - University of Ghana</p>
+<p> </p>
+<p><strong>CURRENT RESEARCH</strong></p>
+<ul>
+<li>Rethinking the Peacebuilding Agenda in Africa: How Peacebuilding Impact on Human security in War-Affected States (Evidence from Côte d’Ivoire and Liberia) – Book</li>
+<li>The Political Economy of Resource Conflict and Organised Violence in Ungoverned Spaces in Africa – Article</li>
+<li>Parties and Democratic Consolidation in Ghana: The struggles of smaller parties in an institutionalised two-party system – Book chapter</li>
+<li>Women, Girls and Civic Engagement in Africa’s post-Conflict States: Evidence from Liberia and Côte d’Ivoire – Article</li>
+<li>20 years of UN Resolution 1325: women’s participation in peace and reconciliation in West Africa (a study of Côte d’Ivoire, Liberia and Sierra Leone) -Article</li>
+</ul>
+<p> </p>
+<p><strong>COURSES TAUGHT</strong></p>
+<ul>
+<li>    POLI 112: Political Institutions</li>
+<li>    POLI 111: Introduction to the Study of Political Science</li>
+<li>    POLI 212: Introduction to International Politics</li>
+<li>    POLI 444: Electoral Politics &amp; Democracy in Ghana</li>
+<li>    POLI 455: Post-Conflict Peacebuilding &amp; Transitional Justice</li>
+<li>    POLI 458: Politics of Identity in Ghana</li>
+<li>    POLI 631: Conflict Resolution &amp; Peace Studies</li>
+<li>    POLI 656: Human Rights in Africa</li>
+<li>    POLI 679/680: Special Topics</li>
+</ul>
+<p><strong>PUBLICATIONS/ RESEARCH OUTPUT</strong></p>
+<p><strong><em>Journal articles</em></strong></p>
+<ul>
+<li>Abdul-Jalilu Ateku (2020) 'Regional intervention in the promotion of democracy in West Africa: an analysis of the political crisis in the Gambia and ECOWAS’ coercive diplomacy', Conflict, Security &amp; Development, 20:6, 677-696. doi.org/10.1080/14678802.2020.1854954</li>
+</ul>
+<p style="margin-left:48px"> </p>
+<div style="border-bottom:double windowtext 6.75pt; border-left:none; border-right:none; border-top:double windowtext 6.75pt; padding:1.0pt 0in 1.0pt 0in">
+<p> </p>
+<p><em><strong>Online blog articles</strong></em></p>
+<ul>
+<li>How the Gambia is going about its search for truth and reconciliation  <a href="https://theconversation.com/how-the-gambia-is-going-about-its-search-for-truth-and-reconciliation-114203" style="color:#0563c1; text-decoration:underline">https://theconversation.com/how-the-gambia-is-going-about-its-search-for-truth-and-reconciliation-114203</a></li>
+<li>Kofi Annan: A Man Who Paid His Dues to Global Peace and Security <a href="https://theconversation.com/kofi-annan-a-man-who-paid-his-dues-to-global-peace-and-security-101837" style="color:#0563c1; text-decoration:underline">https://theconversation.com/kofi-annan-a-man-who-paid-his-dues-to-global-peace-and-security-101837</a></li>
+<li>Ghana is 60: An African Success Story with tough Challenges Ahead <a href="https://theconversation.com/ghana-is-60-an-african-success-story-with-tough-challenges-ahead-74049" style="color:#0563c1; text-decoration:underline">https://theconversation.com/ghana-is-60-an-african-success-story-with-tough-challenges-ahead-74049</a><u> </u></li>
+<li>How West Africa Built the Muscle to Rout Dictators and Keep the Peace <a href="https://theconversation.com/how-west-africa-built-the-muscle-to-rout-dictators-and-keep-the-peace-71688" style="color:#0563c1; text-decoration:underline">https://theconversation.com/how-west-africa-built-the-muscle-to-rout-dictators-and-keep-the-peace-71688</a><u>  </u></li>
+<li>High Stakes as West Africa Prepares Military Action Against Gambia’s Jammeh <a href="https://theconversation.com/high-stakes-as-west-africa-prepares-military-action-against-gambias-jammeh-71481" style="color:#0563c1; text-decoration:underline">https://theconversation.com/high-stakes-as-west-africa-prepares-military-action-against-gambias-jammeh-71481</a><u>    </u></li>
+<li>Boko Haram: Why Jaw-jaw Might be Better than War-war for Nigeria <a href="https://theconversation.com/boko-haram-why-jaw-jaw-might-be-better-than-war-war-for-nigeria-60074" style="color:#0563c1; text-decoration:underline">https://theconversation.com/boko-haram-why-jaw-jaw-might-be-better-than-war-war-for-nigeria-60074</a>       </li>
+<li>Militants that Terrorised Nigeria before Boko Haram Resurface for the Election <a href="https://theconversation.com/militants-that-terrorised-nigeria-before-boko-haram-resurface-for-the-election-38737" style="color:#0563c1; text-decoration:underline">https://theconversation.com/militants-that-terrorised-nigeria-before-boko-haram-resurface-for-the-election-38737</a></li>
+<li> </li>
+</ul>
+</div>
+<p> </p>
+<p><strong>OTHERS</strong></p>
+<ul>
+<li>Commonwealth Scholarship Commission, United Kingdom - 2014</li>
+<li>Regional Network Coordinator, Midlands and Oxford Region, Commonwealth Scholarship Commission, United Kingdom, 2014 - 2017</li>
+</ul>
+<p> </p>
+<p> </p>
+</div></div></div>  </div>
+
+</div>
+
+  </div>
+</div>  </div>
+          
+
+        </div> <!-- // content -->
+
+
+              </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="container">
+              <div class="row footer_inside">
+
+          <div class="four columns f1" style="width:211px;">
+              <div class="region region-footer-firstcolumn">
+     <div id="block-block-2" class="block block-block">
+    
+    <h3>About the Department</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/about/welcome">Welcome Message</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/brief_history">Brief History</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/vision">Objectives and Vision</a></p>
+<p><a href="https://pscience.ug.edu.gh/faculty-staff">Faculty</a></p>
+<p><a href="https://pscience.ug.edu.gh/staff">Staff</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!--  1/4 Columns -->
+          <div class="three columns f2">
+              <div class="region region-footer-secondcolumn">
+     <div id="block-block-1" class="block block-block">
+    
+    <h3>Admissions</h3>
+
+    
+  <div class="content">
+    <p><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank">Undergraduate</a></p>
+<p><a href="https://sgs.ug.edu.gh/admissions/" target="_blank">Graduate</a></p>
+<p><a href="https://admissions.ug.edu.gh/international" target="_blank">International</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f3">
+              <div class="region region-footer-thirdcolumn">
+     <div id="block-block-3" class="block block-block">
+    
+    <h3>Academics</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/academics/academic-programmes" style="font-size: 13.008px;">Academic Programmes</a></p>
+<p><a href="https://pscience.ug.edu.gh/courses">Undergraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/post-graduate-courses">Postgraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/student_support">Student Support</a></p>
+<p><a href="https://www.ug.edu.gh/academics/calendar" target="_blank">Academic Calendar</a></p>
+  </div>
+</div>
+  </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f4">
+              <div class="region region-footer-fourthcolumn">
+     <div id="block-block-4" class="block block-block">
+    
+    <h3>QUICK LINKS</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/news-events">News &amp; Events</a></p>
+<p><a href="https://pscience.ug.edu.gh/news-events?tid=12">Announcements</a></p>
+<p><a href="https://pscience.ug.edu.gh/research">Research</a></p>
+<p><a href="#" target="_blank">Alumni</a></p>
+<p><a href="https://socialsciences.ug.edu.gh/" target="_blank">School of Social Sciences</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+            <!-- 1/4 Columns -->
+          <div class="three columns f5">
+                      </div>
+
+
+              
+      </div> 
+      <div class="clear"></div>
+
+      <div class="footer_btm">
+        <div class="footer_btm_inner">
+
+                                <div id="powered">
+              <a href="https://www.ug.edu.gh/" target="_blank">University of Ghana </a>&copy;&nbsp;2026                
+              </div>
+                  </div>    
+      </div>
+    </div>
+  
+    <!-- Footer::END -->
+
+  </div>    
+
+    
+      <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/sites/all/themes/ugdepartments/stylesheets/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.7/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_Hfha9RCTNm8mqMDLXriIsKGMaghzs4ZaqJPLj2esi7s.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_JcYGsF6wKv2qOZLXPZKU9pUzvB92frJyEKj5BQmUMh0.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_yj9SBIxGToUO1zIgUUUueFAIoXNPmXJQe8PicowubVY.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"ugdepartments","theme_token":"pOm3RbwtpdB7Ri-f6j4TeijVFdYam2AhucxK7d_WTPM","js":{"\/\/code.jquery.com\/jquery-1.7.2.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.bgiframe.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.hoverIntent.js":1,"sites\/all\/libraries\/superfish\/superfish.js":1,"sites\/all\/modules\/nice_menus\/js\/nice_menus.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.easing.1.3.js":1,"sites\/all\/themes\/ugdepartments\/js\/common.js":1,"sites\/all\/themes\/ugdepartments\/js\/isotope.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.flexslider-min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.prettyPhoto.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.jcarousel.min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.tipsy.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.selectnav.js":1,"sites\/all\/themes\/ugdepartments\/js\/aqua.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus_default.css":1,"sites\/all\/modules\/ds\/layouts\/ds_2col_stacked_fluid\/ds_2col_stacked_fluid.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/ug-style-min.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/fpe.css":1,"https:\/\/use.fontawesome.com\/releases\/v5.11.2\/css\/all.css":1}},"nice_menus_options":{"delay":800,"speed":"slow"},"urlIsAjaxTrusted":{"\/staff\/dr-abdul-jalilu-ateku":true}});
+//--><!]]>
+</script>
+      <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    <!--  Fonts  -->
+
+	
+
+  </body>
+</html>

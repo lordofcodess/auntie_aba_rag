@@ -1,0 +1,678 @@
+ <!DOCTYPE html>
+<!--
+              ,;r;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;r;,                 
+             .2@@@Superviser:Parick Kuti@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@h,
+             .@@Project+Managers:@@Michael##Phillips@Deborah###Allah@@@@@@@@@@@@@@@@@@@@@@*,
+             .X@@@Lead+Programmers:Gilbert_Gadzekpo@@@Ian Allotey@@@@@@@@@@@@@@@@@@@@@@@@@&,                
+              Developers@@BXi3@@@Alex#Tenkorang@@@@H2iG@@@@Emmanuel#Asare@@@A5Sh#@@@@@@@@@X.                
+              r#@@#####@@B2;;iA@@###############@@H5;;iH@@@##############@MXr;iA@@######@@2.                
+              r#@@#####@@M2r;i&#@@##############@@BXrri&#@@#############@@#Xr;i&#@@#####@@2.                
+              r#@@#####@@@ASrSH@@@##############@@@B5s2M@@@#############@@@ASr2B@@@@####@@2.                
+              r#@@###B3XH@@&29#BX3H#@#######@#H99B@@&5&#H9hB##########M9XH@M929#M9XH####@@2.                
+              r#@@##@#Girri5Siir;5M@@@######@@#&SrrS5iii;r2M@@@######@@hsrsS5Sisr;SB@@##@@2.                
+              r#@@###@@#2;;rsrrih@@@##########@@MS;rrsrri&@@@#########@@M2rrssrriG@@@#M#@@2.                
+              r#@@#HX5G#@BXisi2A@#h23H@@####A55G##H2iss2B@M923B@####HX5G#@B3iri2A@#hXhH#@@2.                
+              r#@@@#2;;s3A9SiS525r;s&#@@##@@#Xr;s3&XSii22S;;s&#@###@#X;:s3&9SiS225r;sA#@@@2.                
+              r#@@@@@B5;;;sSSir;;rX#@@@####@@@M5;;;sSSir;;r3#@@####@@@H5;;;sS5Ss;;rX#@@@@@2.                
+              r#@#AA#@@#G2iiiSSX&#@#HM####MAA#@@#G5iiiiSXA#@#BM####AA#@@Mh2iiiiSXGM@#HH#@@2.                
+              r@@@9sr2M@@#XsiSXB#H5rsh#@@@M3sr5M@@B2siS3M#H2rs&@@@#GsrX#@@MXisS3H#H2rs9#@@2.                
+              r#@@@Hi;;ri5SiSSisr;;SH@@@#@@#&s;;riSSiSSisr;;i&#@@@@@Ai;;ri55Siiisr;;SH@@@@2.                
+              r#@@@@M3sr;rsSSisrs2H@@@####@@@#hs;rriSSSsrs2A@@@###@@@M2rr;rsSSiiss2H@@@@@@2.                
+              r#@@@@@@@#&2iiiii9#@@@@#####@@@@@@#G5iiii5A@@@@@#####@@@@@#A2iiiiS9#@@@@##@@2.                
+              r#@@#@@@@@@#3ssi2H@@@@#######@@@@@@@#XissX#@@@@#######@@@@@@@hsri2H@@@@###@@X.                
+              s@@@@@@@@@@@ASss2B@@@@@@@@@@@@@@@@@@@ASsr2#@@@@@@@@@@@@@@@@@@HiriXB@@@@@@@@@3,                
+              :hB&h99GG&HA2srrs2GAG99hhhh9hhhGGGAA&2sr;s2G&hhhGGGGhh99hh&AA2srrs2h&Gh99hHAr                 
+              :3Hh333939G&AAAGhh9h93333hG&AAAAAAAAA&AA&h99hh&AAAAAAAG9339h&AAA&h9hh93339A&r                 
+              r#@@@@@@@@@@@@@@@@@@@@@@@@@MAGh9hA#@@@@@@@@@@@MAhh9GAM@@@@@@@@@@@@@@@@@@@@@@2.                
+              s@@@@@@@@@@@@@@@@@@@@@@@#A2issiirri3#@@@@@@@H2srsiissiXH@@@@@@@@@@@@@@@@@@@@3,                
+              r#@@#################@#9r;r2A#@@#&i;r2M@@@A5rrSA@@@#ASrrSA@@@#############@@X.                
+              r#@@##################&irX#@@@@@@@@Hs;sA#&sr2@@@@@@@@@Bi;SB@@#############@@2.                
+              r#@@###############@@HXsSB@@@B3SX#@@Birrssi3@@@H25&#@@@Gsi&#@@############@@2.                
+              r#@@###############@@HXs5B@@@#hs;sA@@B2r;sh@@@Xr;iA@@@@Aiih#@@############@@2.                
+              r#@@###############@@@HirSH@@@@hrrX@@@hs;iA@@#2riA@@@@Air5H@@#############@@2.                
+              r#@@################@@@H5r;rS25iS&@@#G25Si5G@@@Gisi5ir;s3M@@##############@@2.                
+              r#@@##########@@@@@@@@@@@MhX2XGM@@@M5r2#@As;X@@@@A3223A@@@@@@@@@@@@@######@@2.                
+              r#@@##########Bh223hAH#@@@@@@@@@#A2siXM@@@&iri3B#@@@@@@@@#BA&9X23A#@@#####@@2.                
+              r#@@########M9s:::::;;rrsS5222ir;::rA@@92A@@X;:;rsS222Sirrr;;::::;SA#@####@@2.                
+              r#@@#########A2srrssisiiS2222225isrs3MB9X&##3rriS22XX225Siiissrrrs2A######@@2.                
+              r#@@########@@@@BB#@@@@@@@@@#@@@@@B2rrh@@@9ss9#@@@@##@@@@@@@@@#BB@@@@#####@@2.                
+              r#@@########@@@@@@@@@@@@Mh5isi5h#@@@&siGHG55M@@@B35isi2A@@@@@@@@@@@#######@@2.                
+              r#@@#########@@@@@@@@@#Xr;s3BMhssX#@@A5rrih#@@Air5A#H2r;sG@@@@@@@@########@@2.                
+              r#@@##################hssh@@@@@hsr3@@#Xr;sA@@#5rSH@@@@#2riA#@@############@@2.                
+              r#@@###############@#A2s2#@@@#3sr2M@@GSsrs2H@@H5riG@@@@Ais9M@@############@@2.                
+              r#@@###############@@#GiiA@@@#HAM@@@Aii33SsSB@@@H&A#@@@GsiA#@@############@@2.                
+              r#@@################@@#5;rh#@@@@@@#Xrr3@@#S;rG@@@@@@@#hsrX#@@#############@@2.                
+              r#@@################@@@#Xr;r2hGhXSrrSH@@@@#9r;r53hhXSrri&#@@##############@@X,                
+              ;#@@#################@@@@M3SsrrrriXA@@@@@@@@#hSsrrrri2&#@@@###############@@2.                
+              :A@@##################@@@@@@#BAH#@@@@@####@@@@@@MHHM@@@@@@################@#s.                 
+              .2#@@###################@@@@@@@@@@@@#######@@@@@@@@@@@@@##################@@M;                 
+               :h@@@#####################@@@@@@####TEAM#####@@@@@@####################@@#9:                 
+                ;#@@@########Patrick#Kuti####Michael#Philips####Deborah#Allah#########@@3,                  
+                 :h@@@@@##########Gilbert#Gadzekpo#####Ian#Allotey#################@@@@B;                   
+                   rM@@@@@@@@@#######Alex#Tenkorang#####Emmanuel##Asare#####@@@@@@@@#5.                    
+                     ,s&@@@@@@@@@@@@@################################@@@@@@@@@@@@@Ai:                       
+         ...              ,;i3H@@@@@@@@@@@@@#################@@@@@@@@@@@@M&92s;:.          .:::.            
+      ,;r;:::::,.               .:;rs59A#@@@@@@@@@#######@@@@@@A3ir;;:..               .,::,,::;r;.         
+     :rrrssr;;iXi,                       .,;i2A#@@@@@@@@@#A2r:.                       ,s25r;;;;rs;,         
+     :r;::;:,.:;;.                             .;i&#@@H5;.                     ... .   ,::,,::;;sr:         
+     .r2S;,...    ..,,..                           ,;:                        ......,,.   ...,;SG2:         
+      ;2Ah2isr;rS2s:.,:;;rr;.                                               :rir;:. ,i92issi5X9h9s.         
+      ,SA&99h&&AHhr..;h@@@@@5,                                             ,2@@@@#S..rX&Ahhh93XXS;          
+       rX3X33393G3;.,r5399Gh2s;::,,.                                 ..,,,:r5XX23hs..;5993XXX22Sr,          
+         ,;sS5229X;..;s2&M@#M#@@###H&9X25isssrrrrrrrrrrrrrrsssssiiS2XGAHBMMAh&BMBGr. :s2X2Ssr:,             
+                 .  .rS3M@@@@##@@@@@@@@@@@@#HH#@@@@#UGCSMM#@@@@@@@##@@@@@@@#AB@@@Mi,                        
+                     :riXh&AAGhAM####@@@@@@#BM@@@@@@@@#@@@MM@@@@@@@@@@@@@@#MH&9X2s:.                        
+                            .,;rsii5Xh&&&AA&GGGh&ABBBBBBMBAAHBAAHH&9X5Sis;:,.                               
+                                        .,,:::,,,::::;;:::::::::,.                                          
+ -->
+
+
+<!--[if IE 7 ]><html class="ie ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><!--<![endif]-->
+
+  <head profile="http://www.w3.org/1999/xhtml/vocab">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/staff/prof-ransford-edward-van-gyampo" />
+<link rel="shortlink" href="/node/129" />
+<link rel="shortcut icon" href="https://pscience.ug.edu.gh/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prof Ransford Edward Van Gyampo | Department of Political Science</title>
+    <link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_TsVRTbLFUpEZAfw-_bWPJu840QT523CPjUVJ5MRWfyk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_HkdpaPJNwY4GBfynmNsoQHIPSVGTir6baStmsdyM_vc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_uS_-bgJ2-t8YuIh44b3fkiJyEGdNvo64Ixe2JuoJiM4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" media="all" />
+	
+
+
+      
+
+      <!-- menu font -->
+            <style type="text/css">
+        .custom_menu #menu > ul > li > a,#menu {
+          font-family:Open Sans;
+                  }
+      </style>
+      <!-- // menu font -->
+
+      <!-- menu font size -->
+            <style type="text/css">
+        #menu > ul > li > a{
+          font-size: 15px ;
+        }
+        #menu > ul > li ul > li > a{
+          font-size: 14px ;
+        }
+      </style>
+      <!-- // menu font size -->
+
+
+      <!-- main color -->
+            <style type="text/css">
+        a:hover, a:focus{
+          color: #0AD1E5 ;
+        }
+        .button:hover,
+        a:hover.button,
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,	
+        input[type="button"]:hover,
+        .button_hilite, 
+        a.button_hilite,
+        .button_hilite,
+        a.button_hilite{
+          color: #FFF;
+          background-color: #0AD1E5;
+        }
+        .section_big_title h1 strong,
+        .section_featured_texts h3 a:hover,
+        .breadcrumb a:hover,
+        .post_meta a:hover,
+        #footer a:hover {
+          color: #0AD1E5 ;
+        }
+        .portfolio_filter div.current,
+        .next:hover,.prev:hover,
+        .pagination .links a:hover,
+        .info h2, 
+        .h2.ls-s2,
+        jcarousel-next-horizontal:hover, 
+        .jcarousel-prev-horizontal:hover{
+          background-color: #0AD1E5 ;
+        }
+        .footer_pic img:hover{
+          border: 1px solid #0AD1E5;
+        }
+      </style>
+      <!-- // main color -->
+
+      <!-- heading font -->
+            <style type="text/css">
+        h1, h2, h3, h4, h5, .title, .section_big_title h1, .heading, #footer h3,
+        .page_heading h1{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- heading font -->
+
+      <!-- button font -->
+            <style type="text/css">
+        .button, a.button,	button,	input[type="submit"], input[type="reset"], input[type="button"]{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- // button fonts -->
+
+      <!-- body font -->
+            <style typ="text/css">
+        body{
+          font-family: Open Sans;
+        }
+      </style>
+      <!-- // body font -->
+
+      <!-- body background and color -->
+            <style type="text/css">
+        body{
+          background-image: none;background-color #fff;        }
+      </style>
+      <!-- // body bg -->
+
+  </head>
+  <body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-129 node-type-staff" >
+    <div id="skip-link">
+      <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+    </div>
+         
+<div id="wrapper" class="not-home-page">
+
+  <div class="container">
+
+    <div class="header clearfix row">
+              <div class="eight columns header_left">
+          <a href="/"><img src="https://pscience.ug.edu.gh/sites/pscience/files/logo_pscience.png" alt="Home" /></a>
+        </div>
+      
+      <div class="eight columns">
+        <div class="header_right">
+          
+
+          <div class="header_soc_search clearfix">
+                          <div class="header_search">
+                <form class="search" action="/staff/prof-ransford-edward-van-gyampo" method="post" id="searchform" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <button class="button_search"></button><div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="s">Search </label>
+ <input title="Enter the terms you wish to search for." class="search-text-box form-text" type="text" id="s" name="search_block_form" value="" size="15" maxlength="128" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-BH4DCvANQmGuQTajd58wWRHTfNtGnhPRDvtFX4m4bg4" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>              </div>
+                      </div>
+          <!-- Block position for font resizer-->
+          <div>
+                          </div>  				
+        </div>
+      </div>
+    </div>
+
+    <!--begin of top menu-->
+    <div class="top_header" style="margin-bottom:10px;">
+    
+            <div class="header_contacts clearfix">
+              <div class="region region-top-menu">
+    <div id="block-nice-menus-1" class="block block-nice-menus">
+
+    
+  <div class="content">
+    <ul class="nice-menu nice-menu-down nice-menu-menu-top-menu" id="nice-menu-1"><li class="menu-437 menu-path-sienablerugedugh-pls-prodi41-w99pkgmi-login first odd "><a href="https://ienabler.ug.edu.gh/pls/prodi41/w99pkg.mi_login" target="_blank">MIS Web</a></li>
+<li class="menu-436 menu-path-sportalofficecom-  even "><a href="https://portal.office.com/" target="_blank">Staff Webmail</a></li>
+<li class="menu-448 menu-path-smailgooglecom-a-stugedugh  odd last"><a href="https://mail.google.com/a/st.ug.edu.gh" target="_blank">Student Webmail</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+            </div>
+
+    </div>
+    <!--end of top menu-->
+
+    <!-- Main Navigation -->
+    <div class="row no_bm">
+      <div class="dark_menu sixteen columns">
+        <div id="menu" class="">
+          <ul id="responsive"  class="nav_simple sf-menu main-menu sf-horizontal sf-style-none sf-total-items-7 sf-parent-items-4 sf-single-items-3"><li><a href="https://www.ug.edu.gh" target="_blank" title="Go to university homepage"><span class="home_icon"></span></a></li><li id="menu-257-1" class="first odd sf-item-1 sf-depth-1 mainMenu sf-no-children"><a href="/" class="sf-depth-1 ">Home</a></li><li id="menu-454-1" class="middle even sf-item-2 sf-depth-1 sf-total-children-7 sf-parent-children-0 sf-single-children-7 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">About Us</a><ul class="dropdown"><li id="menu-455-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/about/welcome" class="sf-depth-2 ">Welcome Message</a></li><li id="menu-456-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/about/brief_history" class="sf-depth-2 ">Brief History</a></li><li id="menu-457-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/about/vision" class="sf-depth-2 ">Objectives and Vision</a></li><li id="menu-503-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/faculty-staff" class="sf-depth-2 ">Faculty</a></li><li id="menu-459-1" class="middle odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/staff" class="sf-depth-2 ">Staff</a></li><li id="menu-970-1" class="middle even sf-item-6 sf-depth-2 mainMenu sf-no-children"><a href="/student-affairs" class="sf-depth-2 ">Student Affairs</a></li><li id="menu-973-1" class="last odd sf-item-7 sf-depth-2 mainMenu sf-no-children"><a href="/academic-programmes" class="sf-depth-2 ">Academic Programmes</a></li></ul></li><li id="menu-460-1" class="middle odd sf-item-3 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Academics</a><ul class="dropdown"><li id="menu-464-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/academics/course_schedule" class="sf-depth-2 ">Course Schedule</a></li><li id="menu-465-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/courses" class="sf-depth-2 ">Undergraduate Courses</a></li><li id="menu-466-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/academics/post-graduate-courses" class="sf-depth-2 ">Postgraduate Courses</a></li><li id="menu-467-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/academics/student_support" class="sf-depth-2 ">Student Support</a></li><li id="menu-468-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/academics/calendar" target="_blank" class="sf-depth-2 ">Academic Calendar</a></li></ul></li><li id="menu-461-1" class="middle even sf-item-4 sf-depth-1 sf-total-children-3 sf-parent-children-0 sf-single-children-3 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Admissions</a><ul class="dropdown"><li id="menu-469-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank" class="sf-depth-2 ">Undergraduate</a></li><li id="menu-470-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="https://sgs.ug.edu.gh/admissions/" target="_blank" class="sf-depth-2 ">Postgraduate</a></li><li id="menu-471-1" class="last odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/international" target="_blank" class="sf-depth-2 ">International</a></li></ul></li><li id="menu-462-1" class="middle odd sf-item-5 sf-depth-1 mainMenu sf-no-children"><a href="/research" class="sf-depth-1 ">Research</a></li><li id="menu-478-1" class="middle even sf-item-6 sf-depth-1 mainMenu sf-no-children"><a href="/news-events" class="sf-depth-1 ">News &amp; Events</a></li><li id="menu-463-1" class="last odd sf-item-7 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Visitors</a><ul class="dropdown"><li id="menu-472-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/visiting_us" class="sf-depth-2 ">Visiting Us</a></li><li id="menu-473-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/campuslife/explore-campus/campus-map" target="_blank" class="sf-depth-2 ">Maps and Directions</a></li><li id="menu-474-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/giving_to_us" class="sf-depth-2 ">Giving to Us</a></li><li id="menu-475-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="http://campuslife.ug.edu.gh/cgi-sys" target="_blank" class="sf-depth-2 ">Students Life</a></li><li id="menu-476-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/contact_us" class="sf-depth-2 ">Contact Us</a></li></ul></li></ul>        </div>
+
+      </div>
+    </div>
+    <!-- Main Navigation::END -->
+                    <div class="row">
+        <div class="sixteen columns">
+
+                       <div class="breadcrumb">
+              <a href="/">Home</a>            </div>
+          
+          
+        </div>		
+      </div>
+    
+    
+
+    <!-- Information Region -->
+
+    <div class="info_reg">
+         </div>
+
+    <!-- highlighted -->
+        <!-- //highlighted -->
+
+
+    <div class="row">
+
+      
+                <div style="margin-left:2px;" id="content" class="others sixteen columns ">
+          
+
+                              <div class="page_heading">
+              <h1>Prof Ransford Edward Van Gyampo</h1>
+            </div>
+                    
+
+
+          
+          
+                    
+            <div class="region region-content">
+     <div id="block-system-main" class="block block-system">
+
+      
+
+  <div class="content">
+    <div  about="/staff/prof-ransford-edward-van-gyampo" typeof="sioc:Item foaf:Document" class="ds-2col-stacked-fluid node node-staff node-staff view-mode-full clearfix">
+
+  
+  <div class="group-header">
+      </div>
+
+      <div class="group-left">
+      <div class="field field-name-field-profile-picture field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img typeof="foaf:Image" src="https://pscience.ug.edu.gh/sites/pscience/files/styles/staff_profile/public/staffs/Prof.%20REV%20Gyampo.jpeg?itok=pl2MofQB" width="160" height="200" alt="" /></div></div></div>    </div>
+  
+      <div class="group-right">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><strong>Prof Ransford Edward Van Gyampo</strong></div></div></div><div class="field field-name-field-position-or-qualification field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Professor</div></div></div><div class="field field-name-field-email-address field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">revgyampo@ug.edu.gh</div></div></div>    </div>
+  
+  <div class="group-footer">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p><a href="https://www.researchgate.net/profile/Ransford-Gyampo">https://www.researchgate.net/profile/Ransford-Gyampo</a></p>
+<p><a href="https://scholar.google.com/citations?hl=en&amp;user=-q7bsWUAAAAJ">https://scholar.google.com/citations?hl=en&amp;user=-q7bsWUAAAAJ</a></p>
+<p><a href="https://independent.academia.edu/RansfordEdVanGyampo">https://independent.academia.edu/RansfordEdVanGyampo</a></p>
+<p> </p>
+<p><strong>PROFILE</strong></p>
+<p>Born on 31st March 1977, in Accra Ghana, Prof Ransford Edward Van Gyampo is a Professor of Political Science and the Founding Director of the Centre for European Studies of the University of Ghana, with 20 years of teaching and research experience. He holds a PhD in Political Science from the University of Ghana and Tufts University in Boston, Massachusetts, USA. His research interest lies in the areas of Governance, Leadership and Democratic Development in Ghana and Africa; Youth Empowerment and Development; Natural Resource Management; Electoral Studies; Ghanaian and African Politics; Maritime Security in the Gulf of Guinea; and Building Resilient Peace in Africa. Prof Gyampo is a Visiting Scholar at the Department of Government and International Relations at the University of South Florida, in the USA. He is also a Visiting Professor at the Institute of Advanced Studies at the University of Bristol, United Kingdom. For 14 years, he worked at the Governance Unit of the Institute of Economic Affairs (IEA-Ghana), rising through the ranks as Research Assistant to the position of Senior Research Fellow. He led a number of research projects and played a key role in the IEA’s Socio-Economic and Governance Surveys that churned out evidence-based research findings on critical socio-economic and governance issues affecting Ghanaians and proffered proposals to address them. These issues and proposals to deal with them, were summarized and discussed at several roundtables and publicized in the media to generate extensive discussion to influence and shape public policy. For 10 years, Prof Gyampo was as the Coordinator of the Netherlands Institute for Multiparty Democracy-sponsored Ghana Political Parties Programme (NIMD-GPPP). This programme brought together the leadership of Political Parties with representation in Ghana’s Parliament and created a monthly dialogue platform for the discussion of critical socio-economic and governance issues of national importance, in a highly non-partisan manner and to propose practical solutions to them. Some of the outcomes of Prof Gyampo’s coordination of the NIMD-GPPP include the conduct of Presidential Debates, Evening Encounters and Town Hall Meetings with Presidential Hopefuls before elections; the drafting of the 2012 Presidential Transition Bill, which is now an Act of Parliament; the review of the Political Parties Act; the drafting of Public Funding of Political Parties’ Bill; the drafting of the Right to Information Bill, which is now an Act of Parliament; the preparation of Code of Conduct for Political Parties and setting up of Enforcement Bodies at the Regional and National Levels to oversee compliance, to maintain peace before, during and after elections in Ghana; nationwide public consultations and submission of report to the President of Ghana in 2015 on Winner-Takes-All Politics, its dangers and practical proposals for reform; and extensive research and public consultations in auditing the gaps in Ghana’s democracy, culminating in the drafting of the Democracy Consolidation Strategy Paper (DCSP), a document that made the first call for the review of Ghana’s 1992 Constitution in 2009, in view of its hindrances to the maturation of Ghana’s democratization processes. The gains and democratic dividends of the NIMD-GPPP in Ghana, were exported to many neighboring West African countries including Liberia, Nigeria, and Sierra Leone, through a program called the West African Regional Political Parties Program (WARPPP), and Prof Gyampo played a coordinating role in ensuring the success of WARPPP. Prof Gyampo also worked at the Institute for Democratic Governance (IDEG) as Senior Research Fellow for two years and assisted with research on the IDEG’s democratic devolution programmes that were aimed at giving more power of decision making on key governance issues, including the direct elections of Metropolitan/Municipal/District Chief Executives (MMDCEs) to the people at the grassroots. He heads the Youth Bridge Research institute (YBRI) and has been involved for the last 7 years, in the conduct of important research issues and policy engagements on matters germane to youth development, mentorship, and participation in decision making locally and nationally, in Ghana and Africa. He is a member of Ghana’s Electoral Reforms Committee and played a key role in identifying the challenges of Ghana’s electoral processes and submitting electoral reform proposals to the Electoral Commission for the purposes of fine-tuning Ghana’s electoral system. He is also a member of the Representation of the People’s Amendment Act (ROPAA) Consultative Committee, a Committee set up by the Electoral Commission of Ghana to research, consult and advise on the implementation of the law that mandates Ghanaians living abroad to vote in Ghanaian elections. As an academic, Prof Gyampo has more than 200 research works and publications to his credit within his areas of research interest. These have been published in reputable academic outlets across the globe as Books, Book Chapters, Book Reviews, Peer Reviewed Journal Articles, Technical Reports, Monographs and Policy Briefs. He is passionate about issues of democracy, governance and electoral politics in Ghana and Africa and comments extensively on these areas in the media and at important roundtables, with a view to shaping Ghana’s governance landscape and assisting Ghana and Africa’s drive towards democratic maturity. Finally, Prof Gyampo is a member of the Governing Council of the University of Ghana, and currently President of the University Teachers Association of Ghana (UG-UTAG), after serving as the Association’s General Secretary for two years. As Labor Union Leader, he has played the crucial role of a catalyst in shaping labor union activism and fighting forcefully for better Conditions of Service for University Teachers and labor, in Ghana. He hails from Saltpond in the Central Region and Larteh in the Eastern Region of Ghana.</p>
+<p><strong>EDUCATION</strong></p>
+<ul>
+<li>PhD in Political Science   -   University of Ghana/Tufts University, Boston</li>
+<li>MPhil in Political Science - University of Ghana</li>
+<li>B.A. in Political Science    - University of Ghana</li>
+</ul>
+<p><strong>AREAS OF SPECIALIZATION</strong></p>
+<ul>
+<li>Governance, Leadership and Democratic Development</li>
+<li>Political Theory</li>
+<li>Political Institutions</li>
+<li>Politics in Ghana and Politics of Developing Countries</li>
+</ul>
+<p><strong>RESEARCH INTERESTS</strong></p>
+<ul>
+<li>European Studies</li>
+<li>Maritime Security</li>
+<li>Natural Resource Management</li>
+<li>Election Management and Electoral Politics</li>
+</ul>
+<p><strong>COURSES TAUGHT </strong></p>
+<p><em><strong>Undergraduate courses</strong></em></p>
+<ul>
+<li>Public Administration</li>
+<li>Introduction to Political Science</li>
+<li>Political Institutions</li>
+<li>Strategies for African Development</li>
+<li>Politics of Developing Countries</li>
+<li>Governance and Leadership</li>
+<li>Social and Political Theory</li>
+<li>Ancient and Medieval Political Thought</li>
+</ul>
+<p>Over 150 Long Essays/Masters’ (MA &amp; MPhil) and Doctoral Dissertations have been written under his supervision.</p>
+<p><em><strong>Postgraduate courses</strong></em></p>
+<ul>
+<li>Government-Business Relations (MA Public Affairs)</li>
+<li>Strategic Planning (MA Public Affairs)</li>
+<li>Problems of Government and Politics in Africa (Mphil, Political Science)</li>
+<li>Strategies for Development of Africa (MPhil, Political Science)</li>
+<li>Issues and Problems of Development in Africa (PhD, Political Science)</li>
+<li>The Political Economy of African Development (Phd, Economics)</li>
+</ul>
+<p><strong>SELECTED PUBLICATIONS/ RESEARCH OUTPUT</strong></p>
+<h2><strong>Books</strong></h2>
+<p>1. *Gyampo, R.E.V. (2022). Donor-funded capacity building in promoting maritime security in Ghana. Copenhagen: AMARIS Project, Department of Political Science, University of Copenhagen.</p>
+<p>2. Jacobson, K.L., *Gyampo, R.E.V. &amp; Techie-Menson E.A. (2022). Capacity building beyond the classroom: Politics host state and donor dynamics. Copenhagen: AMARIS Project, Department of Political Science, University of Copenhagen.</p>
+<p>3. *Gyampo, R.E.V. &amp; Jacobson, K.L. (2021). How capacity building is negotiated: The case of maritime security in Ghana. Copenhagen: AMARIS Project, Department of Political Science, University of Copenhagen.</p>
+<p>4. Gyampo, R.E.V. (2019). The future of EU-Africa relations. Legon: Centre for European Studies.</p>
+<p>5. Gyampo, R.E.V. (2018). European and international perspectives on press freedom, freedom of expression and access to information: lessons for Ghana. Legon: Centre for European Studies.</p>
+<p>6. Gyampo, R.E.V. &amp; Appah R. (2018). Voting behavior in elections in Ghana’s fourth republic. Beau Bassin (Mauritius): Editions Universitaires Europeennes.</p>
+<p>7. Gyampo, R.E.V. (2016). The state of political institutions in Ghana, revised edition. Tema: Digi Books Ghana Limited.</p>
+<p>8. Gyampo, R.E.V. (2016). Dealing with winner-takes-all politics in Ghana: The case for effective decentralization. Accra: The Institute of Economic Affairs.</p>
+<p>9. Gyampo, R.E.V. (2015). The institutional framework for youth participation in Ghana’s fourth republic. Tema: Digi Books Ghana Limited.</p>
+<p>10. Gyampo, R.E.V., Tamakloe-Attionu, S. and Oteng, S. (2014). Empowering the Ghanaian youth for sustainable development. Accra: IDEG/Adwinsa Publications Ghana Limited.</p>
+<h2><strong>Book Chapters</strong></h2>
+<p>11. Graham, E. &amp; Gyampo, R.E.V. (2024). Yɛ te sika so nanso ɔkɔm di yɛn: The case of Ghana’s poverty amid abundant oil resources and revenues”. In J.R.A. Ayee, L.G.A. Amoah and S.M. Alidu (Eds.), Public sector management and economic governance in Ghana: Three decades of the Fourth Republic, (pp.111-130). Palgrave: Macmillan.</p>
+<p>12. Graham, E &amp; Gyampo, R.E.V. (2023). Demystifying personhood and social justice in Ghana. In Joseph Osafo and Charity Akotia (Eds.), Personhood, community and the human condition (pp.105-126). Oxfordshire, UK: Ayebia Clarke Publishing Limited.</p>
+<p>13. Gyampo, R.E.V &amp; Anyidoho, N.A., (2019). Youth politics in Africa. In Nic Cheeseman (Ed.), The Oxford encyclopedia of African politics (pp. 1-20). DOI: 10.1093/acrefore/9780190228637.013.716. New York: Oxford University Press.</p>
+<p>14. Gyampo, R.E.V. (2019). Generational dynamics and youth politics. In Peter VonDoepp and Gabrielle Lynch (Eds.), Routledge handbook on democratization in Africa (pp. 89-121). London, UK: Routledge, Taylor &amp; Francis Group.</p>
+<p>15. Gyampo, R.E.V. (2019). Country studies on student affairs and services around the world, Ghana. In Roger Ludeman (Ed.), Student affairs and services in higher education: Global foundations, issues and best practices, 3rd edition (pp.437-440). Berlin: Deutsches Studentenwerk.</p>
+<p>16. Graham E. &amp; Gyampo, R.E.V. (2019). Sixty years of independence and a decade of oil discovery in Ghana: Oil curse or blessing?. In Joseph R.A. Ayee (Ed.), Politics, governance and development in Ghana (in press, see acceptance letter). New York: Lexington Books.</p>
+<p>17. Gyampo, R.E.V. (2017). The voluntary code of conduct for the 2012 elections in Ghana. In Tatiana Monney and Jorge Valladares Molleda (Eds.), Dialogues on voluntary codes of conduct for political parties in elections (pp. 99-120). Stockholm: Swiss Federal Department of Foreign Affairs &amp; International IDEA.</p>
+<p>18. Gyampo, R.E.V. (2017). Dealing with Ghana’s winner-takes-all politics: A case for proportional representation?. In Bossman Eric Asare and Alex K.D Frempong (Eds.), Selected issues in Ghana’s democracy, Vol. 1 (pp. 83-96). Accra: Digi Books.</p>
+<p>19. Gyampo, R.E.V., Debrah, E., &amp; Aggrey-Darkoh, E. (2016). Politicization of the national union of Ghana students and its effect on student representation. In Thierry M Luescher, Manja Klemenčič and James Otieno Jowi (Eds.), Student politics in Africa: Representation and activism (pp. 224-243). Cape Town: African Minds.</p>
+<p>20. Ofori-Mensah, M., Mensa, J., Rutherford, L., &amp; Gyampo, R.E.V. (2014). Enhancing research quality through organizational capacity building: The case of the Institute of Economic Affairs. In Peter Taylor (Ed.), Action research and organizational capacity building: Journeys of change in southern think tanks (pp. 20-41). Lahore: Sang-e-Meel Publications.</p>
+<p>21. Gyampo, R.E.V. (2008). Chieftaincy and rural development in Ghana since independence. In J.RA. Ayee (Ed.), Ghana at 50: Government, democracy and development (pp. 31-50). Accra: Frederick Ebert Foundation.</p>
+<h2><strong>Journal Articles:</strong></h2>
+<p>22. Tachie-Menson, E. A., Jacobson, K.L., Mensah, A. N. A. &amp; Gyampo, R.V.V. (2023). Challenges to maritime security capacity building. The Gulf Spectrum, 1 (1), 44-50.</p>
+<p>23. Gyampo, R.E.V., Graham, E. &amp; Akpeko, A. (2022). Election petition and the future of electoral reforms in Ghana. Journal of African Elections, 21 (1), 120-141.</p>
+<p>24. Gyampo, R.E.V., &amp; Graham, E. (2022). Ghana’s 2020 elections: An assessment of the journey and processes, The African Review. DOI:10.1163/1821889X-20224913.</p>
+<p>25. Asante, R. &amp; Gyampo, R.E.V (2021). Explaining political party vigilantism and violence in parliamentary bye-elections in Ghana. Journal of African Politics 11(1), 89-105.</p>
+<p>26. Akpeko, A., Graham, E. &amp; Gyampo, R.E.V. (2021). The national peace council and democratic consolidation: An assessment. International Journal of Political Science and Governance 3(2), 90-100.</p>
+<p>27. Graham, E., Gyampo, R.E.V., Ackah, I &amp;Andrews, N. (2020). An institutional assessment of the public interest and accountability committee in Ghana’s oil and gas sector. Journal of Contemporary African Studies. DOI: 10.1080/02589001.2020.1715929.</p>
+<p>28. Graham, E., Gyampo, R.E.V., &amp; Tuokuu, F.X.D. (2020). A decade of oil discovery in Ghana: Implications for politics and democracy. Ghana Social Science Journal 17(1), 31-57.</p>
+<p>29. Hinson, R.; Kosiba, J.; Boateng, H.; Odoom, R.; &amp; Gyampo, R.E.V. (2019). Dialogic features of brand South Africa’s website and tourists’ intention to visit. European Business Review 31(5), 569-584.</p>
+<p>30. Paalo, S.A. &amp; Gyampo, R.E.V. (2019). Campus politics and intra-party vote-buying in Ghana: How political mentorship could destruct. Journal of Student Affairs in Africa 7(2), 123-141. 28. Gyampo, R.E.V., Lodge, T., &amp; Appah, R. (2019). Is voting in Ghana ethnically based? Journal of African Election, 27, (2), 25-43.</p>
+<p>31. Graham, E., Ackah, I., Andrews, N., &amp; Gyampo, R.E.V. (2019). Escaping the oil curse: Is Ghana on the right path? African Review: Journal of African Politics, Development and International Affairs, 46(1), 235-263.</p>
+<p>32. Gyampo, R.E.V. (2018). Assessing the quality of parliamentary representation in Ghana. The African Review, 44(1), 68-82.</p>
+<p>33. Gyampo, R.E.V. (2018). The state of electoral reforms in Ghana. Africa Spectrum, 52 (3), 95-109. 32. Gyampo, R.E.V. (2018). Creating new regions in Ghana: Populist or rational pathway to development?. Ghana Journal of Development Studies 15(2), 1-16.</p>
+<p>34. Gyampo, R.E.V., Graham, E., and Asare, E.B (2018). Political vigilantism and democratic governance in Ghana’s fourth republic. The African Review, 45 (2), 112-135. 34. Gyampo, R.E.V. (2017). Political parties and social media in Ghana. Journal of Pan African Studies, 20 (1), 186-205.</p>
+<p>35. Gyampo, R.E.V., Graham, E. and Yobo, E. (2017). Ghana’s 2016 general elections: Accounting for the monumental defeat of the national democratic congress. Journal of African Elections, 16 (1), 24-45.</p>
+<p>36. Gyampo, R.E.V. and Graham, E. (2017). Reviewing the extensive appointment powers of the president as solution to winner-takes-all politics in Ghana. Ghana Social Science Journal, 14 (2), 35-51.</p>
+<p>37. Gyampo, R.EV. (2017). Social media, traditional media and party politics in Ghana. Africa Review, 29 (2), 125-139. 38. Obeng-Odoom, F. &amp; Gyampo, R.E.V. (2017). Land grabbing, land rights and the role of the courts. Geography Research Forum, 37, (1), 127-143.</p>
+<p>38. Graham, E., Gyampo, R.E.V., Pamphilious F., Yobo, E. (2017). The third peaceful transfer of power and democratic consolidation in Ghana. Journal of Pan African Studies, 20 (5), 99-127. 40.</p>
+<p>39. Gyampo, R.E.V. &amp; Asare, E.B. (2017). The church and Ghana’s drive towards democratic consolidation and maturity. Journal of Church and State, 59 (1), 1-22. 41. Graham, E., Ackah, I., and Gyampo, R.E.V. (2016). Politics of oil and gas in Ghana. Insight on Africa, 38 (2), 131-141.</p>
+<p>40. Gyampo, R.E.V. (2016). Towards peaceful and credible elections in Ghana. World Policy Journal, (summer). Available at <a href="http://www.worldpolicy.org/blog/2016/07/05/toward-peaceful-and-credible-elections-ghana">http://www.worldpolicy.org/blog/2016/07/05/toward-peaceful-and-credible-...</a>.</p>
+<p>41. Gyampo, R.E.V. (2016). Transparency and accountability in the management of oil revenues in Ghana. Africa Spectrum, 51 (2), 79-91. 44. Gyampo R.E.V. (2016). Dealing with winner-takes-all politics in Ghana: The case for public funding of political parties. Governance, 21 (2), 1-9.</p>
+<p>42. Gyampo, R.E.V. (2015). Winner-takes-all politics in Ghana: The case for effective council of state. Journal of Politics and Governance, 41(1), 17-24. 46. Gyampo, R.E.V. (2015). Dealing with winner-takes-all politics in Ghana: The case for an independent parliament. The African Review, 42 (2), 63-75.</p>
+<p>43. Gyampo, R.E.V. (2015). Dealing with winner-takes-all politics in Ghana: The case for national development planning. Governance, 20 (1), 1-11. 48. Yobo, E. &amp; Gyampo, R.E.V. (2015). Third parties and electoral politics in Ghana’s fourth republic. Journal of Politics and Law, 28 (2), 7-16. 49.</p>
+<p>44.Gyampo, R.E.V. (2015). Public funding of political parties in Ghana: An outmoded conception?. Ufahamu: Journal of African Studies, 38 (2), 3-28.</p>
+<p>45. Gyampo, R.E.V. (2015). Youth in parliament and youth representation in Ghana. Journal of Asian and African Studies, 50 (1), 69-82. 51.</p>
+<p>46. Gyampo, R.E.V. and Graham, E. (2014). Constitutional hybridity and constitutionalism in Ghana. Africa Review, 6 (2), 138-150. 52.</p>
+<p>47.Debrah, E., Owusu-Mensah, I. &amp; Gyampo, R.E.V. (2014). Mediating the Dagbon chieftaincy conflict: The eminent chiefs’ approach. Peace Studies Journal, 7 (2), 29-41. 53.</p>
+<p>48. Gyampo, R.E.V. and Debrah, E. (2014). Government response to public opinion in Ghana’s constitutional review process. The African Review, 41 (2), 85-107. 54. Gyampo, R.E.V. (2014). Making Ghana’s oil money count: Lessons from gold mining. International Journal of Development and Economic Sustainability, 22 (1), 25-38.</p>
+<p>49. Gyampo, R.E.V. (2014). Justice delayed is justice denied: A call for timeous court rulings in Ghana. Journal of Law, Policy and Globalization, 21, (1), 36-42. 56.</p>
+<p>50.Gyampo, R.E.V. (2013). Americanization of African politics: The case of Ghana’s 2012 presidential debate series. Legon Journal of International Affairs and Diplomacy (LEJIAD), 17 (1), 67-92. 57. Gyampo, R.E.V. &amp; Debrah, E. (2013). The youth and party manifestos in Ghanaian politics: The case of the 2012 general elections. Journal of African Elections, 12 (2), 96-114.</p>
+<p>51. Gyampo, R.E.V. (2013). Student activism and democratic quality in Ghana’s fourth republic. Journal of Student Affairs in Africa, 1&amp;2, 49-66. 59.</p>
+<p>52. Gyampo, R.E.V., Ofori-Mensah, M., &amp; Owusu-Mensah, I. (2013). Ghana’s presidential transition act and the 2013 transition. Journal of Law, Policy and Globalization, 20,(2) 1-10.</p>
+<p>53. Gyampo, R.E.V. and Obeng-Odoom, F. (2012). Youth participation in local and national development: 1620-2013. The Journal of Pan African Studies, 5 (9), 129-155. 61. Gyampo, R.E.V. (2012). The youth and development policy implementation in Ghana. Journal of African Development Studies, 25 (1), 1-31.</p>
+<p>54. Gyampo, R.E.V. (2012). Youth participation in youth programmes: The case of Ghana’s national youth employment programme. Journal of Pan African Studies, 5 (5), 1-16.</p>
+<p>55. Gyampo, R.E.V. (2012). The youth and development planning in West Africa: The case of Ghana’s fourth republic. African Journal of Social Sciences, 2 (4), 130-146.</p>
+<p>56. Gyampo, R.E.V. (2012). The youth and political ideology in Ghanaian politics: The case of the fourth republic. African Development (CODESRIA), 37 (2), 135-163. 65.</p>
+<p>57. Gyampo, R.E.V. (2011). Somalia: An anti-thesis of the western conception of failed states?. Ghana Journal of Development Studies, 8(2), 1-16. 66. Gyampo, R.E.V., Kuditcher, N.L., &amp; Asare, B.E. (2011). The first hundred days of oil production in Ghana. African Research Review, 5 (2), 16-28. 67.</p>
+<p>58. Gyampo, R.E.V. (2011). Saving Ghana from its oil: A critical review of preparations so far made. Africa Today, 57 (4), 49-70.</p>
+<p>59. Gyampo, R.E.V &amp; Anamzoya, A.S. (2010). Ministerial appointments and government expenditure in developing democracies: A case study of Ghana’s fourth republic. Journal of Arts and Education, 4 (1), 49-73.</p>
+<p>60. Gyampo, R.E.V (2010). Political apparatchiks and governance in Ghana’s fourth republic. Educational Research, 11 (1), 21-36. 70. Gyampo, R.E.V &amp; Obeng-Odoom, F. (2009). Ghana’s democracy: A radical perspective. Current Politics and Economics in Africa, 12 (3), 1-24. 71.</p>
+<p>61. Gyampo, R.E.V (2009). Chiefs and electoral politics in Ghana’s fourth republic. Journal of Intra African Studies, 1 (1), 86-111. 72.</p>
+<p>62. Gyampo, R.E.V (2009). Rejected ballots and democratic consolidation in Ghana’s fourth republic. African Research Review, 3(3), 282-296.</p>
+<p>63. Gyampo, R.E.V. (2009). Presidential debates and electoral fortunes of political parties in Ghana’s 2008 elections. Politikon. 36(3), 445-461.</p>
+<p>64. Gyampo, R.E.V. (2008). Direct election of district chief executives and mayors: A tool for effective decentralization and political stability. Ghana Policy Journal, 2, 70-92. 75. Gyampo, R.E.V. (2008). The 2008 political parties code of conduct: A toothless bulldog?. African Journal of Political Science and International Relations, 2(3), 38-51. 76.</p>
+<p>65. Gyampo, R.E.V. (2007). Constraints on democratic local governance in Ghana: The case of appointment of district chief executives by the president. Journal of Arts and Education, 1 (1), 157 – 170.</p>
+<h2><strong>OTHERS</strong></h2>
+<h2>Consultancy Reports &amp; Papers Presented at Seminars/Roundtables</h2>
+<p>1. “Election 2008 and Democratic Consolidation in Ghana”: Paper Presented at a Lecture Organized by Professor Pearl Robinson (Tufts University, Boston) for Political Science Students of Tufts University on 8th March 2009 at the Department of Political Science, Tufts University, Boston, MA, USA.</p>
+<p>2. “Prospects and Challenges of Democracy in Ghana’s Fourth Republic”: Paper Presented at a workshop for Youth leaders organized in Accra by the Friedrich Ebert Stiftung from 14th-15th January, 2012.</p>
+<p>3. “The State of Governance and Democracy in Ghana”: Paper Presented at a meeting of the National Chairmen and General Secretaries of Political Parties with representation in Parliament under the auspices of The Institute of Economic Affairs-Ghana Political Parties’ Programme (IEA-GPPP) in Accra on 15th December 2011,</p>
+<p>4. “Prospects and Challenges of the Youth in Ghana”: Paper Presented at an Inter-Party Youth Committee meeting of the National Youth Organizers of the Political Parties with representation in Parliament under the auspices of The Institute of Economic Affairs-International IDEA collaboration in Accra on 26th January 2012.</p>
+<p>5. Report on Ghana’s compliance with the provisions of the African Youth Charter submitted to the Institute of Democratic Governance in Accra on 20th April 2013.</p>
+<p>6. Report on State of Governance in Ghana after the 2012 Elections, submitted to the Institute of Economic Affairs (IEA-Ghana) on 22nd May 2013.</p>
+<p>7. “Presidential Debates in Ghana: Approaches, Lessons and Best Practices”: Paper presented to the US Commission on Presidential Debates (CPD) and the National Democratic Institute (NDI) at a Conference organized in Washington DC, USA on 17th June 2013.</p>
+<p>8. “The Fundamentals of Ghana’s Democratic System”: Paper presented at a workshop organized by Friedrich Ebert Stiftung in Accra on 22nd June 2013.</p>
+<p>9. “Inter-Party Dialogue and Democratic Consolidation in Africa: The Case of The Ghana Political Parties’ Programme and National Agenda Setting” Report submitted to the Netherlands Institute for Multi-Party Democracy (NIMD) on 25th June 2013 in Naivasha, Kenya.</p>
+<p>10. “Empowering the Ghanaian Youth for Sustainable Development”: Paper presented at a roundtable organized by the Institute for Democratic Governance (IDEG) on 5th September 2013 in Accra.</p>
+<p>11. The Youth Section of Ghana’s Forty Year National Development Plan submitted to the National Development Planning Commission in October 2016.</p>
+<p>12. Developing Political Parties’ Code of Conduct in Ghana: Paper submitted to International IDEA on 30th November, 2016.</p>
+<p>13. Strengthening Developmental Political Parties in Ghana: Issues paper submitted to the Institute for Democratic Governance (IDEG) on 19th June 2017.</p>
+<p>14. Corruption in Ghana: The case of Venture Capital Trust Fund: Paper submitted to the National Media Center for Social and Economic Justice on 23rd June 2017.</p>
+<p>15. Assessing the Quality of Democracy in Africa”. Paper Presented at a Conference at the University of Bristol, UK on 25th November, 2018.</p>
+<p>16. “Beyond Election Machines: Strengthening Political Parties in Ghana for Democratic Consolidation.” Paper presented in Legon, Accra at the 70th Annual New Year School and Conference, organized by the University of Ghana on 14th January, 2019.</p>
+<p>17. Dealing with Vigilantism in Ghana: Paper presented and submitted to the Coalition for National Sovereignty in Accra, on 14th February, 2019.</p>
+<p>18. The 1992 Constitution and Constitutionalism in Ghana: Paper presented at an Inter-Faculty Lecture at the University of Ghana on 2nd May, 2019.</p>
+<p>19. Parliaments and Democratic Consolidation in Africa: Paper presented at the 12th Mwalimu Julius Nyerere Intellectual Festival/Conference at the University of Dar Es Salaam, Tanzania on 2nd July, 2021.</p>
+<p>20. Donor-Funded Capacity Building in Promoting Maritime Security in Ghana: Paper Presented at an Interpretation Workshop organized by the AMARIS Research Project on Maritime Security, in Casablanca, Morocco on 25th August 2021.</p>
+<p>21. Constitutional Manipulation of Term Limits and its Impact on Military Takeovers in Africa: Paper presented at a Conference organized by the Kofi Annan International Peacekeeping and Training Center in Accra, Ghana on 10th July 2022.</p>
+<p>22. “The Russian-Ukraine Conflict and its impact on Food and Energy Security in Africa”: Paper presented at a seminar organized by the Kofi Annan International Peacekeeping and Training Center in Accra, Ghana on 5th July 2022.</p>
+<p>23. “Assessing the Domestic Counter-Terrorism Strategies in Ghana”: Paper presented at conference on the Future of Terrorist Organizations in Africa organized by the King Faisal Center for Research in Riyadh, Saudi Arabia, from 26th to 28th February 2024.</p>
+<p><strong>Summits, Programmes &amp; Conferences Attended</strong></p>
+<p>1. African Presidential Roundtable Conference in Johannesburg, South Africa, From 6th – 9th April 2005.</p>
+<p>2. Netherlands Institute for Multi-Party Democracy Workshop for Executive Directors and Co-ordinators of Political Parties’ Programme in Pretoria, South Africa from 11th-15th November 2012.</p>
+<p>3. IDRC Workshop &amp; Write-shop on Organizational Capacity Building in Sri Lanka from 17th to 23rd March 2013.</p>
+<p>4. Commission on Presidential Debates’ International Debate Best Practices Symposium in Washington DC, USA, from 16th-19th June 2013.</p>
+<p>5. Youth Leadership Training Workshop organized by the Friedrich Ebert Stiftung in Accra from 22nd -23rd June 2013.</p>
+<p>6. Africa Regional Conference of Political Parties on Inter-Party Dialogue organized by the Netherlands Institute for Multi-Party Democracy, Kenyan Centre for Multi-Party Democracy and International IDEA from 24th-28th June 2013 in Naivasha, Kenya.</p>
+<p>7. Orientation to Case Study Teaching Course (OCST) Workshop organized by the Partnership for African Social and Governance (PASGR) on 3rd August, 2013 in Nairobi, Kenya.</p>
+<p>8. Alternative Pedagogical Approaches Workshop organized by the Partnership for African Social and Governance (PASGR) on 4th August, 2013 in Nairobi Kenya.</p>
+<p>9. Master of Research and Public Policy (MRPP) Curriculum Development Workshop organized by the Partnership for African Social and Governance Research (PASGR) on 8th August, 2013 in Nairobi, Kenya.</p>
+<p>10. Master of Research and Public Policy (MRPP) Professional Development Workshop organized by the Partnership for African Social and Governance Research (PASGR) from 4th to 8th August, 2014 in Nairobi, Kenya.</p>
+<p>11. Africa Regional Conference of Political Parties on Gender and Politics organized by the Netherlands Institute for Multi-Party Democracy, and International IDEA from 6th-11th October 2014 in Blantyre, Malawi.</p>
+<p>12. Think Tank Initiative Global Exchange Conference on Research Quality, Outreach and Impact organized by the International Development Research Centre (IDRC) from 18th-20th February 2015 in Istanbul, Turkey.</p>
+<p>13. Africa Regional Conference of Political Parties on Political Parties in a Fast-Changing, Technology-Driven Environment organized by the Netherlands Institute for Multi-Party Democracy, and International IDEA from 9th-13th December 2015 in Addis Ababa, Ethiopia.</p>
+<p>14. Conference on Research, Monitoring and Evaluation organized by the European Parliamentarians with Africa (AWEPA) from 18th-21st April, 2016 in Kampala, Uganda.</p>
+<p>15. Think Tank Initiative Global Exchange Conference organized by the International Development Research Centre (IDRC) from 12th-16th November, 2018 in Bangkok, Thailand.</p>
+<p>16. Conference on the Future of EU-Africa Relations: Lessons from Scenario Building from 8th to 12th April, 2019 in Cape Town, South Africa.</p>
+<p>17. Conference on Maritime Security Capacity Building organized by the AMARIS Project of the Department of Political Science, University of Copenhagen in Accra, Ghana from 16th to 18th February 2023</p>
+<p>18. Conference on the Future of Terrorist Organizations in Africa organized by the King Faisal Center for Research in Riyadh, Saudi Arabia, from 26th to 28th February 2024.</p>
+<h2><strong>Grants/Awards/Fellowships</strong></h2>
+<p>1. The US Carnegie/University of Ghana Scholars Award/Grant of US$10,000 to write a doctoral thesis on “The Youth, Participation and Development in Ghana’s Fourth Republic” August 2009-June 2012.</p>
+<p>2. The Institute of Economic Affairs/Netherlands Institute for Multiparty Democracy Research Grant of US$ 8,000 to conduct research on the “State of Governance and Democracy in Ghana” from January 2011- December 2012.</p>
+<p>3. International IDEA Grant of US$ 20,000 to conduct research and produce a Country Report on “Youth Participation and Inter-Party Dialogue in Ghana” from January 1993 to March 2012.</p>
+<p>4. The Center for Democratic Governance (Burkina Faso) Grant of US$ 40,000 to conduct a study and write a report on “Democratic Transitions in West Africa” from 5th June to 14th December 2012.</p>
+<p>5. University of Ghana/ORID Conference Grant of US$ 1,500 to participate in an Authors’ Workshop and Symposium on “ Student Representation in Higher Education Governance in Africa” in Cape Town, South Africa from 20th-22nd August 2014.</p>
+<p>6. Netherlands Institute of Multi-Party Democracy/Ghana Political Parties’ Programme/DANIDA Research Grant of US$ 50,000 to conduct research and produce a report on the “Issues and Manifestations of the Winner-Takes-All Practice of Governance in Ghana” for a nation-wide public consultations on Winner-Takes-All from May to August 2014.</p>
+<p>7. European Union Delegation in Ghana Grant of 10,000 cedis to hold a Sensitization Workshop on Scholarship Opportunities in Europe for Ghanaian Students in September 2016.</p>
+<p>8. European Union Delegation in Ghana Grant of US$ 5000 to conduct brief research on the EU-Africa Relations and the State of the European Union Today from June 2016 to October 2017.</p>
+<p>9. German Embassy of Ghana’s grant of US$ 3,500 to conduct comparative research on the European Union and Africa Union in July 2017.</p>
+<p>10. European Union Delegation in Ghana Grant of US$ 3,000 to hold a Sensitization Workshop on Scholarship Opportunities in Europe for Ghanaian Students in April 2018.</p>
+<p>11. European Union Delegation in Ghana Grant of US$ 3,000 to conduct research and hold a Workshop on World Press Freedom Day in May 2018.</p>
+<p>12. European Union Delegation in Ghana Two-Year Grant of 20,000 Euros in December 2018 to conduct research on topical issues in European Studies.</p>
+<p>13. Copenhagen Consensus Center in partnership with the Ghana Priorities Project Grant of US$ 5,000 on 20th February 2019, to undertake desk studies on policy interventions to achieve Goal 16 of the Sustainable Development Goals (SDGs) in Ghana.</p>
+<p>14. European Union Delegation in Ghana Grant of 5,000 Euros to undertake research on the future of EU-Africa Relations on 28th February, 2019.</p>
+<p>15. Secured 21,000 US$ worth of Books from Efiwe (Edwardsville, IL, USA) for the University of Ghana Balme Library, Political Science Department Library and the Centre for European Studies Library on Wednesday 8th May, 2019.</p>
+<h2><strong>Special Recognition</strong></h2>
+<p>Mfantseman Heroes Award in Recognition of Distinguished Contribution towards The Promotion of National Interest in Political Discourse, Analysis and Discussions of key Governance, Democratic and Developmental issues in the media in Saltpond, Central Region of Ghana on 27th November, 2015. •</p>
+<p>The US Commission on Presidential Debates and the National Democratic Institute’s Recognition for a Distinguished Contribution to The International Debate Best Practices Symposium in Washington DC, US, 16th – 19th June 2013.</p>
+<p>The Netherlands Institute for Multi-Party Democracy/Centre for Multi-Party Democracy (Kenya) &amp; the International Institute for Democracy and Electoral Assistance’ (IDEA) Recognition for Distinguished Contribution to the Africa Regional Conference on Inter-Party Dialogue and Democratic Consolidation in Naivasha, Kenya, 24th-28th June 2013.</p>
+<p>Special Recognition by the Vice Chancellor of the University of Dar Es Salaam and Distinguished Speaker at the Vice Chancellor’s Palaver on The Dynamics of Elections and the Future of the African Polity organized by the Mwalimu Julius Nyerere Chair in Pan African Studies at the University of Dar Es Salaam, Tanzania on 12th October, 2018.</p>
+<h2><strong>Other Professional Activities</strong></h2>
+<p>Associate Editor: • The African Review Journal</p>
+<p>Referee/Reviewer for:</p>
+<p>• South Africa’s National Research Foundation</p>
+<p>• Africa Today (Journal) • Journal of Asian and African Studies</p>
+<p>• Journal of Social and Political Psychology</p>
+<p>• Journal of Student Affairs in Africa</p>
+<p>• African Journal of Political Science and International Relations</p>
+<p>• Journal of Law and Politics • Ghana Policy Journal</p>
+<p>• Ghana Social Sciences Journal</p>
+<p>• Legon Journal of Humanities</p>
+<p>• The African Review Journal</p>
+<h2><strong>Membership of International Editorial Advisory Board</strong></h2>
+<p>• Journal of Student Affairs in Africa (South Africa)</p>
+<p>• The African Review Journal (Tanzania)</p>
+<p><strong>Internal Examiner</strong></p>
+<p>• Department of Political Science, University of Ghana</p>
+<p><strong>External Examiner</strong></p>
+<p>• Department of Political Science, Public Administration and International Relations, University of Dar es Salaam, Tanzania.</p>
+<p>• Department of History and Political Science, College of Humanities and Social Studies, Kwame Nkrumah University of Science and Technology, Kumasi.</p>
+<p>• Department of Political Science, University of Dodoma, Tanzania • University of the Free State, South Africa • Human Sciences and Research Council, South Africa • University for Development Studies, Tamale Campus. • Institute of Local Government Studies.</p>
+</div></div></div><div class="field field-name-field-file field-type-file field-label-above"><div class="field-label">View full CV:&nbsp;</div><div class="field-items"><div class="field-item even"><span class="file"><img class="file-icon" alt="PDF icon" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="https://pscience.ug.edu.gh/sites/pscience/files/cv/Prof%20Ransford%20Gyampo%27s%20CURRENT%20CV.pdf" type="application/pdf; length=559107">Prof Ransford Gyampo&#039;s CURRENT CV.pdf</a></span></div></div></div>  </div>
+
+</div>
+
+  </div>
+</div>  </div>
+          
+
+        </div> <!-- // content -->
+
+
+              </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="container">
+              <div class="row footer_inside">
+
+          <div class="four columns f1" style="width:211px;">
+              <div class="region region-footer-firstcolumn">
+     <div id="block-block-2" class="block block-block">
+    
+    <h3>About the Department</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/about/welcome">Welcome Message</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/brief_history">Brief History</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/vision">Objectives and Vision</a></p>
+<p><a href="https://pscience.ug.edu.gh/faculty-staff">Faculty</a></p>
+<p><a href="https://pscience.ug.edu.gh/staff">Staff</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!--  1/4 Columns -->
+          <div class="three columns f2">
+              <div class="region region-footer-secondcolumn">
+     <div id="block-block-1" class="block block-block">
+    
+    <h3>Admissions</h3>
+
+    
+  <div class="content">
+    <p><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank">Undergraduate</a></p>
+<p><a href="https://sgs.ug.edu.gh/admissions/" target="_blank">Graduate</a></p>
+<p><a href="https://admissions.ug.edu.gh/international" target="_blank">International</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f3">
+              <div class="region region-footer-thirdcolumn">
+     <div id="block-block-3" class="block block-block">
+    
+    <h3>Academics</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/academics/academic-programmes" style="font-size: 13.008px;">Academic Programmes</a></p>
+<p><a href="https://pscience.ug.edu.gh/courses">Undergraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/post-graduate-courses">Postgraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/student_support">Student Support</a></p>
+<p><a href="https://www.ug.edu.gh/academics/calendar" target="_blank">Academic Calendar</a></p>
+  </div>
+</div>
+  </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f4">
+              <div class="region region-footer-fourthcolumn">
+     <div id="block-block-4" class="block block-block">
+    
+    <h3>QUICK LINKS</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/news-events">News &amp; Events</a></p>
+<p><a href="https://pscience.ug.edu.gh/news-events?tid=12">Announcements</a></p>
+<p><a href="https://pscience.ug.edu.gh/research">Research</a></p>
+<p><a href="#" target="_blank">Alumni</a></p>
+<p><a href="https://socialsciences.ug.edu.gh/" target="_blank">School of Social Sciences</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+            <!-- 1/4 Columns -->
+          <div class="three columns f5">
+                      </div>
+
+
+              
+      </div> 
+      <div class="clear"></div>
+
+      <div class="footer_btm">
+        <div class="footer_btm_inner">
+
+                                <div id="powered">
+              <a href="https://www.ug.edu.gh/" target="_blank">University of Ghana </a>&copy;&nbsp;2026                
+              </div>
+                  </div>    
+      </div>
+    </div>
+  
+    <!-- Footer::END -->
+
+  </div>    
+
+    
+      <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/sites/all/themes/ugdepartments/stylesheets/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.7/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_Hfha9RCTNm8mqMDLXriIsKGMaghzs4ZaqJPLj2esi7s.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_JcYGsF6wKv2qOZLXPZKU9pUzvB92frJyEKj5BQmUMh0.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_yj9SBIxGToUO1zIgUUUueFAIoXNPmXJQe8PicowubVY.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"ugdepartments","theme_token":"qRrq9685pYw27MlhVGBGdU2CE9RiZg6VPS6FN5SFs6A","js":{"\/\/code.jquery.com\/jquery-1.7.2.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.bgiframe.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.hoverIntent.js":1,"sites\/all\/libraries\/superfish\/superfish.js":1,"sites\/all\/modules\/nice_menus\/js\/nice_menus.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.easing.1.3.js":1,"sites\/all\/themes\/ugdepartments\/js\/common.js":1,"sites\/all\/themes\/ugdepartments\/js\/isotope.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.flexslider-min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.prettyPhoto.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.jcarousel.min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.tipsy.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.selectnav.js":1,"sites\/all\/themes\/ugdepartments\/js\/aqua.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus_default.css":1,"sites\/all\/modules\/ds\/layouts\/ds_2col_stacked_fluid\/ds_2col_stacked_fluid.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/ug-style-min.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/fpe.css":1,"https:\/\/use.fontawesome.com\/releases\/v5.11.2\/css\/all.css":1}},"nice_menus_options":{"delay":800,"speed":"slow"},"urlIsAjaxTrusted":{"\/staff\/prof-ransford-edward-van-gyampo":true}});
+//--><!]]>
+</script>
+      <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    <!--  Fonts  -->
+
+	
+
+  </body>
+</html>

@@ -1,0 +1,630 @@
+ <!DOCTYPE html>
+<!--
+              ,;r;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;r;,                 
+             .2@@@Superviser:Parick Kuti@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@h,
+             .@@Project+Managers:@@Michael##Phillips@Deborah###Allah@@@@@@@@@@@@@@@@@@@@@@*,
+             .X@@@Lead+Programmers:Gilbert_Gadzekpo@@@Ian Allotey@@@@@@@@@@@@@@@@@@@@@@@@@&,                
+              Developers@@BXi3@@@Alex#Tenkorang@@@@H2iG@@@@Emmanuel#Asare@@@A5Sh#@@@@@@@@@X.                
+              r#@@#####@@B2;;iA@@###############@@H5;;iH@@@##############@MXr;iA@@######@@2.                
+              r#@@#####@@M2r;i&#@@##############@@BXrri&#@@#############@@#Xr;i&#@@#####@@2.                
+              r#@@#####@@@ASrSH@@@##############@@@B5s2M@@@#############@@@ASr2B@@@@####@@2.                
+              r#@@###B3XH@@&29#BX3H#@#######@#H99B@@&5&#H9hB##########M9XH@M929#M9XH####@@2.                
+              r#@@##@#Girri5Siir;5M@@@######@@#&SrrS5iii;r2M@@@######@@hsrsS5Sisr;SB@@##@@2.                
+              r#@@###@@#2;;rsrrih@@@##########@@MS;rrsrri&@@@#########@@M2rrssrriG@@@#M#@@2.                
+              r#@@#HX5G#@BXisi2A@#h23H@@####A55G##H2iss2B@M923B@####HX5G#@B3iri2A@#hXhH#@@2.                
+              r#@@@#2;;s3A9SiS525r;s&#@@##@@#Xr;s3&XSii22S;;s&#@###@#X;:s3&9SiS225r;sA#@@@2.                
+              r#@@@@@B5;;;sSSir;;rX#@@@####@@@M5;;;sSSir;;r3#@@####@@@H5;;;sS5Ss;;rX#@@@@@2.                
+              r#@#AA#@@#G2iiiSSX&#@#HM####MAA#@@#G5iiiiSXA#@#BM####AA#@@Mh2iiiiSXGM@#HH#@@2.                
+              r@@@9sr2M@@#XsiSXB#H5rsh#@@@M3sr5M@@B2siS3M#H2rs&@@@#GsrX#@@MXisS3H#H2rs9#@@2.                
+              r#@@@Hi;;ri5SiSSisr;;SH@@@#@@#&s;;riSSiSSisr;;i&#@@@@@Ai;;ri55Siiisr;;SH@@@@2.                
+              r#@@@@M3sr;rsSSisrs2H@@@####@@@#hs;rriSSSsrs2A@@@###@@@M2rr;rsSSiiss2H@@@@@@2.                
+              r#@@@@@@@#&2iiiii9#@@@@#####@@@@@@#G5iiii5A@@@@@#####@@@@@#A2iiiiS9#@@@@##@@2.                
+              r#@@#@@@@@@#3ssi2H@@@@#######@@@@@@@#XissX#@@@@#######@@@@@@@hsri2H@@@@###@@X.                
+              s@@@@@@@@@@@ASss2B@@@@@@@@@@@@@@@@@@@ASsr2#@@@@@@@@@@@@@@@@@@HiriXB@@@@@@@@@3,                
+              :hB&h99GG&HA2srrs2GAG99hhhh9hhhGGGAA&2sr;s2G&hhhGGGGhh99hh&AA2srrs2h&Gh99hHAr                 
+              :3Hh333939G&AAAGhh9h93333hG&AAAAAAAAA&AA&h99hh&AAAAAAAG9339h&AAA&h9hh93339A&r                 
+              r#@@@@@@@@@@@@@@@@@@@@@@@@@MAGh9hA#@@@@@@@@@@@MAhh9GAM@@@@@@@@@@@@@@@@@@@@@@2.                
+              s@@@@@@@@@@@@@@@@@@@@@@@#A2issiirri3#@@@@@@@H2srsiissiXH@@@@@@@@@@@@@@@@@@@@3,                
+              r#@@#################@#9r;r2A#@@#&i;r2M@@@A5rrSA@@@#ASrrSA@@@#############@@X.                
+              r#@@##################&irX#@@@@@@@@Hs;sA#&sr2@@@@@@@@@Bi;SB@@#############@@2.                
+              r#@@###############@@HXsSB@@@B3SX#@@Birrssi3@@@H25&#@@@Gsi&#@@############@@2.                
+              r#@@###############@@HXs5B@@@#hs;sA@@B2r;sh@@@Xr;iA@@@@Aiih#@@############@@2.                
+              r#@@###############@@@HirSH@@@@hrrX@@@hs;iA@@#2riA@@@@Air5H@@#############@@2.                
+              r#@@################@@@H5r;rS25iS&@@#G25Si5G@@@Gisi5ir;s3M@@##############@@2.                
+              r#@@##########@@@@@@@@@@@MhX2XGM@@@M5r2#@As;X@@@@A3223A@@@@@@@@@@@@@######@@2.                
+              r#@@##########Bh223hAH#@@@@@@@@@#A2siXM@@@&iri3B#@@@@@@@@#BA&9X23A#@@#####@@2.                
+              r#@@########M9s:::::;;rrsS5222ir;::rA@@92A@@X;:;rsS222Sirrr;;::::;SA#@####@@2.                
+              r#@@#########A2srrssisiiS2222225isrs3MB9X&##3rriS22XX225Siiissrrrs2A######@@2.                
+              r#@@########@@@@BB#@@@@@@@@@#@@@@@B2rrh@@@9ss9#@@@@##@@@@@@@@@#BB@@@@#####@@2.                
+              r#@@########@@@@@@@@@@@@Mh5isi5h#@@@&siGHG55M@@@B35isi2A@@@@@@@@@@@#######@@2.                
+              r#@@#########@@@@@@@@@#Xr;s3BMhssX#@@A5rrih#@@Air5A#H2r;sG@@@@@@@@########@@2.                
+              r#@@##################hssh@@@@@hsr3@@#Xr;sA@@#5rSH@@@@#2riA#@@############@@2.                
+              r#@@###############@#A2s2#@@@#3sr2M@@GSsrs2H@@H5riG@@@@Ais9M@@############@@2.                
+              r#@@###############@@#GiiA@@@#HAM@@@Aii33SsSB@@@H&A#@@@GsiA#@@############@@2.                
+              r#@@################@@#5;rh#@@@@@@#Xrr3@@#S;rG@@@@@@@#hsrX#@@#############@@2.                
+              r#@@################@@@#Xr;r2hGhXSrrSH@@@@#9r;r53hhXSrri&#@@##############@@X,                
+              ;#@@#################@@@@M3SsrrrriXA@@@@@@@@#hSsrrrri2&#@@@###############@@2.                
+              :A@@##################@@@@@@#BAH#@@@@@####@@@@@@MHHM@@@@@@################@#s.                 
+              .2#@@###################@@@@@@@@@@@@#######@@@@@@@@@@@@@##################@@M;                 
+               :h@@@#####################@@@@@@####TEAM#####@@@@@@####################@@#9:                 
+                ;#@@@########Patrick#Kuti####Michael#Philips####Deborah#Allah#########@@3,                  
+                 :h@@@@@##########Gilbert#Gadzekpo#####Ian#Allotey#################@@@@B;                   
+                   rM@@@@@@@@@#######Alex#Tenkorang#####Emmanuel##Asare#####@@@@@@@@#5.                    
+                     ,s&@@@@@@@@@@@@@################################@@@@@@@@@@@@@Ai:                       
+         ...              ,;i3H@@@@@@@@@@@@@#################@@@@@@@@@@@@M&92s;:.          .:::.            
+      ,;r;:::::,.               .:;rs59A#@@@@@@@@@#######@@@@@@A3ir;;:..               .,::,,::;r;.         
+     :rrrssr;;iXi,                       .,;i2A#@@@@@@@@@#A2r:.                       ,s25r;;;;rs;,         
+     :r;::;:,.:;;.                             .;i&#@@H5;.                     ... .   ,::,,::;;sr:         
+     .r2S;,...    ..,,..                           ,;:                        ......,,.   ...,;SG2:         
+      ;2Ah2isr;rS2s:.,:;;rr;.                                               :rir;:. ,i92issi5X9h9s.         
+      ,SA&99h&&AHhr..;h@@@@@5,                                             ,2@@@@#S..rX&Ahhh93XXS;          
+       rX3X33393G3;.,r5399Gh2s;::,,.                                 ..,,,:r5XX23hs..;5993XXX22Sr,          
+         ,;sS5229X;..;s2&M@#M#@@###H&9X25isssrrrrrrrrrrrrrrsssssiiS2XGAHBMMAh&BMBGr. :s2X2Ssr:,             
+                 .  .rS3M@@@@##@@@@@@@@@@@@#HH#@@@@#UGCSMM#@@@@@@@##@@@@@@@#AB@@@Mi,                        
+                     :riXh&AAGhAM####@@@@@@#BM@@@@@@@@#@@@MM@@@@@@@@@@@@@@#MH&9X2s:.                        
+                            .,;rsii5Xh&&&AA&GGGh&ABBBBBBMBAAHBAAHH&9X5Sis;:,.                               
+                                        .,,:::,,,::::;;:::::::::,.                                          
+ -->
+
+
+<!--[if IE 7 ]><html class="ie ie7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"><!--<![endif]-->
+
+  <head profile="http://www.w3.org/1999/xhtml/vocab">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="/staff/prof-emmanuel-yeboah-assiamah" />
+<link rel="shortlink" href="/node/105" />
+<link rel="shortcut icon" href="https://pscience.ug.edu.gh/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prof. Emmanuel Yeboah-Assiamah  | Department of Political Science</title>
+    <link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_TsVRTbLFUpEZAfw-_bWPJu840QT523CPjUVJ5MRWfyk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_HkdpaPJNwY4GBfynmNsoQHIPSVGTir6baStmsdyM_vc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://pscience.ug.edu.gh/sites/pscience/files/css/css_uS_-bgJ2-t8YuIh44b3fkiJyEGdNvo64Ixe2JuoJiM4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" media="all" />
+	
+
+
+      
+
+      <!-- menu font -->
+            <style type="text/css">
+        .custom_menu #menu > ul > li > a,#menu {
+          font-family:Open Sans;
+                  }
+      </style>
+      <!-- // menu font -->
+
+      <!-- menu font size -->
+            <style type="text/css">
+        #menu > ul > li > a{
+          font-size: 15px ;
+        }
+        #menu > ul > li ul > li > a{
+          font-size: 14px ;
+        }
+      </style>
+      <!-- // menu font size -->
+
+
+      <!-- main color -->
+            <style type="text/css">
+        a:hover, a:focus{
+          color: #0AD1E5 ;
+        }
+        .button:hover,
+        a:hover.button,
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,	
+        input[type="button"]:hover,
+        .button_hilite, 
+        a.button_hilite,
+        .button_hilite,
+        a.button_hilite{
+          color: #FFF;
+          background-color: #0AD1E5;
+        }
+        .section_big_title h1 strong,
+        .section_featured_texts h3 a:hover,
+        .breadcrumb a:hover,
+        .post_meta a:hover,
+        #footer a:hover {
+          color: #0AD1E5 ;
+        }
+        .portfolio_filter div.current,
+        .next:hover,.prev:hover,
+        .pagination .links a:hover,
+        .info h2, 
+        .h2.ls-s2,
+        jcarousel-next-horizontal:hover, 
+        .jcarousel-prev-horizontal:hover{
+          background-color: #0AD1E5 ;
+        }
+        .footer_pic img:hover{
+          border: 1px solid #0AD1E5;
+        }
+      </style>
+      <!-- // main color -->
+
+      <!-- heading font -->
+            <style type="text/css">
+        h1, h2, h3, h4, h5, .title, .section_big_title h1, .heading, #footer h3,
+        .page_heading h1{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- heading font -->
+
+      <!-- button font -->
+            <style type="text/css">
+        .button, a.button,	button,	input[type="submit"], input[type="reset"], input[type="button"]{
+          font-family: Open Sans;
+                  }
+      </style>
+      <!-- // button fonts -->
+
+      <!-- body font -->
+            <style typ="text/css">
+        body{
+          font-family: Open Sans;
+        }
+      </style>
+      <!-- // body font -->
+
+      <!-- body background and color -->
+            <style type="text/css">
+        body{
+          background-image: none;background-color #fff;        }
+      </style>
+      <!-- // body bg -->
+
+  </head>
+  <body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-105 node-type-staff" >
+    <div id="skip-link">
+      <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+    </div>
+         
+<div id="wrapper" class="not-home-page">
+
+  <div class="container">
+
+    <div class="header clearfix row">
+              <div class="eight columns header_left">
+          <a href="/"><img src="https://pscience.ug.edu.gh/sites/pscience/files/logo_pscience.png" alt="Home" /></a>
+        </div>
+      
+      <div class="eight columns">
+        <div class="header_right">
+          
+
+          <div class="header_soc_search clearfix">
+                          <div class="header_search">
+                <form class="search" action="/staff/prof-emmanuel-yeboah-assiamah" method="post" id="searchform" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <button class="button_search"></button><div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="s">Search </label>
+ <input title="Enter the terms you wish to search for." class="search-text-box form-text" type="text" id="s" name="search_block_form" value="" size="15" maxlength="128" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-VJNwsdGzJXj-zw0odlR1ycw1HhzDto9YUJp6Kw3mdhM" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>              </div>
+                      </div>
+          <!-- Block position for font resizer-->
+          <div>
+                          </div>  				
+        </div>
+      </div>
+    </div>
+
+    <!--begin of top menu-->
+    <div class="top_header" style="margin-bottom:10px;">
+    
+            <div class="header_contacts clearfix">
+              <div class="region region-top-menu">
+    <div id="block-nice-menus-1" class="block block-nice-menus">
+
+    
+  <div class="content">
+    <ul class="nice-menu nice-menu-down nice-menu-menu-top-menu" id="nice-menu-1"><li class="menu-437 menu-path-sienablerugedugh-pls-prodi41-w99pkgmi-login first odd "><a href="https://ienabler.ug.edu.gh/pls/prodi41/w99pkg.mi_login" target="_blank">MIS Web</a></li>
+<li class="menu-436 menu-path-sportalofficecom-  even "><a href="https://portal.office.com/" target="_blank">Staff Webmail</a></li>
+<li class="menu-448 menu-path-smailgooglecom-a-stugedugh  odd last"><a href="https://mail.google.com/a/st.ug.edu.gh" target="_blank">Student Webmail</a></li>
+</ul>
+  </div>
+</div>
+  </div>
+            </div>
+
+    </div>
+    <!--end of top menu-->
+
+    <!-- Main Navigation -->
+    <div class="row no_bm">
+      <div class="dark_menu sixteen columns">
+        <div id="menu" class="">
+          <ul id="responsive"  class="nav_simple sf-menu main-menu sf-horizontal sf-style-none sf-total-items-7 sf-parent-items-4 sf-single-items-3"><li><a href="https://www.ug.edu.gh" target="_blank" title="Go to university homepage"><span class="home_icon"></span></a></li><li id="menu-257-1" class="first odd sf-item-1 sf-depth-1 mainMenu sf-no-children"><a href="/" class="sf-depth-1 ">Home</a></li><li id="menu-454-1" class="middle even sf-item-2 sf-depth-1 sf-total-children-7 sf-parent-children-0 sf-single-children-7 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">About Us</a><ul class="dropdown"><li id="menu-455-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/about/welcome" class="sf-depth-2 ">Welcome Message</a></li><li id="menu-456-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/about/brief_history" class="sf-depth-2 ">Brief History</a></li><li id="menu-457-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/about/vision" class="sf-depth-2 ">Objectives and Vision</a></li><li id="menu-503-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/faculty-staff" class="sf-depth-2 ">Faculty</a></li><li id="menu-459-1" class="middle odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/staff" class="sf-depth-2 ">Staff</a></li><li id="menu-970-1" class="middle even sf-item-6 sf-depth-2 mainMenu sf-no-children"><a href="/student-affairs" class="sf-depth-2 ">Student Affairs</a></li><li id="menu-973-1" class="last odd sf-item-7 sf-depth-2 mainMenu sf-no-children"><a href="/academic-programmes" class="sf-depth-2 ">Academic Programmes</a></li></ul></li><li id="menu-460-1" class="middle odd sf-item-3 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Academics</a><ul class="dropdown"><li id="menu-464-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/academics/course_schedule" class="sf-depth-2 ">Course Schedule</a></li><li id="menu-465-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="/courses" class="sf-depth-2 ">Undergraduate Courses</a></li><li id="menu-466-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/academics/post-graduate-courses" class="sf-depth-2 ">Postgraduate Courses</a></li><li id="menu-467-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="/academics/student_support" class="sf-depth-2 ">Student Support</a></li><li id="menu-468-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/academics/calendar" target="_blank" class="sf-depth-2 ">Academic Calendar</a></li></ul></li><li id="menu-461-1" class="middle even sf-item-4 sf-depth-1 sf-total-children-3 sf-parent-children-0 sf-single-children-3 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Admissions</a><ul class="dropdown"><li id="menu-469-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank" class="sf-depth-2 ">Undergraduate</a></li><li id="menu-470-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="https://sgs.ug.edu.gh/admissions/" target="_blank" class="sf-depth-2 ">Postgraduate</a></li><li id="menu-471-1" class="last odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="https://admissions.ug.edu.gh/international" target="_blank" class="sf-depth-2 ">International</a></li></ul></li><li id="menu-462-1" class="middle odd sf-item-5 sf-depth-1 mainMenu sf-no-children"><a href="/research" class="sf-depth-1 ">Research</a></li><li id="menu-478-1" class="middle even sf-item-6 sf-depth-1 mainMenu sf-no-children"><a href="/news-events" class="sf-depth-1 ">News &amp; Events</a></li><li id="menu-463-1" class="last odd sf-item-7 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 mainMenu parent menuparent has-dropdown"><a href="/" class="sf-depth-1  mainMenu parent menuparent has-dropdown">Visitors</a><ul class="dropdown"><li id="menu-472-1" class="first odd sf-item-1 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/visiting_us" class="sf-depth-2 ">Visiting Us</a></li><li id="menu-473-1" class="middle even sf-item-2 sf-depth-2 mainMenu sf-no-children"><a href="http://www.ug.edu.gh/campuslife/explore-campus/campus-map" target="_blank" class="sf-depth-2 ">Maps and Directions</a></li><li id="menu-474-1" class="middle odd sf-item-3 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/giving_to_us" class="sf-depth-2 ">Giving to Us</a></li><li id="menu-475-1" class="middle even sf-item-4 sf-depth-2 mainMenu sf-no-children"><a href="http://campuslife.ug.edu.gh/cgi-sys" target="_blank" class="sf-depth-2 ">Students Life</a></li><li id="menu-476-1" class="last odd sf-item-5 sf-depth-2 mainMenu sf-no-children"><a href="/visitors/contact_us" class="sf-depth-2 ">Contact Us</a></li></ul></li></ul>        </div>
+
+      </div>
+    </div>
+    <!-- Main Navigation::END -->
+                    <div class="row">
+        <div class="sixteen columns">
+
+                       <div class="breadcrumb">
+              <a href="/">Home</a>            </div>
+          
+          
+        </div>		
+      </div>
+    
+    
+
+    <!-- Information Region -->
+
+    <div class="info_reg">
+         </div>
+
+    <!-- highlighted -->
+        <!-- //highlighted -->
+
+
+    <div class="row">
+
+      
+                <div style="margin-left:2px;" id="content" class="others sixteen columns ">
+          
+
+                              <div class="page_heading">
+              <h1>Prof. Emmanuel Yeboah-Assiamah </h1>
+            </div>
+                    
+
+
+          
+          
+                    
+            <div class="region region-content">
+     <div id="block-system-main" class="block block-system">
+
+      
+
+  <div class="content">
+    <div  about="/staff/prof-emmanuel-yeboah-assiamah" typeof="sioc:Item foaf:Document" class="ds-2col-stacked-fluid node node-staff node-staff view-mode-full clearfix">
+
+  
+  <div class="group-header">
+      </div>
+
+      <div class="group-left">
+      <div class="field field-name-field-profile-picture field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img typeof="foaf:Image" src="https://pscience.ug.edu.gh/sites/pscience/files/styles/staff_profile/public/staffs/emmanuel_y-a.png?itok=Jbp4QFVl" width="160" height="200" alt="" /></div></div></div>    </div>
+  
+      <div class="group-right">
+      <div class="field field-name-title field-type-ds field-label-hidden"><div class="field-items"><div class="field-item even" property="dc:title"><strong>Prof. Emmanuel Yeboah-Assiamah </strong></div></div></div><div class="field field-name-field-position-or-qualification field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Associate Professor and Coordinator for Academic Engagements </div></div></div><div class="field field-name-field-email-address field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">eyeboah-assiamah@ug.edu.gh </div></div></div>    </div>
+  
+  <div class="group-footer">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p> </p>
+<p><a href="https://orcid.org/0000-0001-9906-1302">https://orcid.org/0000-0001-9906-1302</a></p>
+<p><a href="https://scholar.google.com/citations?hl=en&amp;user=zY20svcAAAAJ">https://scholar.google.com/citations?hl=en&amp;user=zY20svcAAAAJ</a></p>
+<p><a href="https://www.researchgate.net/profile/Emmanuel-Yeboah-Assiamah">https://www.researchgate.net/profile/Emmanuel-Yeboah-Assiamah</a></p>
+<p><a href="https://ugh.academia.edu/EmmanuelYeboahAssiamah">https://ugh.academia.edu/EmmanuelYeboahAssiamah</a></p>
+<p><strong>PROFILE</strong></p>
+<p><strong>Emmanuel</strong> Yeboah-Assiamah is an Associate Professor of Political Science (Specialization in Public Administration and Governance) at the Department of Political Science in the University of Ghana. He is currently Coordinator for Academic Engagements as well as Coordinator for the MA Public Affairs Programmes at the Department. He previously served as a Research Fellow at the Merian Institute for Advanced Studies in Africa (MIASA) based in the University of Ghana. Prior to joining the Department, he served as adjunct faculty in at least three reputable Universities locally and internationally as well as a Senior Research Fellow at the Institute for Democratic Governance (IDeG), a policy think tank in Accra. He has a Bachelor of Arts in Political Science and a Master of Philosophy (MPhil) in Public Administration from the University of Ghana. He obtained his Doctor of Philosophy (PhD) in Public &amp; Development Management from the School of Public Leadership, University of Stellenbosch, South Africa. He has served as a TRECCAFRICA Fellow in Sustainability Studies at the University of Stellenbosch, South Africa sponsored by the European Union Intra-ACP programme. This Fellowship explains why Prof Yeboah-Assiamah has expertise, interests and outputs in environmental governance and politics as well as complex sustainability issues. His association with the School of Public Leadership also demonstrates why he has research interests and output in leadership and governance issues. Prof Yeboah-Assiamah possesses a Post Graduate Diploma in Human Resource Management from the Institute for Commercial Management (ICM-UK). He has also had a Post-Doctoral Training at the Global Development Institute (GDI) in the University of Manchester, UK as a GCRF Fellow where among other things, he understudied courses in Human Resource Practice, Human Resource Management as well as Learning, Training and Development (LTD) with the latter being an online pedagogical training. These also demonstrate why he has research interests and outputs in public sector human resource management and organizational studies. Prof Yeboah-Assiamah is a member of the American Political Science Association (APSA) and serves as a verified reviewer for many reputable journals including, <em>inter alia</em>, the Journal of Public Affairs (published by Wiley &amp; Sons); Journal of Asian and African Studies (published by Sage); International Journal of Public Leadership (published by Emerald); Forest Policy &amp; Economics (Elsevier); Society &amp; Natural Resources; Administrative Theory &amp; Praxis; Third World Quarterly (all published by Taylor and Francis).</p>
+<p><strong>EDUCATION</strong></p>
+<ul>
+<li>Post-Doctoral Fellowship                               - University of Manchester, United Kingdom</li>
+<li>PhD in Public &amp; Development Management    -     University of Stellenbosch, South Africa</li>
+<li>MPhil in Public Administration      -                     University of Ghana, Ghana</li>
+<li>PG Diploma in Human Resource Management -   ICM-UK</li>
+<li>BA in Political Science         -                               University of Ghana, Ghana</li>
+</ul>
+<p><strong>AREAS OF SPECIALIZATION</strong></p>
+<ul>
+<li>Public Policy and Development Administration</li>
+<li>Public Administration &amp; Governance</li>
+<li>Ethics, Governance and Leadership</li>
+<li>Comparative Politics</li>
+<li>Public Sector Human Resources Management</li>
+<li>Natural Resource Governance and Sustainability</li>
+</ul>
+<p><strong>RESEARCH INTERESTS </strong></p>
+<ul>
+<li>Governance and leadership focusing on theory building and practical applications</li>
+<li>Public administration and governance</li>
+<li>Environmental governance and sustainability discourse deploying new public governance techniques and models.</li>
+<li>Urban politics and governance focusing on public-private partnership</li>
+<li>Understanding emerging policy issues and challenges in Africa: Comparative approach</li>
+<li>Understanding policy implementation outcomes in Africa: Comparative approach</li>
+</ul>
+<p><strong>COURSES TAUGHT </strong></p>
+<ul>
+<li>POLI 213: Introduction to Public Administration (DE-Undergraduate)</li>
+<li>POLI 214: Introduction to Comparative Politics</li>
+<li>POLI 352: Issues in Comparative Politics</li>
+<li>POLI 357: Organization Theory</li>
+<li>POLI 457: Human Resource Development and Management</li>
+<li>POLI 682: Organizational Development  (MA Public Affairs)</li>
+<li>POLI 686: Strategic Planning  (MA Public Affairs)</li>
+<li>POLI 654: Governance and Democracy in Africa  (MPhil)</li>
+<li>POLI 707 Foundations of Public Administration    (PhD Political Science)</li>
+</ul>
+<p><strong>PUBLICATIONS / RESEARCH OUTPUT</strong></p>
+<ol>
+<li>
+<p>Asamoah, K &amp; <strong>Yeboah-Assiamah, E. </strong>(2025). ‘Public Participation and Social Accountability in Local Governance in Ghana’, in G. Onyango and I. Jamil (Eds.) <em>Routledge Handbook of Public Policy in the Global South</em>. <a href="https://www.routledge.com/Routledge-Handbook-of-Public-Policy-in-the-Global-South/Onyango-Jamil/p/book/9781032901480?srsltid=AfmBOoqYfG8RFSTbmsVJUX20J-ZLqUpoCKsvp6GlVFLtloAxfnaVOrdZ" style="color:#0563c1; text-decoration:underline">https://www.routledge.com/Routledge-Handbook-of-Public-Policy-in-the-Global-South/Onyango-Jamil/p/book/9781032901480?srsltid=AfmBOoqYfG8RFSTbmsVJUX20J-ZLqUpoCKsvp6GlVFLtloAxfnaVOrdZ</a></p>
+</li>
+<li>
+<p><strong>Yeboah-Assiamah, E.</strong>, &amp; Kundi, S. B. N. (2025). Administrative Pitfalls in Localizing Youth Empowerment Policies among ECOWAS Countries: A Case Study of Ghana’s MASLOC Scheme.  <em>African and Asian Studies</em><em>, 24</em>(1-2), 98-125</p>
+</li>
+<li>
+<p><strong>Yeboah-Assiamah, E</strong>., &amp; Oduro, B. K. (2025). Media and Election Monitoring in Africa: Evolving Mechanisms for the 2016 and 2020 Elections in Ghana. <em>  </em>African Journalism Studies, 1-17. (online first) <a href="https://doi.org/10.1080/23743670.2025.2475747" style="color:#0563c1; text-decoration:underline">https://doi.org/10.1080/23743670.2025.2475747</a></p>
+</li>
+<li><strong>Yeboah‐Assiamah, E.,</strong> Baidoo A.P. &amp; Asamoah, K (2025). Democratic Backsliding and Public Administration: The Experience of Ghana. Policy Studies, 1-24 (<a href="http://dx.doi.org/10.1080/01442872.2024.2449362" style="color:blue; text-decoration:underline" target="_blank">http://dx.doi.org/10.1080/01442872.2024.2449362</a>.</li>
+<li><strong>Yeboah‐Assiamah, E.,</strong> Kundi, S. B. N., &amp; Asamoah, K (2024). “Where you stand depends on where you sit”: The politics of petroleum pricing in Ghana's election cycle. Politics &amp; Policy, <em>52</em> (6), 1353-1376. <a href="https://doi.org/10.1111/polp.12643" style="color:blue; text-decoration:underline">https://doi.org/10.1111/polp.12643</a></li>
+<li>Asamoah, K &amp; <strong>Yeboah-Assiamah, E.  (2024). </strong>Throwing the baby away with the bathwater: Dynamics of intra-party wrangling and ‘primary penalty’ in Ghanaian politics. SN Social Science, <em>4</em> (117) <a href="https://doi.org/10.1007/s43545-024-00917-6" style="color:blue; text-decoration:underline">https://doi.org/10.1007/s43545-024-00917-6</a></li>
+<li>Hossain, F., Ibrahim, M. &amp; <strong>Yeboah-Assiamah, E. </strong>(2024)<strong>. </strong>In Search of Ubuntu in an African SME: A Case of a Transitional Entrepreneur. African Journal of Management, <em>10</em> (2), 150–175. <a href="https://doi.org/10.1080/23322373.2024.2349482" style="color:blue; text-decoration:underline">https://doi.org/10.1080/23322373.2024.2349482</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Muller, K., &amp; Domfeh, K. A. (2023). Lessons from the Past: A Forest Policy Reform in Ghana through the Feedback Loop. Environment, Development and Sustainability, 1-21. <a href="https://doi.org/10.1007/s10668-023-04021-2" style="color:blue; text-decoration:underline">https://doi.org/10.1007/s10668-023-04021-2</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Hossain, F., Mamman, A., &amp; Rees, C. J. (2023). On the question of entrepreneurial breakthrough or failure in Africa: a framework for analysis. African Journal of Economic and Management Studies, <em>14</em> (2) 289-312  <a href="https://doi.org/10.1108/AJEMS-05-2022-0184" style="color:blue; text-decoration:underline">https://doi.org/10.1108/AJEMS-05-2022-0184</a></li>
+<li>Hossain, F., Mamman, A.,<strong> Yeboah-Assiamah, E. </strong>&amp; Rees, C. J. (2023). State-business relations for entrepreneurial take off in Africa: Institutional analysis. African Journal of Economic and Management Studies, <em>15</em> (2), 331-347   <a href="https://doi.org/10.1108/AJEMS-10-2022-0402" style="color:blue; text-decoration:underline">https://doi.org/10.1108/AJEMS-10-2022-0402</a></li>
+<li><strong>Yeboah-Assiamah, E</strong>. &amp; Mamman, A. (2023). Start Small, Dream Big: Socio-Technical Resources and Digitalization as Drivers of Firm Growth and Agility in Africa. In   Combrink et al (Eds.) <em>Africa Development Yearbook</em> (Vol 23) “Business Opportunities, Start-ups and Digital Transformation in Africa”. <a href="http://www.iwim.uni-bremen.de/files/dateien/1880_adpy_contents___volume_23.pdf" style="color:blue; text-decoration:underline">http://www.iwim.uni-bremen.de/files/dateien/1880_adpy_contents___volume_23.pdf</a></li>
+<li>Ayisi, E. K., <strong>Yeboah-Assiamah, E</strong>., &amp; Bawole, J. N. (2023). Politics of public policy implementation: case of Ghana National Health Insurance Scheme. In <em>Global Encyclopedia of Public Administration, Public Policy, and Governance</em> (pp. 9816-9822). Cham, Switzerland: Springer International Publishing.   <a href="https://doi.org/10.1007/978-3-030-66252-3_3395" style="color:blue; text-decoration:underline">https://doi.org/10.1007/978-3-030-66252-3_3395</a></li>
+<li>Lartey, E., Ahenkan, A., <strong>Yeboah-Assiamah, E</strong>., &amp; Adjei-Bamfo, P. (2023). Urban Sanitation: Optimizing Private Sector Involvement.  In <em>Global Encyclopedia of Public Administration, Public Policy, and Governance</em> (pp. 13161-13174). Cham, Switzerland: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-030-66252-3_3552" style="color:blue; text-decoration:underline">https://doi.org/10.1007/978-3-030-66252-3_3552</a></li>
+<li><strong>Yeboah-Assiamah, E</strong>., Gyekye-Jandoh, M. A. A., Asamoah, K., &amp; Adams, S. (2022). Henceforth, We Will Never Walk Alone: Empirical Study on the Benefits of Participatory Governance and Leadership. Systemic Practice and Action Research (Springer).  <a href="https://doi.org/10.1007/s11213-021-09572-x" style="color:blue; text-decoration:underline">https://doi.org/10.1007/s11213-021-09572-x</a></li>
+<li>Boakye, B. A. P., <strong>Yeboah-Assiamah, E.</strong>, &amp; Gyekye-Jandoh, M. A.  (2022). For Better for Worse Even After Death: Is ‘Widow Politics’ in Ghana’s Fourth Republic Becoming a Reliable Pathway for Women?  Journal of Asian &amp; African Studies, <em>58</em> (7), 1189-1206 <a href="https://doi.org/10.1177/00219096221079321" style="color:blue; text-decoration:underline">https://doi.org/10.1177/00219096221079321</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Damoah, C. M., &amp; Bawole, J. N. (2022). Open innovation systems and public policy in Africa: Setting new boundaries against wicked problems. In Onyango Gedion (Ed.) <em>Routledge Handbook of Public Policy in Africa</em> (pp. 599-611). Routledge <a href="https://www.routledge.com/Routledge-Handbook-of-Public-Policy-in-Africa/Onyango/p/book/9780367699208?srsltid=AfmBOooHu7nRfNYoIZmitVnU7LBN1XYM8pvH9RKwNV4fS326_lntXEmW" style="color:blue; text-decoration:underline"><em>https://www.routledge.com/Routledge-Handbook-of-Public-Policy-in-Africa/Onyango/p/book/9780367699208?srsltid=AfmBOooHu7nRfNYoIZmitVnU7LBN1XYM8pvH9RKwNV4fS326_lntXEmW</em></a><em> </em></li>
+<li>Asamoah, K., <strong>Yeboah-Assiamah, E</strong>., Damoah, C. M., &amp; Adu, E. P.  (2022). Sounds good on paper but problematic in practice: PPP in Ghana's transport sector. Research in Transportation Business &amp; Management, <em>43    </em><a href="https://doi.org/10.1016/j.rtbm.2021.100682" style="color:blue; text-decoration:underline"><em>https://doi.org/10.1016/j.rtbm.2021.100682</em></a><em> </em></li>
+<li>Owusu-Mensah, I., Felitse, K., &amp; <strong>Yeboah-Assiamah, E. </strong>(2021). How did your Government Perform? Assessing Institutional Response to the COVID-19 Pandemic in Ghana. <em>Journal of African Political Economy and Development, 6 (1)</em>, 1-17 <a href="https://hdl.handle.net/10520/ejc-japed_v6_n1_a1" style="color:blue; text-decoration:underline">https://hdl.handle.net/10520/ejc-japed_v6_n1_a1</a></li>
+<li>Akosa, F., <strong>Yeboah-Assiamah, E.</strong>, Asare, B. E., Asamoah, K., Essah-Koli, A. P., &amp; Ahmad, P. (2020). Operationalization of Ghana’s civil service code of conduct. <em>Public Money &amp; Management</em>, <em>40</em> (6), 475-482.  <a href="https://doi.org/10.1080/09540962.2019.1598198" style="color:blue; text-decoration:underline">https://doi.org/10.1080/09540962.2019.1598198</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Gyekye-Jandoh, M. A., Asamoah, K., &amp; Damoah, C. M.  (2020). Popular Support for Public Policies to Curb Political Vigilantism: Reflections from Ghanaian Electorate. In A. Farazmand (Ed.). <em>Global Encyclopedia of Public Administration, Public Policy, and Governance. </em>New Delhi: Springer <a href="https://link.springer.com/referenceworkentry/10.1007/978-3-319-31816-5_4022-1" style="color:blue; text-decoration:underline">https://link.springer.com/referenceworkentry/10.1007/978-3-319-31816-5_4022-1</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Muller, K., &amp; Domfeh, K. A. (2019). Two Sides of the Same Coin: Formal and Informal Institutional Synergy in a Case Study of Wildlife Governance in Ghana. <em>Society &amp; Natural Resources, 32, </em>(12), 1364-1382. <a href="https://doi.org/10.1080/08941920.2019.1647320" style="color:blue; text-decoration:underline">https://doi.org/10.1080/08941920.2019.1647320</a></li>
+<li>Asamoah, K., &amp; <strong>Yeboah-Assiamah, E. </strong>(2019). “Ubuntu philosophy” for public leadership and governance praxis: Revisiting the ethos of Africa’s collectivism. <em>Journal of Global Responsibility, 10 </em>(4), 307-321<em>. </em><a href="https://doi.org/10.1108/JGR-01-2019-0008" style="color:blue; text-decoration:underline">https://doi.org/10.1108/JGR-01-2019-0008</a></li>
+<li><strong>Yeboah‐Assiamah, E.</strong>, Asamoah, K., &amp; Adams, S. (2019). Transdisciplinary public leadership theory: Between the extremes of “traditional public administration” and “new public management”. <em>Journal of Public Affairs, 19 </em>(1)<em>. </em><a href="https://doi.org/10.1002/pa.1887" style="color:blue; text-decoration:underline">https://doi.org/10.1002/pa.1887</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Muller, K., &amp; Domfeh, K. A. (2018). Transdisciplinary approach to natural resource governance research: a conceptual paper. <em>Management of Environmental Quality: An International Journal,</em> <em>29</em> (1), 15-33. <a href="https://doi.org/10.1108/MEQ-04-2016-0034" style="color:blue; text-decoration:underline"><em>https://doi.org/10.1108/MEQ-04-2016-0034</em></a><em> </em></li>
+<li><strong>Yeboah-Assiamah, E</strong>., Otchere-Ankrah, B., &amp; Alesu-Dordzi, S. (2018). Administrative Discretion and Development Administration: Pet Turned into a Monster?. <em>Global Encyclopedia of Public Administration, Public Policy, and Governance. Cham: Springer</em>, 1-11.</li>
+<li><strong>Yeboah</strong>-<strong>Assiamah</strong>, E., Asamoah, K.,  Buabeng, T.  Bawole, J.N. (2018). ‘Corruption in Public Administration: Stabbing the African State in the Back’. In A. Farazmand (Ed.). <em>Global Encyclopedia of Public Administration, Public Policy, and Governance, </em>Springer, New Delhi <a href="https://doi.org/10.1007/978-3-319-31816-5_3396-1" style="outline:0px; transition:0.2s linear; line-height:inherit; font-variant-ligatures:normal; color:blue; text-decoration:underline"> https://doi.org/10.1007/978-3-319-31816-5_3396-1 </a></li>
+<li><strong>Yeboah-Assiamah, E. </strong>(2017). ‘Strong Personalities’ and ‘Strong Institutions’ Mediated by a ‘Strong Third Force’: Thinking ‘Systems’ in Corruption Control. <em>Public Organization Review, 17, </em>545-562. <a href="https://doi.org/10.1007/s11115-016-0351-5" style="color:blue; text-decoration:underline">https://doi.org/10.1007/s11115-016-0351-5</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Muller, K., &amp; Domfeh, K. A. (2017). Institutional assessment in natural resource governance: A conceptual overview. <em>Forest Policy and Economics, 74</em>, 1-12. <a href="https://doi.org/10.1016/j.forpol.2016.10.006" style="color:blue; text-decoration:underline">https://doi.org/10.1016/j.forpol.2016.10.006</a></li>
+<li><strong>Yeboah-Assiamah, E</strong>., Muller, K., &amp; Domfeh, K. A. (2017). ‘Complex Crisis’ and the rise of collaborative natural resource governance: Institutional assessment of wildlife governance experience in Ghana. <em>Environment, Development and Sustainability, </em><em>20</em>, 2205-2224. <a href="https://doi.org/10.1007/s10668-017-9985-x" style="color:blue; text-decoration:underline">https://doi.org/10.1007/s10668-017-9985-x</a></li>
+<li>Justice, I. M. S., Ahenkan, A., Bawole, J. N., &amp; <strong>Yeboah-Assiamah, E. </strong>(2017). Rural Poverty and Artisanal Mining in Sub-Saharan Africa: New Perspective through Environment–Poverty Paradox. <em>International Journal of Rural Management, 13</em>(2), 162-181. <a href="https://doi.org/10.1177/0973005217730274" style="color:blue; text-decoration:underline">https://doi.org/10.1177/0973005217730274</a></li>
+<li><strong>Yeboah-Assiamah, E </strong>(2016). Power to the people! How far has the power gone to the people? A qualitative assessment of decentralization practice in Ghana. <em>Journal of Asian and African Studies, 51</em>(6), 683-699. <a href="https://doi.org/10.1177/0021909614555349" style="color:blue; text-decoration:underline">https://doi.org/10.1177/0021909614555349</a></li>
+<li><strong>Yeboah-Assiamah, E</strong>., Asamoah, K., &amp; Kyeremeh, T. A. (2016). Therefore, is bureaucracy dead? Making a case for complementarity of paradigms in public administrative thinking and discourse. <em>International Journal of Public Administration,</em> <em>39</em>(5), 382-394. <a href="https://doi.org/10.1080/01900692.2015.1015558" style="color:blue; text-decoration:underline">https://doi.org/10.1080/01900692.2015.1015558</a></li>
+<li><strong>Yeboah‐Assiamah, E.</strong>, &amp; Alesu‐Dordzi, S. (2016). The calculus of corruption: a paradox of ‘strong’ corruption amidst ‘strong’ systems and institutions in developing administrative systems, <em>Journal of Public Affairs, 16</em>(2), 203-216. <a href="https://doi.org/10.1002/pa.1576" style="color:blue; text-decoration:underline">https://doi.org/10.1002/pa.1576</a></li>
+<li><strong>Yeboah-Assiamah, E</strong>., Asamoah, K., &amp; Kyeremeh, T. A. (2016). Decades of public-private partnership in solid waste management: A literature analysis of key lessons drawn from Ghana and India. <em>Management of Environmental Quality: An International Journal, 28</em>(1), 78-93    <a href="https://doi.org/10.1108/MEQ-05-2015-0098" style="color:blue; text-decoration:underline">https://doi.org/10.1108/MEQ-05-2015-0098</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Muller, K., &amp; Domfeh, K. A. (2016). Rising to the challenge: A framework for optimising value in collaborative natural resource governance. Forest Policy and Economics, 67, 20-29  <a href="https://doi.org/10.1016/j.forpol.2016.01.008 ">https://doi.org/10.1016/j.forpol.2016.01.008 </a></li>
+<li>Osei-Kojo, A., Asamoah, K., &amp; <strong>Yeboah-Assiamah, E</strong>. (2016). Implementating Small Scale Mining Laws in Ghana. <em>Administratio publica, 24</em>(3), 235-257 <a href="https://hdl.handle.net/10520/ejc-adminpub-v24-n3-a13" style="color:blue; text-decoration:underline">https://hdl.handle.net/10520/ejc-adminpub-v24-n3-a13</a></li>
+<li><strong>Yeboah‐Assiamah, E</strong>., Asamoah, K., Bawole, J. N., &amp; Musah‐Surugu, I. J. (2016). A socio‐cultural approach to public sector corruption in Africa: key pointers for reflection.  <em>Journal of Public Affairs</em>, <em>16</em>(3), 279-293. <a href="https://doi.org/10.1002/pa.1587" style="color:blue; text-decoration:underline">https://doi.org/10.1002/pa.1587</a></li>
+<li><strong>Yeboah‐Assiamah, E</strong>., Asamoah, K., Bawole, J. N., &amp; Buabeng, T. (2016). Public sector leadership‐subordinate ethical diffusion conundrum: perspectives from developing African countries. <em>Journal of Public Affairs, 16</em>(4), 320-330<em>  </em><a href="https://doi.org/10.1002/pa.1589" style="color:blue; text-decoration:underline">https://doi.org/10.1002/pa.1589</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong> (2015). Involvement of private actors in the provision of urban sanitation services; potential challenges and precautions: A conceptual paper. <em>Management of  Environmental Quality: An International Journal, </em><em>26</em><em>(</em>2), 270-287. <a href="https://doi.org/10.1108/MEQ-08-2014-0130" style="color:blue; text-decoration:underline">https://doi.org/10.1108/MEQ-08-2014-0130</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Musah-Surugu, I. J., Bawole, J. N., &amp; Nurudeen, S. (2015). The ‘third  sector’ and poverty reduction in developing societies: The experience of hunger project in selected rural communities of Ghana. <em>International Journal of Rural Management, 11</em>(2), 85-110  <a href="https://doi.org/10.1108/MEQ-08-2014-0130" style="color:blue; text-decoration:underline">https://doi.org/10.1108/MEQ-08-2014-0130</a></li>
+<li>Musah-Surugu, I. J., &amp; <strong>Yeboah-Assiamah, E. </strong>(2015). The 'silent pistol 'in Ghana's local government system: Presiding members vs. chief executives. <em>Commonwealth Journal of Local    Governance, (18)</em>, 161-180 <a href="https://search.informit.org/doi/10.3316/informit.897623201152462" style="color:blue; text-decoration:underline">https://search.informit.org/doi/10.3316/informit.897623201152462</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Asamoah, K., &amp; Osei-kojo, A. (2014). Corruption here, corruption there, corruption everywhere: a framework for understanding and addressing public sector corruption in developing African democracies. <em>Journal of Public Administration and Governance</em>, <em>4</em>(3), 186-204. Doi:10.5296/ jpag.v4i3.6406</li>
+<li><strong>Yeboah-Assiamah, E.</strong>, &amp; Kyeremeh, T. A. (2014). A critical assessment of public administration and civil disobedience in developing African democracies: An institutional analysis of mob justice in Ghana.  <em>Journal of Law,  Policy &amp; Globalization</em>, <em>28</em>, 1-19 <a href="https://www.iiste.org/Journals/index.php/JLPG/article/view/14972" style="color:blue; text-decoration:underline">https://www.iiste.org/Journals/index.php/JLPG/article/view/14972</a></li>
+<li><strong>Yeboah-Assiamah, E.</strong>, Asamoah, K., &amp; Osei-Kojo, A. (2014). The concept of administrative responsibility: An alternate explanation for poor voter turnout in local government elections using empirical evidence from Techiman Municipality, Ghana.  <em>International Journal of Politics and Good Governance</em>, <em>5</em>(3), 1-20. <a href="https://onlineresearchjournals.com/ijopagg/art/157.pdf" style="color:blue; text-decoration:underline">https://onlineresearchjournals.com/ijopagg/art/157.pdf</a></li>
+<li>Asamoah, K., <strong>Yeboah-Assiamah, E.</strong>, &amp; Osei-Kojo, A. (2014). Demons of transitional democracies: Politics of insults and acrimony in Ghana.  <em>Journal of Social Science Studies</em>, <em>1</em>(1), 44-56.  <a href="https://doi.org/10.5296/jsss.v1i1.4725" style="color:blue; text-decoration:underline">https://doi.org/10.5296/jsss.v1i1.4725</a></li>
+<li>Asamoah, K., Osei-Kojo, A., &amp; <strong>Yeboah-Assiamah, E</strong>. (2013). Enhancing public sector productivity in Ghana: A qualitative study.  <em>Journal of Public Administration and Governance</em>, <em>3</em>(3), 22-34. DOI: 10.5296/jpag.v3i3.4378       </li>
+<li> </li>
+<li><strong>Online/blogpost</strong></li>
+</ol>
+<ul>
+<li>Yeboah-Assiamah E. (2020).<strong> </strong>Impact of COVID-19 on Organizational Workforce: Pointers for Human Resources Management   <a href="https://managlobal.hypotheses.org/1540">https://managlobal.hypotheses.org/1540</a></li>
+<li>Yeboah-Assiamah E. (2020). Would COVID-19 trigger ‘Creative Destruction’ in Africa? Overview, mitigation and implications for businesses in Ghana from. <a href="https://managlobal.hypotheses.org/1523?fbclid=IwAR1_njKKgdhKMMXBrbVxUQwgHVPF6iEZy7bksa_XEh4bhMPYZXb7ngdoDqM">https://managlobal.hypotheses.org/1523?fbclid=IwAR1_njKKgdhKMMXBrbVxUQwg...</a></li>
+</ul>
+<p> </p>
+<p><strong>CONFERENCE PROCEEDINGS </strong></p>
+<ul>
+<li value="5">ASSADPAM [Association of Southern African Schools and Departments of Public Administration and Management], Annual Conference: 19-20 November 2015; on the theme “Shaping African sustainability: A Pan-African perspective in pursuit of future-fit Public Leadership, Public Administration, Public Management and Public Governance”, University of Johannesburg, South Africa. Paper delivered “Gaps in Natural Resources Governance Research: A Primer for a Transdisciplinary Approach”</li>
+<li value="5">Delegate at 6th World Sustainability Forum (WSF 2017), hosted by University of Cape Town held at the Cape Sun Hotel, 27th – 28th January, 2017. Paper discussed “<em>Institutional adaptation” towards natural resource resilience and sustainability: Lessons from a Monkey Sanctuary Governance in Ghana”</em></li>
+<li value="5">Transdisciplinary Winter School held at the Sustainability Institute, University of Stellenbosch, South Africa on 6-10th July, 2015. <em>Modules on sustainability and TD</em></li>
+<li value="5">ESID [effective states and inclusive development] Conference on the theme <em>‘’From Politics to Power? Rethinking the Politics of Development’’ </em>held from 9-11 September, 2019 hosted at the Global Development Institute, University of Manchester, UK</li>
+<li value="5">MANAGLOBAL Online pre-conference. Hosted in Paris via Zoom, 15th December, 2020. Paper presented ‘’Start small, dream big: An empirical assessment of the drivers of a business conglomerate in Ghana, Africa’’</li>
+<li value="5">Managlobal Summer School in Dakar, Senegal. Held in Senegal via Zoom, 7-11 June, 2021 paper presented <em>‘’Start small, dream big: An empirical assessment of the drivers of a business conglomerate in Ghana, Africa’’</em></li>
+<li>Seminar Presentation; Department of Political Science Monthly Seminar presentation, speaker on the topic ‘’ Do Africans really not need strong (wo) men in the fight against corruption? Reflections on public value governance in Ghana. Septmber 30, 2021 held at the Kofi Drah Conference Room, Department of Political Science.</li>
+<li>Seminar Presentation; Department of Political Science Monthly Seminar presentation, speaker on the topic ‘’ Affirmative action policy in Ghana: Is widow politics a reliable pathway? April 27, 2022 held at the Kofi Drah Conference Room, Department of Political Science. (Via Zoom also). Expert participant and discussant: Corruption, Justice, Legitimacy (CJL) Program virtual gathering on “Civil Servants, Social Norms, and Corruption: What do we know and what do we do?” on May 4, 2022, at 10:00 am –11:30 am (GMT-4). Hosted by colleagues from Tufts University, via online.</li>
+<li>Guest Speaker on the topic “your franchise, our development” organized by the Political Science Students’ Association, UG. 12th July, 2023 at Kofi Drah Conference Room 18th July, 2023.</li>
+<li>Resource person to lecture visiting Cornell University Students on the topic “Agenda 2063: The Africa we want” Organized by the International Programmes Office, UG 19th July, 2023.</li>
+<li>Resource person to lecture visiting Cornell University Students on the topic ‘’Mechanisms for Dissemination” Organized by the International Programmes Office, UG 24th July, 2023. Resource person to lecture visiting Cornell University Students on the topic ‘’Continental Report on Agenda 2063” Organized by the International Programmes Office, UG 7th November, 2023.</li>
+<li>Presenter at the MIASA Public Lecture Series. Topic “African cities and the SDGs: Political Settlement Analysis of the Accra Metropolitan Assembly” Merian Institute for Advanced Studies in Africa, University of Ghana MIASA Public Lecture Series. Keynote speaker. Paper presented “African cities and the SDGs: Political Settlement Analysis of the Accra Metropolitan Assembly” at the Merian Institute for Advanced Studies in Africa, University of Ghana.</li>
+<li>7th November, 2023 MIASA Mid-term Conference on “Sustainable Governance in a Time of Global Flux: Issues, Concepts and Future Directions” held at ISSER, UG from Tuesday 19th September to Thursday, 21st September, 2023 American Political Science Association (APSA) Annual Meeting &amp; Exhibition, Montreal, Quebec-Canada, Sept 15-18, 2022 paper delivered‘’ Trust in Government and Social Capital for Collaborative Efforts: Assessing Citizens’ Trust in COVID-19 related scientific communication and interventions in Ghana’’</li>
+<li> </li>
+</ul>
+<p><strong> OTHERS</strong></p>
+<p><em><strong>Fellowships, Honors and Recognition</strong></em></p>
+<ul>
+<li>Ranked among top 510 researchers in Ghana - World Scientist and University Rankings 2025 available at <a href="https://www.adscientificindex.com/scientist-print/4324826/" style="color:#0563c1; text-decoration:underline">https://www.adscientificindex.com/scientist-print/4324826/</a>.</li>
+<li>Ranked among top 5% of researchers on academia.edu; available at <a href="https://ugh.academia.edu/EmmanuelYeboahAssiamah" style="color:#0563c1; text-decoration:underline">https://ugh.academia.edu/EmmanuelYeboahAssiamah</a>  (also with over 36,021 public views)  </li>
+<li>Ranked among <em>ResearchGate</em> members who first published in 2013 with current Research Interest Score above 93%; available at <a href="https://www.researchgate.net/profile/Emmanuel-Yeboah-Assiamah/stats" style="color:#0563c1; text-decoration:underline">https://www.researchgate.net/profile/Emmanuel-Yeboah-Assiamah/stats</a></li>
+<li>Ranked among overall <em>ResearchGate</em> members with Research Interest Score higher than 87%; available at <a href="https://www.researchgate.net/profile/Emmanuel-Yeboah-Assiamah/stats" style="color:#0563c1; text-decoration:underline">https://www.researchgate.net/profile/Emmanuel-Yeboah-Assiamah/stats</a></li>
+<li>Served as a Post-Doc Fellow at the Global Development Institute, University of Manchester</li>
+<li>Served as a TRECCAFRICA Fellow in Sustainability Studies and Public Leadership, University of Stellenbosch</li>
+<li>Awarded EU INTRA-ACP grant for doctoral fellowship in Transdisciplinary Studies in Sustainability with a focus on new public governance and institutionalism</li>
+<li>Research Fellow, Merian Institute for Advanced Study in Africa (MIASA), August, 2023 to May 2024, UG</li>
+<li>Served as a GCRF Fellow at the Global Development Institute, University of Manchester, UK</li>
+<li>Partner of the Managlobal Team of Researchers on business management and  governance systems across Africa and the Arab countries</li>
+<li>H-Index of 17 with 744 citations on Google Scholar; available at <a href="https://scholar.google.com/citations?user=zY20svcAAAAJ&amp;hl=en&amp;oi=ao" style="color:#0563c1; text-decoration:underline">https://scholar.google.com/citations?user=zY20svcAAAAJ&amp;hl=en&amp;oi=ao</a></li>
+</ul>
+<p><strong>PROFESSIONAL SOCIETY MEMBERSHIPS</strong></p>
+<p>Research Fellow, Merian Institute for Advanced Study in Africa (MIASA)</p>
+<p>Member, American Political Science Association, APSA</p>
+<p>Member, Development Students Association, UK</p>
+<p>Member, International Society for Development and Sustainability</p>
+<p><strong><em>Verified and Ad hoc Reviewer for these Journals</em></strong></p>
+<ul>
+<li>Administrative Theory &amp; Praxis – Taylor &amp; Francis</li>
+<li>Journal of Asian and African Studies- Sage</li>
+<li>Journal of Public Affairs – Wiley and Sons</li>
+<li>International Journal of Public Leadership - Emerald</li>
+<li>Society and Natural Resources- Taylor and Francis</li>
+<li>Third World Quarterly – Taylor and Francis</li>
+<li>Forest Policy and Economics- Elsevier</li>
+<li>Management of Environmental Quality- Emerald</li>
+</ul>
+</div></div></div>  </div>
+
+</div>
+
+  </div>
+</div>  </div>
+          
+
+        </div> <!-- // content -->
+
+
+              </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="container">
+              <div class="row footer_inside">
+
+          <div class="four columns f1" style="width:211px;">
+              <div class="region region-footer-firstcolumn">
+     <div id="block-block-2" class="block block-block">
+    
+    <h3>About the Department</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/about/welcome">Welcome Message</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/brief_history">Brief History</a></p>
+<p><a href="https://pscience.ug.edu.gh/about/vision">Objectives and Vision</a></p>
+<p><a href="https://pscience.ug.edu.gh/faculty-staff">Faculty</a></p>
+<p><a href="https://pscience.ug.edu.gh/staff">Staff</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!--  1/4 Columns -->
+          <div class="three columns f2">
+              <div class="region region-footer-secondcolumn">
+     <div id="block-block-1" class="block block-block">
+    
+    <h3>Admissions</h3>
+
+    
+  <div class="content">
+    <p><a href="https://admissions.ug.edu.gh/undergraduate/overview" target="_blank">Undergraduate</a></p>
+<p><a href="https://sgs.ug.edu.gh/admissions/" target="_blank">Graduate</a></p>
+<p><a href="https://admissions.ug.edu.gh/international" target="_blank">International</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f3">
+              <div class="region region-footer-thirdcolumn">
+     <div id="block-block-3" class="block block-block">
+    
+    <h3>Academics</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/academics/academic-programmes" style="font-size: 13.008px;">Academic Programmes</a></p>
+<p><a href="https://pscience.ug.edu.gh/courses">Undergraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/post-graduate-courses">Postgraduate Courses</a></p>
+<p><a href="https://pscience.ug.edu.gh/academics/student_support">Student Support</a></p>
+<p><a href="https://www.ug.edu.gh/academics/calendar" target="_blank">Academic Calendar</a></p>
+  </div>
+</div>
+  </div>
+            <div class="clearfix"></div>
+          </div>
+
+          <!-- 1/4 Columns -->
+          <div class="three columns f4">
+              <div class="region region-footer-fourthcolumn">
+     <div id="block-block-4" class="block block-block">
+    
+    <h3>QUICK LINKS</h3>
+
+    
+  <div class="content">
+    <p><a href="https://pscience.ug.edu.gh/news-events">News &amp; Events</a></p>
+<p><a href="https://pscience.ug.edu.gh/news-events?tid=12">Announcements</a></p>
+<p><a href="https://pscience.ug.edu.gh/research">Research</a></p>
+<p><a href="#" target="_blank">Alumni</a></p>
+<p><a href="https://socialsciences.ug.edu.gh/" target="_blank">School of Social Sciences</a></p>
+  </div>
+</div>
+  </div>
+          </div>
+
+            <!-- 1/4 Columns -->
+          <div class="three columns f5">
+                      </div>
+
+
+              
+      </div> 
+      <div class="clear"></div>
+
+      <div class="footer_btm">
+        <div class="footer_btm_inner">
+
+                                <div id="powered">
+              <a href="https://www.ug.edu.gh/" target="_blank">University of Ghana </a>&copy;&nbsp;2026                
+              </div>
+                  </div>    
+      </div>
+    </div>
+  
+    <!-- Footer::END -->
+
+  </div>    
+
+    
+      <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/sites/all/themes/ugdepartments/stylesheets/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.7/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_Hfha9RCTNm8mqMDLXriIsKGMaghzs4ZaqJPLj2esi7s.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_JcYGsF6wKv2qOZLXPZKU9pUzvB92frJyEKj5BQmUMh0.js"></script>
+<script type="text/javascript" src="https://pscience.ug.edu.gh/sites/pscience/files/js/js_yj9SBIxGToUO1zIgUUUueFAIoXNPmXJQe8PicowubVY.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"ugdepartments","theme_token":"Digiu9fCc2ictLo7bwxd7Kza3pMcZGe08ugiymDN61g","js":{"\/\/code.jquery.com\/jquery-1.7.2.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.bgiframe.js":1,"sites\/all\/modules\/nice_menus\/js\/jquery.hoverIntent.js":1,"sites\/all\/libraries\/superfish\/superfish.js":1,"sites\/all\/modules\/nice_menus\/js\/nice_menus.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.easing.1.3.js":1,"sites\/all\/themes\/ugdepartments\/js\/common.js":1,"sites\/all\/themes\/ugdepartments\/js\/isotope.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.flexslider-min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.prettyPhoto.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.jcarousel.min.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.tipsy.js":1,"sites\/all\/themes\/ugdepartments\/js\/jquery.selectnav.js":1,"sites\/all\/themes\/ugdepartments\/js\/aqua.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus.css":1,"sites\/all\/modules\/nice_menus\/css\/nice_menus_default.css":1,"sites\/all\/modules\/ds\/layouts\/ds_2col_stacked_fluid\/ds_2col_stacked_fluid.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/ug-style-min.css":1,"sites\/all\/themes\/ugdepartments\/stylesheets\/fpe.css":1,"https:\/\/use.fontawesome.com\/releases\/v5.11.2\/css\/all.css":1}},"nice_menus_options":{"delay":800,"speed":"slow"},"urlIsAjaxTrusted":{"\/staff\/prof-emmanuel-yeboah-assiamah":true}});
+//--><!]]>
+</script>
+      <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    <!--  Fonts  -->
+
+	
+
+  </body>
+</html>
