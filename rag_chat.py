@@ -72,6 +72,48 @@ Ask me anything about programmes, admissions, courses, policies or campus life.
 
 """
 
+
+# Authoritative UG organisational structure. Use this to disambiguate when a
+# user refers to a unit using the wrong category (e.g. "Agriculture department"
+# is actually the School of Agriculture, not a department).
+UG_STRUCTURE = """University of Ghana organisational structure (authoritative):
+
+- College of Basic and Applied Sciences (CBAS):
+  - School of Physical and Mathematical Sciences: Chemistry, Computer Science, Earth Science, Mathematics, Physics, Statistics and Actuarial Science
+  - School of Biological Sciences: Animal Biology and Conservation Science; Biochemistry, Cell and Molecular Biology; Plant and Environmental Biology; Marine and Fisheries Sciences; Nutrition and Food Science
+  - School of Agriculture: Agricultural Economics and Agribusiness, Agricultural Extension, Animal Science, Crop Science, Family and Consumer Sciences, Soil Science
+  - School of Engineering Sciences: Agricultural Engineering, Biomedical Engineering, Computer Engineering, Food Process Engineering, Materials Science and Engineering
+  - School of Veterinary Medicine
+
+- College of Education:
+  - School of Education and Leadership: Educational Studies and Leadership, Physical Education and Sports Studies, Teacher Education
+  - School of Information and Communication Studies: Information Studies, Communication Studies
+  - School of Continuing and Distance Education: Adult Education and Human Resource Studies, Distance Education
+
+- College of Health Sciences:
+  - University of Ghana Medical School (UGMS): Anaesthesia, Anatomy, Biomedical Sciences, Child Health, Chemical Pathology, Community Health, Medicine and Therapeutics, Medical Microbiology, Medical Pharmacology, Medical Biochemistry, Obstetrics and Gynaecology, Psychiatry, Physiology, Haematology, Radiology, Surgery
+  - University of Ghana Dental School: Biomaterial Sciences; Community & Preventive Dentistry; Oral Biology; Oral and Maxillofacial Surgery; Oral Pathology / Medicine; Orthodontics and Pedodontics; Restorative and Preventive Dentistry
+  - School of Biomedical and Allied Health Sciences: Audiology Speech and Language Therapy, Medical Laboratory Sciences, Dietetics, Occupational Therapy, Physiotherapy, Radiography, Respiratory Therapy
+  - School of Public Health: Health Policy Planning and Management; Social and Behavioural Sciences; Biostatistics; Population, Family and Reproductive Health; Biological, Environmental and Occupational Health Sciences; Epidemiology and Disease Control
+  - School of Nursing and Midwifery: Adult Health Nursing, Community Health Nursing, Maternal and Child Health Nursing, Mental Health Nursing
+  - School of Pharmacy: Pharmaceutical Chemistry, Pharmaceutics and Microbiology, Pharmacognosy and Herbal Medicine, Pharmacology and Toxicology, Pharmacy Practice and Clinical Pharmacy
+  - Research institutes: Noguchi Memorial Institute for Medical Research, West African Genetic Medicine Centre (WAGMC), GEOHealth West Africa
+
+- College of Humanities:
+  - University of Ghana Business School (UGBS): Accounting, Finance, Health Services Management, Marketing & Entrepreneurship, Organisation and Human Resource Management, Operations and Management Information Systems, Public Administration
+  - School of Law
+  - School of Languages: English, French, Modern Languages, Linguistics
+  - School of Social Sciences: Economics, Sociology, Geography and Resource Development, Political Science, Psychology, Social Work
+  - School of Arts: Archaeology and Heritage Studies, History, Philosophy and Classics, Study of Religions
+  - School of Performing Arts: Theatre Arts, Dance Studies, Music
+  - Institutes & Centres: Institute of African Studies; ISSER; RIPS; MIASA; Centre for Gender Studies and Advocacy; Centre for Migration Studies; Centre for Social Policy Studies; Language Centre; LECIAD; CERSGIS; and others
+
+Disambiguation rule: a name is either a College, a School, or a Department —
+not interchangeable. If a user calls something by the wrong category (e.g. asks
+about the "Agriculture department" — Agriculture is a SCHOOL; or "Pharmacy
+department" — Pharmacy is a SCHOOL), correct them gently, name the actual
+category, and list the relevant sub-units they might mean."""
+
 SELF_QUESTION_PATTERNS = [
     r"\bwho\s+are\s+you\b",
     r"\bwhat\s+are\s+you\b",
@@ -119,6 +161,41 @@ def _strip_trailing_sources(answer: str) -> str:
     return cleaned
 
 
+_UG_URLS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ug_urls.json")
+_ug_urls_cache: Optional[dict] = None
+
+
+def _load_ug_urls() -> dict:
+    """Load the curated UG URL list once and cache it.
+
+    Returns a dict mapping category → list of {url, title}. Returns {} if the
+    file is missing or malformed so the fallback degrades gracefully.
+    """
+    global _ug_urls_cache
+    if _ug_urls_cache is not None:
+        return _ug_urls_cache
+    try:
+        import json
+        with open(_UG_URLS_PATH) as f:
+            data = json.load(f) or {}
+        # Drop comment / metadata keys, keep only category lists
+        _ug_urls_cache = {
+            k: v for k, v in data.items()
+            if isinstance(v, list) and not k.startswith("_")
+        }
+    except (FileNotFoundError, ValueError, OSError) as e:
+        print(f"⚠️  Could not load ug_urls.json: {e}", file=sys.stderr)
+        _ug_urls_cache = {}
+    return _ug_urls_cache
+
+
+def _is_insufficient(text: str) -> bool:
+    """Detect the sentinel Gemini emits when handbook context is insufficient."""
+    if not text:
+        return False
+    return text.strip().upper().rstrip(".!?*") == "INSUFFICIENT_INFO"
+
+
 class HandbookRAG:
     """RAG system combining Chroma retrieval with Gemini generation."""
 
@@ -160,9 +237,13 @@ About you (use this verbatim when asked who/what you are, what you can do, or fo
 For all other questions, you have access to handbook information about academic programmes, courses, and regulations:
 1. Use ONLY the provided handbook context to answer.
 2. Be specific and mention the programme/level/department when relevant.
-3. If information is not in the handbooks, clearly state that.
+3. If the handbook context does NOT cover the user's question, output exactly the single token INSUFFICIENT_INFO and nothing else. Do not apologize, do not speculate, do not say "I don't have that". Just emit the token — the system will retry with live UG web pages.
 4. Format course listings clearly with course codes and titles when possible.
 5. Be helpful and conversational but accurate.
+
+{UG_STRUCTURE}
+
+Category disambiguation: BEFORE retrieving an answer, check the structure above. If the user refers to a unit using the wrong category (e.g. "Agriculture department" — Agriculture is a SCHOOL containing several departments; "Pharmacy department" — Pharmacy is a SCHOOL), reply with a short correction naming the correct category and listing the relevant sub-units, then ask which one they mean. Do NOT emit INSUFFICIENT_INFO for these — answer directly with the correction.
 
 Citation rules (strict):
 - Do NOT use inline references like "(Chunk 1)", "(Chunk 2, 3)", or "[1]" anywhere in the answer.
@@ -529,12 +610,16 @@ Decision:"""
         context_chunks: list[dict],
         history: Optional[list[dict]] = None,
         mode: Literal["fast", "thinking"] = "fast",
-    ) -> str:
+    ) -> dict:
         """Generate answer using Gemini with retrieved context and optional history.
 
         `mode` controls Gemini's thinking budget:
           - "fast"     → thinking_budget=0  (skip the reasoning step)
           - "thinking" → thinking_budget=-1 (dynamic; model decides)
+
+        Returns a dict: {"answer": str, "citations": list[...], "via_web": bool}.
+        If the handbook context is insufficient, transparently falls back to
+        a Gemini call with the URL Context tool over the curated UG URL list.
         """
         # Build context string — label each block by document title, not "[Chunk N]".
         context_str = "HANDBOOK CONTEXT:\n" + "=" * 50 + "\n"
@@ -579,7 +664,229 @@ Remember: no inline source tags, no "Chunk" references, and do NOT append any "S
             contents=prompt,
             config=config,
         )
-        return _strip_trailing_sources(response.text or "")
+        raw_text = response.text or ""
+
+        # If the handbook context didn't cover the question, retry with URL
+        # Context over our curated UG URL list.
+        if _is_insufficient(raw_text):
+            return self._web_fallback(query, history=history, mode=mode)
+
+        return {
+            "answer": _strip_trailing_sources(raw_text),
+            "citations": [],
+            "via_web": False,
+        }
+
+    def _web_fallback(
+        self,
+        query: str,
+        history: Optional[list[dict]] = None,
+        mode: Literal["fast", "thinking"] = "fast",
+    ) -> dict:
+        """Re-ask Gemini with URL Context. Supports a 2-hop drill-down when the
+        first-pass pages only partially answer or contain useful sub-links.
+
+        Pass 1: Gemini reads the curated URL list. If a complete answer is there,
+        return it. If it found only a partial answer (or saw a deeper /faculty,
+        /staff, /people, /programmes sub-page that likely holds the full
+        answer), it emits `{"need_more_urls": [...]}` and we run pass 2.
+        """
+        ug_urls = _load_ug_urls()
+        if not ug_urls:
+            return {
+                "answer": "I couldn't find that in the handbooks, and the live UG page list isn't configured. Please check the official UG website directly.",
+                "citations": [],
+                "via_web": True,
+            }
+
+        category_blocks = []
+        for cat, entries in ug_urls.items():
+            lines = [f"  - {e['url']} — {e.get('title', '')}".rstrip(" —") for e in entries]
+            if lines:
+                category_blocks.append(f"{cat.replace('_', ' ').title()}:\n" + "\n".join(lines))
+        urls_block = "\n\n".join(category_blocks)
+
+        history_text = self._format_history(history or [])
+        history_block = (
+            f"\nConversation so far:\n{history_text}\n" if history_text else ""
+        )
+
+        thinking_budget = 0 if mode == "fast" else -1
+        url_context_config = genai_types.GenerateContentConfig(
+            thinking_config=genai_types.ThinkingConfig(thinking_budget=thinking_budget),
+            tools=[genai_types.Tool(url_context=genai_types.UrlContext())],
+        )
+
+        # --- Pass 1: curated URLs + drill-down opt-in ---
+        pass1_prompt = (
+            "You are Nana Aba AI. The user's question wasn't covered by the "
+            "bundled UG handbooks. The official UG website pages below may have "
+            "the answer. Use the URL Context tool to fetch and read whichever "
+            "pages look relevant.\n\n"
+            f"{UG_STRUCTURE}\n\n"
+            "If the user's question uses the wrong category (e.g. asks about a "
+            "'department' that's actually a School per the structure above), "
+            "DO NOT fetch any pages — reply directly with a short correction "
+            "naming the correct category and listing the sub-units they might "
+            "mean.\n\n"
+            f"Available UG pages:\n{urls_block}\n"
+            f"{history_block}\n"
+            f"User question: {query}\n\n"
+            "Decision protocol:\n"
+            "- If the fetched pages fully answer the question, reply in 1–3 sentences.\n"
+            "- If you only found a PARTIAL answer, or the fetched page links to a "
+            "deeper sub-page that likely holds the COMPLETE answer (for staff/"
+            "lecturer questions this is usually a /faculty, /staff, /people or "
+            "/our-staff page; for programmes a /programmes or /academics page), "
+            "output ONLY a JSON object on a single line:\n"
+            '  {"need_more_urls": ["https://...", "https://..."], "reason": "<one short clause>"}\n'
+            "  Include up to 5 specific URLs — either sub-pages you saw on the "
+            "fetched pages, or obvious sub-paths of a department site you fetched "
+            "(e.g. if you fetched https://dcs.ug.edu.gh/ for a lecturer question, "
+            "propose https://dcs.ug.edu.gh/faculty). Output nothing else with the JSON.\n\n"
+            "Rules:\n"
+            "- Prefer completeness: if a dedicated sub-page would give the full "
+            "list, drill into it rather than answering from a partial mention.\n"
+            "- Cite only pages you fetched.\n"
+            "- Do NOT append a 'Sources:' list — citations are surfaced separately.\n"
+            "- Keep any prose answer short and direct."
+        )
+
+        try:
+            pass1 = self.client.models.generate_content(
+                model=self.model_name,
+                contents=pass1_prompt,
+                config=url_context_config,
+            )
+        except Exception as e:
+            print(f"⚠️  url_context pass 1 failed: {type(e).__name__}: {e}", file=sys.stderr)
+            return {
+                "answer": "I couldn't find that in the handbooks, and the live UG website lookup failed. Try asking again, or check the official UG website directly.",
+                "citations": [],
+                "via_web": True,
+            }
+
+        pass1_text = (pass1.text or "").strip()
+        followups = self._parse_followup_urls(pass1_text)
+
+        if not followups:
+            answer = _strip_trailing_sources(pass1_text)
+            return {
+                "answer": answer or "I couldn't find that on the official UG pages I have access to.",
+                "citations": self._extract_url_citations(pass1),
+                "via_web": True,
+            }
+
+        # --- Pass 2: drill into the follow-up URLs ---
+        print(f"🔁 Drilling into {len(followups)} follow-up URL(s)...", file=sys.stderr)
+        followups_block = "\n".join(f"  - {u}" for u in followups)
+        pass2_prompt = (
+            "You are Nana Aba AI. The user's question needs information from "
+            "these specific UG sub-pages. Use the URL Context tool to fetch them "
+            "and answer.\n\n"
+            f"Pages to read:\n{followups_block}\n"
+            f"{history_block}\n"
+            f"User question: {query}\n\n"
+            "Rules:\n"
+            "- Answer using only what you read. For list questions (e.g. "
+            "lecturers, programmes), give the full list you find.\n"
+            "- If these pages also don't have the answer, say so plainly — do NOT "
+            "emit another drill-down JSON.\n"
+            "- Cite only pages you fetched.\n"
+            "- Do NOT append a 'Sources:' list — citations are surfaced separately."
+        )
+        try:
+            pass2 = self.client.models.generate_content(
+                model=self.model_name,
+                contents=pass2_prompt,
+                config=url_context_config,
+            )
+        except Exception as e:
+            print(f"⚠️  url_context pass 2 failed: {type(e).__name__}: {e}", file=sys.stderr)
+            return {
+                "answer": _strip_trailing_sources(pass1_text) or "I tried to drill deeper on the UG website but the follow-up lookup failed.",
+                "citations": self._extract_url_citations(pass1),
+                "via_web": True,
+            }
+
+        answer = _strip_trailing_sources((pass2.text or "").strip())
+        merged: list[dict] = []
+        seen: set[str] = set()
+        for c in self._extract_url_citations(pass1) + self._extract_url_citations(pass2):
+            if c["uri"] in seen:
+                continue
+            seen.add(c["uri"])
+            merged.append(c)
+        return {
+            "answer": answer or "I couldn't find that on the official UG pages I have access to, even after drilling deeper.",
+            "citations": merged,
+            "via_web": True,
+        }
+
+    @staticmethod
+    def _parse_followup_urls(text: str) -> list[str]:
+        """Extract ['url', ...] from a `{"need_more_urls": [...]}` first-pass response.
+
+        Returns [] for a normal prose answer or malformed JSON. Caps at 5 URLs.
+        """
+        if not text:
+            return []
+        match = re.search(r"\{[^{}]*\"need_more_urls\"[^{}]*\}", text, re.DOTALL)
+        if not match:
+            return []
+        try:
+            import json
+            obj = json.loads(match.group(0))
+        except json.JSONDecodeError:
+            return []
+        urls = obj.get("need_more_urls")
+        if not isinstance(urls, list):
+            return []
+        cleaned: list[str] = []
+        seen: set[str] = set()
+        for u in urls:
+            if not isinstance(u, str):
+                continue
+            u = u.strip()
+            if not u.startswith(("http://", "https://")) or u in seen:
+                continue
+            seen.add(u)
+            cleaned.append(u)
+            if len(cleaned) >= 5:
+                break
+        return cleaned
+
+    @staticmethod
+    def _extract_url_citations(response) -> list[dict]:
+        """Pull retrieved URLs out of the URL Context grounding metadata."""
+        try:
+            cand = response.candidates[0] if response.candidates else None
+            url_meta = getattr(cand, "url_context_metadata", None) if cand else None
+            url_metadata = getattr(url_meta, "url_metadata", None) if url_meta else None
+            if not url_metadata:
+                return []
+            seen: set[str] = set()
+            out: list[dict] = []
+            for um in url_metadata:
+                uri = (
+                    getattr(um, "retrieved_url", None)
+                    or getattr(um, "url", None)
+                    or ""
+                )
+                if not uri or uri in seen:
+                    continue
+                seen.add(uri)
+                # No page title in url_context_metadata — use the URL path as label.
+                try:
+                    from urllib.parse import urlparse
+                    parsed = urlparse(uri)
+                    title = (parsed.netloc + parsed.path).rstrip("/") or uri
+                except Exception:
+                    title = uri
+                out.append({"uri": uri, "title": title})
+            return out
+        except Exception:
+            return []
 
     def chat(
         self,
@@ -599,6 +906,8 @@ Remember: no inline source tags, no "Chunk" references, and do NOT append any "S
                 "sources": [],
                 "probing": False,
                 "chitchat": False,
+                "citations": [],
+                "via_web": False,
             }
 
         plan = self.probe_or_proceed(query, history=history)
@@ -613,6 +922,8 @@ Remember: no inline source tags, no "Chunk" references, and do NOT append any "S
                 "sources": [],
                 "probing": kind == "probe",
                 "chitchat": kind == "chitchat",
+                "citations": [],
+                "via_web": False,
             }
 
         search_query = self.rewrite_query(query, history or [])
@@ -625,11 +936,11 @@ Remember: no inline source tags, no "Chunk" references, and do NOT append any "S
         print(f"✓ Found {len(chunks)} relevant chunks")
         print(f"📝 Generating answer...\n")
 
-        answer = self.generate(query, chunks, history=history, mode=mode)
+        gen = self.generate(query, chunks, history=history, mode=mode)
 
         return {
             "query": query,
-            "answer": answer,
+            "answer": gen["answer"],
             "sources": [
                 {
                     "source_file": c["metadata"].get("source_file"),
@@ -640,6 +951,8 @@ Remember: no inline source tags, no "Chunk" references, and do NOT append any "S
             ],
             "probing": False,
             "chitchat": False,
+            "citations": gen.get("citations", []),
+            "via_web": gen.get("via_web", False),
         }
 
 

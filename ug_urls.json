@@ -1,0 +1,391 @@
+{
+  "_comment": "UG-owned URLs for Nana Aba AI's URL Context fallback. Academic entries are built from the verified College/School/Department spreadsheet (only rows with real standalone sites). Non-academic categories (admissions, portals, services) are curated separately. Note: www.ug.edu.gh/<dept> pages and college landing pages are often JS-rendered; dedicated subdomains like dcs.ug.edu.gh read most reliably.",
+  "admissions": [
+    {
+      "url": "https://admissions.ug.edu.gh/",
+      "title": "UG Main Admissions Portal"
+    },
+    {
+      "url": "https://admissions.ug.edu.gh/undergraduate/overview",
+      "title": "Undergraduate Admissions"
+    },
+    {
+      "url": "https://admissions.ug.edu.gh/graduate/overview",
+      "title": "Graduate Admissions"
+    },
+    {
+      "url": "https://admissions.ug.edu.gh/undergraduate/distance",
+      "title": "Distance Education Admissions"
+    },
+    {
+      "url": "https://www.ipo.ug.edu.gh/",
+      "title": "International Programmes Office"
+    }
+  ],
+  "student_portals_and_systems": [
+    {
+      "url": "https://misweb.ug.edu.gh/",
+      "title": "UG MIS Web Portal (Registration and Results)"
+    },
+    {
+      "url": "https://sakai.ug.edu.gh/",
+      "title": "Sakai Learning Management System"
+    },
+    {
+      "url": "https://sts.ug.edu.gh/",
+      "title": "Student Services Portal (STS)"
+    },
+    {
+      "url": "https://ugcs.ug.edu.gh/",
+      "title": "University of Ghana Computing Systems (UGCS)"
+    }
+  ],
+  "student_life_and_support": [
+    {
+      "url": "https://www.ug.edu.gh/students-services",
+      "title": "Student Services Overview"
+    },
+    {
+      "url": "https://www.ug.edu.gh/aad/",
+      "title": "Academic Affairs Directorate (Handbooks, Exams, Registration)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/careers/",
+      "title": "Careers and Counselling Centre"
+    },
+    {
+      "url": "https://www.ug.edu.gh/healthservices/",
+      "title": "Health Services Directorate"
+    },
+    {
+      "url": "https://sports.ug.edu.gh/",
+      "title": "Sports Directorate"
+    },
+    {
+      "url": "https://balme.ug.edu.gh/",
+      "title": "Balme Library"
+    }
+  ],
+  "university": [
+    {
+      "url": "https://www.ug.edu.gh",
+      "title": "Main website"
+    },
+    {
+      "url": "https://www.ug.edu.gh/academics/colleges-schools",
+      "title": "Colleges & Schools index"
+    }
+  ],
+  "college_basic_applied_sciences": [
+    {
+      "url": "https://cbas.ug.edu.gh",
+      "title": "College home"
+    },
+    {
+      "url": "https://spms.ug.edu.gh",
+      "title": "School of Physical and Mathematical Sciences home"
+    },
+    {
+      "url": "https://www.ug.edu.gh/chemistry/",
+      "title": "Chemistry (School of Physical and Mathematical Sciences)"
+    },
+    {
+      "url": "https://dcs.ug.edu.gh/",
+      "title": "Computer Science (School of Physical and Mathematical Sciences)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/earthscience/",
+      "title": "Earth Science (School of Physical and Mathematical Sciences)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/mathematics/",
+      "title": "Mathematics (School of Physical and Mathematical Sciences)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/physics/",
+      "title": "Physics (School of Physical and Mathematical Sciences)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/statistics/",
+      "title": "Statistics and Actuarial Science (School of Physical and Mathematical Sciences)"
+    },
+    {
+      "url": "https://bioscience.ug.edu.gh",
+      "title": "School of Biological Sciences home"
+    },
+    {
+      "url": "https://agric.ug.edu.gh",
+      "title": "School of Agriculture home"
+    },
+    {
+      "url": "https://www.ug.edu.gh/agricecons/home",
+      "title": "Agricultural Economics and Agribusiness (School of Agriculture)"
+    },
+    {
+      "url": "https://engineering.ug.edu.gh",
+      "title": "School of Engineering Sciences home"
+    },
+    {
+      "url": "https://www.ug.edu.gh/dmse/home",
+      "title": "Materials Science and Engineering (School of Engineering Sciences)"
+    },
+    {
+      "url": "https://svm.ug.edu.gh",
+      "title": "School of Veterinary Medicine home"
+    }
+  ],
+  "college_education": [
+    {
+      "url": "https://coe.ug.edu.gh",
+      "title": "College home"
+    },
+    {
+      "url": "https://soel.ug.edu.gh",
+      "title": "School of Education and Leadership home"
+    },
+    {
+      "url": "https://sics.ug.edu.gh",
+      "title": "School of Information and Communication Studies home"
+    },
+    {
+      "url": "https://infostudies.ug.edu.gh",
+      "title": "Information Studies (School of Information and Communication Studies)"
+    },
+    {
+      "url": "https://sics.ug.edu.gh/departments/communication",
+      "title": "Communication Studies (School of Information and Communication Studies)"
+    },
+    {
+      "url": "https://scde.ug.edu.gh",
+      "title": "School of Continuing and Distance Education home"
+    },
+    {
+      "url": "https://www.ug.edu.gh/de/home",
+      "title": "Distance Education (School of Continuing and Distance Education)"
+    }
+  ],
+  "college_health_sciences": [
+    {
+      "url": "https://chs.ug.edu.gh",
+      "title": "College home"
+    },
+    {
+      "url": "https://ugms.ug.edu.gh",
+      "title": "University of Ghana Medical School home"
+    },
+    {
+      "url": "https://ugms.ug.edu.gh/academics/departments",
+      "title": "Departments index"
+    },
+    {
+      "url": "https://ugms.ug.edu.gh/department/physiology",
+      "title": "Physiology (University of Ghana Medical School)"
+    },
+    {
+      "url": "https://ugms.ug.edu.gh/department/surgery",
+      "title": "Surgery (University of Ghana Medical School)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/ugds.ug.edu.gh/",
+      "title": "University of Ghana Dental School home"
+    },
+    {
+      "url": "https://www.ug.edu.gh/ugds.ug.edu.gh/department-restorative-dentistry",
+      "title": "Restorative and Preventive Dentistry (University of Ghana Dental School)"
+    },
+    {
+      "url": "https://sbahs.ug.edu.gh",
+      "title": "School of Biomedical and Allied Health Sciences home"
+    },
+    {
+      "url": "https://sbahs.ug.edu.gh/department-medical-laboratory-sciences",
+      "title": "Medical Laboratory Sciences (School of Biomedical and Allied Health Sciences)"
+    },
+    {
+      "url": "https://publichealth.ug.edu.gh",
+      "title": "School of Public Health home"
+    },
+    {
+      "url": "https://publichealth.ug.edu.gh/department/health-policy-planning-management/about-us",
+      "title": "Health Policy, Planning and Management (School of Public Health)"
+    },
+    {
+      "url": "https://nursing.ug.edu.gh",
+      "title": "School of Nursing and Midwifery home"
+    },
+    {
+      "url": "https://pharmacy.ug.edu.gh",
+      "title": "School of Pharmacy home"
+    },
+    {
+      "url": "https://noguchi.ug.edu.gh",
+      "title": "Noguchi Memorial Institute for Medical Research (Research institutes / centres)"
+    },
+    {
+      "url": "https://wagmc.ug.edu.gh",
+      "title": "West African Genetic Medicine Centre (WAGMC) (Research institutes / centres)"
+    },
+    {
+      "url": "https://wacgeohealth.ug.edu.gh",
+      "title": "GEOHealth West Africa (Research institutes / centres)"
+    }
+  ],
+  "college_humanities": [
+    {
+      "url": "https://coh.ug.edu.gh",
+      "title": "College home"
+    },
+    {
+      "url": "https://coh.ug.edu.gh/academics/schools",
+      "title": "Schools index"
+    },
+    {
+      "url": "https://coh.ug.edu.gh/academics/centers-institutes",
+      "title": "Centres & Institutes index"
+    },
+    {
+      "url": "https://ugbs.ug.edu.gh",
+      "title": "University of Ghana Business School (UGBS) home"
+    },
+    {
+      "url": "https://ugbs.ug.edu.gh/department/accounting",
+      "title": "Accounting (University of Ghana Business School (UGBS))"
+    },
+    {
+      "url": "https://ugbs.ug.edu.gh/department/finance",
+      "title": "Finance (University of Ghana Business School (UGBS))"
+    },
+    {
+      "url": "https://ugbs.ug.edu.gh/department/health-services-management",
+      "title": "Health Services Management (University of Ghana Business School (UGBS))"
+    },
+    {
+      "url": "https://ugbs.ug.edu.gh/department/marketing-entrepreneurship",
+      "title": "Marketing & Entrepreneurship (University of Ghana Business School (UGBS))"
+    },
+    {
+      "url": "https://ugbs.ug.edu.gh/department/ohrm",
+      "title": "Organisation and Human Resource Management (University of Ghana Business School (UGBS))"
+    },
+    {
+      "url": "https://ugbs.ug.edu.gh/department/omis",
+      "title": "Operations and Management Information Systems (University of Ghana Business School (UGBS))"
+    },
+    {
+      "url": "https://ugbs.ug.edu.gh/department/public-administration",
+      "title": "Public Administration (University of Ghana Business School (UGBS))"
+    },
+    {
+      "url": "https://law.ug.edu.gh",
+      "title": "School of Law home"
+    },
+    {
+      "url": "https://languages.ug.edu.gh",
+      "title": "School of Languages home"
+    },
+    {
+      "url": "https://socialsciences.ug.edu.gh",
+      "title": "School of Social Sciences home"
+    },
+    {
+      "url": "https://www.ug.edu.gh/economics",
+      "title": "Economics (School of Social Sciences)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/sociology",
+      "title": "Sociology (School of Social Sciences)"
+    },
+    {
+      "url": "https://arts.ug.edu.gh",
+      "title": "School of Arts home"
+    },
+    {
+      "url": "https://www.ug.edu.gh/archaeology/",
+      "title": "Archaeology and Heritage Studies (School of Arts)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/history/",
+      "title": "History (School of Arts)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/phcl",
+      "title": "Philosophy and Classics (School of Arts)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/religions/",
+      "title": "Study of Religions (School of Arts)"
+    },
+    {
+      "url": "https://spa.ug.edu.gh",
+      "title": "School of Performing Arts home"
+    },
+    {
+      "url": "https://www.ug.edu.gh/theatre.ug/about/overview",
+      "title": "Theatre Arts (School of Performing Arts)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/music/about/overview",
+      "title": "Music (School of Performing Arts)"
+    },
+    {
+      "url": "http://ias.ug.edu.gh/",
+      "title": "Institute of African Studies (Institutes)"
+    },
+    {
+      "url": "https://isser.ug.edu.gh",
+      "title": "Institute of Statistical, Social and Economic Research (ISSER) (Institutes)"
+    },
+    {
+      "url": "http://rips-ug.edu.gh/",
+      "title": "Regional Institute for Population Studies (RIPS) (Institutes)"
+    },
+    {
+      "url": "https://miasa.ug.edu.gh/",
+      "title": "Maria Sibylla Merian Institute for Advanced Studies in Africa (MIASA) (Institutes)"
+    },
+    {
+      "url": "https://cegensa.ug.edu.gh/",
+      "title": "Centre for Gender Studies and Advocacy (Centres)"
+    },
+    {
+      "url": "https://cms.ug.edu.gh/",
+      "title": "Centre for Migration Studies (Centres)"
+    },
+    {
+      "url": "http://csps.ug.edu.gh/",
+      "title": "Centre for Social Policy Studies (Centres)"
+    },
+    {
+      "url": "https://cums.ug.edu.gh/",
+      "title": "Centre for Urban Management Studies (Centres)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/cas/",
+      "title": "Centre for Asian Studies (Centres)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/clas/",
+      "title": "Centre for Latin American Studies (Centres)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/cfas/home",
+      "title": "Centre for Ageing Studies (Centres)"
+    },
+    {
+      "url": "http://cersgis.org/",
+      "title": "Centre for Remote Sensing and Geographical Information Systems (CERSGIS) (Centres)"
+    },
+    {
+      "url": "http://lc.ug.edu.gh/",
+      "title": "Language Centre (Centres)"
+    },
+    {
+      "url": "http://leciad.ug.edu.gh/",
+      "title": "Legon Centre for International Affairs and Diplomacy (LECIAD) (Centres)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/acc",
+      "title": "Accra City Campus (Campus)"
+    }
+  ]
+}

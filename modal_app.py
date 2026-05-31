@@ -30,6 +30,7 @@ APP_FILES = [
     "api.py",
     "rag_chat.py",
     "transcript.py",
+    "cv.py",
     "speech.py",
     "directions.py",
     "chunker.py",
@@ -61,6 +62,9 @@ image = (
 
 for _f in APP_FILES:
     image = image.add_local_file(_f, remote_path=f"{APP_ROOT}/{_f}")
+
+# Data files referenced at runtime (not Python source)
+image = image.add_local_file("ug_urls.json", remote_path=f"{APP_ROOT}/ug_urls.json")
 
 image = image.add_local_dir("chroma_db", remote_path=SEED_CHROMA_DIR)
 image = image.add_local_dir("documents", remote_path=SEED_DOCS_DIR)
