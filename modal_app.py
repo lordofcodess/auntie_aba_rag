@@ -29,6 +29,8 @@ gemini_secret = modal.Secret.from_name("gemini-api-key")
 APP_FILES = [
     "api.py",
     "rag_chat.py",
+    "document_context.py",
+    "document_files.py",
     "transcript.py",
     "cv.py",
     "speech.py",
@@ -167,12 +169,12 @@ def prepare_data(
 
 
 @app.function(
-    gpu="T4",
-    cpu=8.0,
+    cpu=4.0,
     memory=16384,
     volumes={DATA_VOLUME_PATH: data_volume},
     secrets=[gemini_secret],
     timeout=1800,
+    min_containers=1,
     scaledown_window=900,
 )
 @modal.asgi_app()

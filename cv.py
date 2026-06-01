@@ -8,6 +8,7 @@ Output mirrors transcript.advise() shape (extracted, notes, advice, handbook_chu
 so the frontend can render both via the same upload pipeline.
 """
 
+import datetime
 import json
 import re
 from typing import Optional
@@ -76,6 +77,13 @@ Rules:
 
 
 ADVICE_PROMPT_TEMPLATE = """You are an advisor for University of Ghana students AND academic staff.
+
+TODAY'S DATE: {today}
+
+Use this date when judging whether entries on the CV are past, current, or
+future. Do NOT assume your training cutoff is "now" — anything dated on or
+before {today} has already happened. Only flag a date as future-dated if it
+is genuinely after {today}.
 
 A user has submitted a CV. Below is (1) the structured CV data (note the
 `audience_hint` field — "staff" means a UG academic-staff CV, "student" means
@@ -148,6 +156,56 @@ If the user's notes contain a specific question, answer it in a final
 Please analyse this CV and give me advice covering all six sections above,
 taking the user's notes and the audience (student vs. staff) into account.
 Format as Markdown."""
+
+
+# Used when the user provided notes alongside the upload. Their notes ARE the
+# primary intent — we answer them directly instead of running the full
+# six-section default analysis.
+TARGETED_PROMPT_TEMPLATE = """You are an advisor for University of Ghana students AND academic staff.
+
+TODAY'S DATE: {today}
+
+Use this date when judging whether entries on the CV are past, current, or
+future. Do NOT assume your training cutoff is "now" — anything dated on or
+before {today} has already happened.
+
+The user uploaded a CV AND provided notes. Their notes ARE the primary intent.
+
+Decision protocol:
+- If the notes are a direct question (e.g. "What's my biggest weakness?",
+  "Am I ready for a SWE internship?", "What programmes match my background?"),
+  answer it directly using the CV data + any relevant UG handbook context.
+  Do NOT run the full six-section CV review.
+- If the notes are context or preferences (e.g. "I'm targeting grad school",
+  "I want a tech internship", "I'm applying for promotion to Associate
+  Professor"), focus your answer on what they're targeting. Cover only the
+  sections that are clearly relevant to that goal. Be concise.
+
+Adapt to the audience (`audience_hint` in the CV data: "staff" = UG academic
+staff CV, "student" = student/early-career CV). For staff, frame around
+academic career progression (promotion, grants, sabbaticals). For students,
+frame around jobs, internships, further study.
+
+=== CV DATA ===
+{cv_json}
+
+=== UG HANDBOOK CONTEXT ===
+{handbook_context}
+
+=== USER NOTES / QUESTION ===
+{user_notes}
+
+=== INSTRUCTION ===
+Answer the user's actual question or focus on their stated intent. Be specific
+— cite real CV details (role titles, employer names, education entries,
+projects, publication counts). Keep it focused — do not pad with the default
+six-section report.
+
+If you genuinely think a full CV review would benefit the user beyond what
+they asked, add a single italic line at the very end:
+*Want a full CV review? Just say "review my CV".*
+
+Format as Markdown. Skip preamble — answer directly."""
 
 
 def extract_cv(client: genai.Client, file_bytes: bytes, mime_type: str, model: str) -> dict:
@@ -274,13 +332,22 @@ def advise(
     notes: Optional[str] = None,
     model: str = "gemini-2.5-flash",
 ) -> dict:
-    """End-to-end: extract → retrieve handbook context → generate advice."""
+    """End-to-end: extract → retrieve handbook context → generate advice.
+
+    If `notes` is non-empty, the user's question/intent drives the response
+    (TARGETED template). If no notes are provided, the default six-section
+    CV review runs.
+    """
     extracted = extract_cv(client, file_bytes, mime_type, model)
     context, chunks_used = gather_handbook_context(rag, extracted, notes=notes)
 
-    user_notes = (notes or "").strip() or "(no additional notes provided)"
+    notes_stripped = (notes or "").strip()
+    has_notes = bool(notes_stripped)
+    user_notes = notes_stripped or "(no additional notes provided)"
 
-    prompt = ADVICE_PROMPT_TEMPLATE.format(
+    template = TARGETED_PROMPT_TEMPLATE if has_notes else ADVICE_PROMPT_TEMPLATE
+    prompt = template.format(
+        today=datetime.date.today().isoformat(),
         cv_json=json.dumps(extracted, indent=2),
         handbook_context=context or "(no relevant handbook context retrieved)",
         user_notes=user_notes,

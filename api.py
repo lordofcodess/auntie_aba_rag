@@ -26,10 +26,19 @@ from transcript import advise as analyze_transcript
 from cv import advise as analyze_cv
 from speech import transcribe_audio
 from directions import rewrite_steps
+from document_context import build_document_history_content
+from document_files import (
+    DOCX_MIME_TYPE,
+    DOCX_TEMPLATE_MIME_TYPE,
+    infer_mime_from_filename,
+    normalize_document_upload,
+)
 
 
 ALLOWED_MIME_TYPES = {
     "application/pdf",
+    DOCX_MIME_TYPE,
+    DOCX_TEMPLATE_MIME_TYPE,
     "image/png",
     "image/jpeg",
     "image/jpg",
@@ -91,7 +100,7 @@ MAX_HISTORY_TURNS = 20
 
 class HistoryTurn(BaseModel):
     role: Literal["user", "assistant"]
-    content: str = Field(..., max_length=20000)
+    content: str = Field(..., max_length=60000)
 
 
 class ChatRequest(BaseModel):
@@ -242,7 +251,7 @@ async def voice_chat(
 
 @app.post("/transcript/analyze")
 async def transcript_analyze(
-    file: UploadFile = File(..., description="Transcript PDF or image"),
+    file: UploadFile = File(..., description="Transcript PDF, Word document, or image"),
     notes: Optional[str] = Form(
         None,
         description="Optional free-text: focus area, goals, specific questions, etc.",
@@ -253,7 +262,7 @@ async def transcript_analyze(
     if rag is None:
         raise HTTPException(status_code=503, detail="RAG system not yet initialized")
 
-    mime_type = (file.content_type or "").lower()
+    mime_type = infer_mime_from_filename(file.filename, (file.content_type or "").lower())
     if mime_type not in ALLOWED_MIME_TYPES:
         raise HTTPException(
             status_code=415,
@@ -277,6 +286,10 @@ async def transcript_analyze(
 
     if mime_type == "image/jpg":
         mime_type = "image/jpeg"
+    try:
+        file_bytes, mime_type = normalize_document_upload(file_bytes, mime_type)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
 
     try:
         result = analyze_transcript(
@@ -288,6 +301,12 @@ async def transcript_analyze(
             model=rag.model_name,
         )
         result["doc_type"] = "transcript"
+        result["assistant_history_content"] = build_document_history_content(
+            advice=result.get("advice") or "",
+            doc_type="transcript",
+            extracted=result.get("extracted") or {},
+            notes=result.get("notes"),
+        )
         return result
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
@@ -300,7 +319,7 @@ def _read_and_validate_upload(
     notes: Optional[str],
 ) -> tuple[bytes, str]:
     """Shared validation for document uploads. Returns (bytes, normalized_mime)."""
-    mime_type = (file.content_type or "").lower()
+    mime_type = infer_mime_from_filename(file.filename, (file.content_type or "").lower())
     if mime_type not in ALLOWED_MIME_TYPES:
         raise HTTPException(
             status_code=415,
@@ -326,6 +345,13 @@ async def _read_upload_bytes(file: UploadFile) -> bytes:
             detail=f"File too large ({len(file_bytes)} bytes). Max: {MAX_UPLOAD_BYTES}",
         )
     return file_bytes
+
+
+def _normalize_upload_bytes(file_bytes: bytes, mime_type: str) -> tuple[bytes, str]:
+    try:
+        return normalize_document_upload(file_bytes, mime_type)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
 
 
 CLASSIFY_PROMPT = """You are a document classifier. Look at the attached file and decide which ONE of these labels best describes it:
@@ -354,7 +380,7 @@ def _classify_document(client, file_bytes: bytes, mime_type: str, model: str) ->
 
 @app.post("/cv/analyze")
 async def cv_analyze(
-    file: UploadFile = File(..., description="CV / résumé PDF or image"),
+    file: UploadFile = File(..., description="CV / résumé PDF, Word document, or image"),
     notes: Optional[str] = Form(
         None,
         description="Optional: target role, focus area, specific question.",
@@ -366,6 +392,7 @@ async def cv_analyze(
         raise HTTPException(status_code=503, detail="RAG system not yet initialized")
     mime_type = _read_and_validate_upload(file, notes)
     file_bytes = await _read_upload_bytes(file)
+    file_bytes, mime_type = _normalize_upload_bytes(file_bytes, mime_type)
     try:
         result = analyze_cv(
             client=rag.client,
@@ -376,6 +403,12 @@ async def cv_analyze(
             model=rag.model_name,
         )
         result["doc_type"] = "cv"
+        result["assistant_history_content"] = build_document_history_content(
+            advice=result.get("advice") or "",
+            doc_type="cv",
+            extracted=result.get("extracted") or {},
+            notes=result.get("notes"),
+        )
         return result
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
@@ -385,7 +418,7 @@ async def cv_analyze(
 
 @app.post("/document/analyze")
 async def document_analyze(
-    file: UploadFile = File(..., description="Any supported document (PDF or image)"),
+    file: UploadFile = File(..., description="Any supported document (PDF, Word document, or image)"),
     notes: Optional[str] = Form(None, description="Optional context notes."),
 ):
     """Auto-detect the document type (transcript / cv / other) and route to the
@@ -397,6 +430,7 @@ async def document_analyze(
         raise HTTPException(status_code=503, detail="RAG system not yet initialized")
     mime_type = _read_and_validate_upload(file, notes)
     file_bytes = await _read_upload_bytes(file)
+    file_bytes, mime_type = _normalize_upload_bytes(file_bytes, mime_type)
 
     label = _classify_document(rag.client, file_bytes, mime_type, rag.model_name)
     try:
@@ -406,6 +440,12 @@ async def document_analyze(
                 mime_type=mime_type, notes=notes, model=rag.model_name,
             )
             result["doc_type"] = "transcript"
+            result["assistant_history_content"] = build_document_history_content(
+                advice=result.get("advice") or "",
+                doc_type="transcript",
+                extracted=result.get("extracted") or {},
+                notes=result.get("notes"),
+            )
             return result
         if label == "cv":
             result = analyze_cv(
@@ -413,6 +453,12 @@ async def document_analyze(
                 mime_type=mime_type, notes=notes, model=rag.model_name,
             )
             result["doc_type"] = "cv"
+            result["assistant_history_content"] = build_document_history_content(
+                advice=result.get("advice") or "",
+                doc_type="cv",
+                extracted=result.get("extracted") or {},
+                notes=result.get("notes"),
+            )
             return result
         # 'other' — we don't have a dedicated analyser yet
         return {

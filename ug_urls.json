@@ -74,12 +74,28 @@
     {
       "url": "https://www.ug.edu.gh/academics/colleges-schools",
       "title": "Colleges & Schools index"
+    },
+    {
+      "url": "https://www.ug.edu.gh/about-ug/leadership",
+      "title": "UG Leadership (Vice-Chancellor, Pro-VCs, Registrar, directorates)"
+    },
+    {
+      "url": "https://www.ug.edu.gh/staff-faculty-services",
+      "title": "Staff & Faculty Services (directory, email, MIS, policies)"
     }
   ],
   "college_basic_applied_sciences": [
     {
       "url": "https://cbas.ug.edu.gh",
       "title": "College home"
+    },
+    {
+      "url": "https://cbas.ug.edu.gh/staff?tab=management",
+      "title": "CBAS Management & Staff directory"
+    },
+    {
+      "url": "https://dcs.ug.edu.gh/faculty",
+      "title": "Computer Science faculty list"
     },
     {
       "url": "https://spms.ug.edu.gh",
@@ -142,6 +158,10 @@
     {
       "url": "https://soel.ug.edu.gh",
       "title": "School of Education and Leadership home"
+    },
+    {
+      "url": "https://www.ug.edu.gh/esl/people/faculty",
+      "title": "Educational Studies and Leadership faculty"
     },
     {
       "url": "https://sics.ug.edu.gh",
@@ -248,6 +268,10 @@
       "title": "University of Ghana Business School (UGBS) home"
     },
     {
+      "url": "https://ugbs.ug.edu.gh/faculty",
+      "title": "UGBS faculty directory"
+    },
+    {
       "url": "https://ugbs.ug.edu.gh/department/accounting",
       "title": "Accounting (University of Ghana Business School (UGBS))"
     },
@@ -280,6 +304,10 @@
       "title": "School of Law home"
     },
     {
+      "url": "https://law.ug.edu.gh/faculty",
+      "title": "School of Law faculty"
+    },
+    {
       "url": "https://languages.ug.edu.gh",
       "title": "School of Languages home"
     },
@@ -294,6 +322,14 @@
     {
       "url": "https://www.ug.edu.gh/sociology",
       "title": "Sociology (School of Social Sciences)"
+    },
+    {
+      "url": "https://pscience.ug.edu.gh/faculty-staff",
+      "title": "Political Science faculty & staff (School of Social Sciences)"
+    },
+    {
+      "url": "https://cohold.ug.edu.gh/staff",
+      "title": "College of Humanities Office of Leadership & Development staff"
     },
     {
       "url": "https://arts.ug.edu.gh",

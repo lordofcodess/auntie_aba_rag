@@ -6,6 +6,7 @@ Two Gemini calls:
   2. Advise — text: combine extracted data with handbook context, return advice
 """
 
+import datetime
 import json
 import re
 from typing import Optional
@@ -46,6 +47,12 @@ Rules:
 
 
 ADVICE_PROMPT_TEMPLATE = """You are an academic advisor for University of Ghana students.
+
+TODAY'S DATE: {today}
+
+Use this date when judging whether semesters or course attempts are past,
+in-progress, or future. Do NOT assume your training cutoff is "now" — any
+date on or before {today} has already happened.
 
 A student has submitted their transcript. Below is (1) the extracted transcript data,
 (2) relevant handbook context about their programme, graduation requirements, and
@@ -89,6 +96,52 @@ section, say so directly rather than guessing.
 === INSTRUCTION ===
 Please analyze this transcript and give me advice covering all three areas above,
 taking the student's notes into account where relevant."""
+
+
+# Used when the student provided notes alongside the upload. Their notes ARE
+# the primary intent — we answer them directly instead of running the full
+# three-section default report.
+TARGETED_PROMPT_TEMPLATE = """You are an academic advisor for University of Ghana students.
+
+TODAY'S DATE: {today}
+
+Use this date when judging whether semesters or course attempts are past,
+in-progress, or future. Do NOT assume your training cutoff is "now" — any
+date on or before {today} has already happened.
+
+The student uploaded a transcript AND provided notes. The notes ARE the
+primary intent.
+
+Decision protocol:
+- If the notes are a direct question (e.g. "Will I make First Class?",
+  "Which Year 4 electives should I pick?", "How many credits do I still
+  need?"), answer it directly using the transcript data + relevant handbook
+  context. Do NOT run the full "what's left / electives / GPA standing"
+  report.
+- If the notes are context or preferences (e.g. "I'm focused on machine
+  learning", "I'm considering grad school"), focus your answer on what they
+  flagged. Cover only the sections directly relevant.
+
+=== TRANSCRIPT DATA ===
+{transcript_json}
+
+=== HANDBOOK CONTEXT ===
+{handbook_context}
+
+=== STUDENT NOTES / QUESTION ===
+{student_notes}
+
+=== INSTRUCTION ===
+Answer the student's actual question or focus on their stated intent. Be
+specific — cite course codes, credits, grades from the transcript. Reference
+handbook context only when it strengthens the answer. Keep it focused — do
+not pad with the default three-section report.
+
+If you genuinely think the full graduation/electives/GPA review would help
+beyond what they asked, add a single italic line at the very end:
+*Want the full transcript review? Just say "review my transcript".*
+
+Format as Markdown. Skip preamble — answer directly."""
 
 
 def extract_transcript(client: genai.Client, file_bytes: bytes, mime_type: str, model: str) -> dict:
@@ -169,13 +222,22 @@ def advise(
     notes: Optional[str] = None,
     model: str = "gemini-2.5-flash",
 ) -> dict:
-    """End-to-end: extract → retrieve handbook context → generate advice."""
+    """End-to-end: extract → retrieve handbook context → generate advice.
+
+    If `notes` is non-empty, the student's question/intent drives the
+    response (TARGETED template). Otherwise the default three-section report
+    runs.
+    """
     extracted = extract_transcript(client, file_bytes, mime_type, model)
     context = gather_handbook_context(rag, extracted, notes=notes)
 
-    student_notes = (notes or "").strip() or "(no additional notes provided)"
+    notes_stripped = (notes or "").strip()
+    has_notes = bool(notes_stripped)
+    student_notes = notes_stripped or "(no additional notes provided)"
 
-    prompt = ADVICE_PROMPT_TEMPLATE.format(
+    template = TARGETED_PROMPT_TEMPLATE if has_notes else ADVICE_PROMPT_TEMPLATE
+    prompt = template.format(
+        today=datetime.date.today().isoformat(),
         transcript_json=json.dumps(extracted, indent=2),
         handbook_context=context or "(no relevant handbook context retrieved)",
         student_notes=student_notes,
