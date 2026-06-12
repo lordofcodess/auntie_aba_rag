@@ -6,6 +6,7 @@ google-genai>=1.47
 numpy>=1.26
 pillow>=11.0
 pydantic>=2.13
+PyJWT[crypto]>=2.8
 python-multipart>=0.0.20
 rank-bm25>=0.2.2
 sentence-transformers>=5.1

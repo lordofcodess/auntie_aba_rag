@@ -16,11 +16,12 @@ import os
 from contextlib import asynccontextmanager
 from typing import Optional
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import Literal
 
+from auth import User, enforce_quota, get_current_user, quota_status
 from rag_chat import HandbookRAG, SELF_DESCRIPTION
 from transcript import advise as analyze_transcript
 from cv import advise as analyze_cv
@@ -151,8 +152,75 @@ def health():
     return {"status": "ok", "ready": rag is not None}
 
 
+class FeedbackRequest(BaseModel):
+    rating: Optional[Literal["like", "dislike"]] = Field(
+        None, description="Optional thumbs rating attached to the feedback."
+    )
+    message: str = Field(..., min_length=1, max_length=4000)
+    context: Optional[str] = Field(
+        None, max_length=10000,
+        description="Optional surrounding context (e.g. last assistant message).",
+    )
+    email: Optional[str] = Field(None, max_length=200)
+
+
+FEEDBACK_LOG_PATH = os.path.join(
+    os.getenv("FEEDBACK_DIR", os.path.dirname(os.path.abspath(__file__))),
+    "feedback.jsonl",
+)
+
+
+@app.post("/feedback")
+def feedback(req: FeedbackRequest):
+    """Append a feedback entry to a local JSONL log."""
+    import datetime as _dt
+    import json as _json
+    entry = {
+        "timestamp": _dt.datetime.utcnow().isoformat() + "Z",
+        "rating": req.rating,
+        "message": req.message,
+        "context": req.context,
+        "email": req.email,
+    }
+    try:
+        with open(FEEDBACK_LOG_PATH, "a", encoding="utf-8") as f:
+            f.write(_json.dumps(entry, ensure_ascii=False) + "\n")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Could not record feedback: {e}")
+    return {"ok": True}
+
+
+# ─── Auth & quota helpers ─────────────────────────────────────────────────
+
+def gate(
+    request: Request,
+    user: Optional[User] = Depends(get_current_user),
+) -> Optional[User]:
+    """Composed dependency: verify JWT (if any) then check anonymous quota."""
+    return enforce_quota(request, user)
+
+
+@app.get("/auth/quota")
+def auth_quota(
+    request: Request,
+    user: Optional[User] = Depends(get_current_user),
+):
+    """Frontend can call this to display 'N free messages remaining'."""
+    return quota_status(request, user)
+
+
+@app.get("/auth/me")
+def auth_me(user: Optional[User] = Depends(get_current_user)):
+    if user is None:
+        return {"authenticated": False}
+    return {"authenticated": True, "id": user.id, "email": user.email}
+
+
 @app.post("/chat", response_model=ChatResponse)
-def chat(req: ChatRequest):
+def chat(
+    req: ChatRequest,
+    user: Optional[User] = Depends(gate),
+):
     if HandbookRAG.is_self_question(req.query):
         return ChatResponse(
             query=req.query,
@@ -192,6 +260,7 @@ MAX_NOTES_LEN = 4000
 @app.post("/voice/chat")
 async def voice_chat(
     file: UploadFile = File(..., description="Audio recording (wav/mp3/webm/m4a/ogg/flac)"),
+    user: Optional[User] = Depends(gate),
     top_k: int = Form(10, description="Number of chunks to retrieve"),
 ):
     """Transcribe an audio question via Gemini, then run the transcript through /chat."""
@@ -256,6 +325,7 @@ async def transcript_analyze(
         None,
         description="Optional free-text: focus area, goals, specific questions, etc.",
     ),
+    user: Optional[User] = Depends(gate),
 ):
     """Upload a transcript (PDF or image) plus optional context notes, and get
     graduation + electives + class standing advice."""
@@ -385,6 +455,7 @@ async def cv_analyze(
         None,
         description="Optional: target role, focus area, specific question.",
     ),
+    user: Optional[User] = Depends(gate),
 ):
     """Upload a CV (PDF or image) plus optional notes; get strengths, weaknesses,
     career-fit, UG-programme matches, and prioritized next steps."""
@@ -420,6 +491,7 @@ async def cv_analyze(
 async def document_analyze(
     file: UploadFile = File(..., description="Any supported document (PDF, Word document, or image)"),
     notes: Optional[str] = Form(None, description="Optional context notes."),
+    user: Optional[User] = Depends(gate),
 ):
     """Auto-detect the document type (transcript / cv / other) and route to the
     matching analyser. Frontend uses this when the user shouldn't have to pick.
